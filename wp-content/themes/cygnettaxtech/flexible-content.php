@@ -740,6 +740,56 @@
 			</section>
 			<?php endif;  
 			/* Accordion code end */
+			
+			/* Offering Tab code start */  
+			if (get_row_layout() == 'offering_tab') : ?> 
+			<section class="offering-tab">
+				<div class="container">
+					<?php if (have_rows('tabs')) : ?>
+						<div class="offering-tab-inner">
+							<div class="row">
+							<?php while (have_rows('tabs')) : the_row();	?>								
+								<div class="col-md-4">
+									<div class="d-flex align-items-center h-100">											
+										<div class="title-heading text-start">												
+											<?php if (get_sub_field('tab_icon')){ ?>
+												<div class="">
+													<img src="<?php echo the_sub_field('tab_icon'); ?>" alt="<?php echo the_sub_field('tab_title'); ?>">
+												</div>
+											<?php } ?>
+											<?php if (get_sub_field('tab_title')){ ?>
+												<h2><?php echo the_sub_field('tab_title'); ?>
+													<span class="heading-border"></span>
+												</h2>
+											<?php } ?>		
+											
+											<?php if (have_rows('inner_content')) : ?>
+												<div class="offering-tab-inner-content">
+													<?php while (have_rows('inner_content')) : the_row(); ?>
+														<div class="offering-tab-inner-content-class">
+															<?php if (get_sub_field('inner_content_title')){ ?>
+																<p class="sub-title"><?php echo the_sub_field('inner_content_title'); ?></p>
+															<?php } ?>
+															<?php if (get_sub_field('inner_content_description')){ ?>
+																<p class="sub-title"><?php echo the_sub_field('inner_content_description'); ?></p>
+															<?php } ?>
+														</div>
+													<?php endwhile; ?>
+												</div>
+											<?php endif; ?>
+											
+										</div>
+									</div>
+								</div>								
+							<?php endwhile; ?>
+							</div>
+						</div>
+					<?php endif; ?>								
+				</div>
+			</section>
+			<?php endif;  
+			/* Offering Tab code end */
+			
 			$logo_slider_cnt++;
 		endwhile;
 	endif; 	
