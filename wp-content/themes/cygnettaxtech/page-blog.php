@@ -95,7 +95,7 @@
 				</div>
 			</div>-->
 			<!-- Filter block start -->
-			<?php /* <div class="filter-box mb-5">
+			<div class="filter-box mb-5">
 				<h5 class="text-dark-blue mb-3">Filter By:</h5>
 				<form class="submit-all-filter">
 					<div class="row gy-3">
@@ -117,7 +117,7 @@
 						</div>
 					</div>
 				</form>
-			</div>   */ ?>
+			</div>
 			<!-- Filter block end -->
 			<!-- Blog start -->
 			<div class="blog-container"></div>
