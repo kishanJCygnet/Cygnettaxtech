@@ -853,6 +853,27 @@
 										</div>
 									</div>
 									
+									<!-- Modal popup section start -->
+									<div class="modal fade" id="exampleModal-<?php echo $j; ?>" tabindex="-1" aria-labelledby="exampleModalLabel-<?php echo $j; ?>" aria-hidden="true">
+										<div class="modal-dialog modal-dialog-centered modal-lg">
+											<div class="modal-content">
+												<div class="modal-header flex-lg-row flex-column border-bottom-0">
+													<?php if (get_sub_field('country_name')) : ?>
+														<h4 class="modal-title order-1 order-lg-0" id="exampleModalLabel-<?php echo $j; ?>"><?php echo the_sub_field('country_name'); ?></h4>
+													<?php endif; ?>
+													<a href="javascript:void(0);" class="back-link mb-4 mb-lg-0 align-self-end" data-bs-dismiss="modal" aria-label="Close" style="top:-4px;"><i class="bi bi-x-lg position-relative" aria-hidden="true"></i></a>
+												</div>
+												<div class="modal-body pt-0">
+													<?php
+													if (get_sub_field('address_description')) :
+														echo the_sub_field('address_description');
+													endif;
+													?>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- Modal popup section end -->
 							<?php $j++;
 							endwhile; ?>
 						</div>
