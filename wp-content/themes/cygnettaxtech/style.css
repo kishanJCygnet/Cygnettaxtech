@@ -2248,6 +2248,190 @@ p{
     background-color: #fff;
     left: 15px;
 }
+.building-block.two-colum-layout .content-title-heading h2{
+    font-size: 50px;
+    line-height: 1.2;
+    margin-bottom: 30px;
+}
+.building-block.two-colum-layout .content-title-heading h2 span{
+    color: #009999 ;
+    font-weight: bolder;
+}
+.building-block.two-colum-layout h3{
+    font-size: 16px;
+}
+.building-inner{
+    display: flex;
+    align-items: center;
+}
+.building-inner > div{
+    width: 50%;
+}
+.building-inner .item{
+    background: #fff;
+    padding: 20px 15px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 20px rgb(0 0 0 / 10%);
+    margin-bottom: 30px;
+    min-height: 190px;
+}
+.building-inner .col1{
+    margin-right: 30px;
+}
+.building-inner .item img{
+    margin-bottom: 15px;
+}
+.building-inner .item .description{
+    font-size: 17px;
+    line-height: 1.5;
+}
+.building-block.two-colum-layout .col-right{
+    display: none;
+}
+.building-block.two-colum-layout .col-left{
+    padding-left: 0;
+    width: 100%;
+}
+.building-block.two-colum-layout .col-left > div > div{
+    display: flex;
+    align-items: center;
+}
+.sec-bottom-radius{
+    border-bottom-left-radius: 200px;
+    border-bottom-right-radius: 200px;
+}
+.businesses-global .address-content img{
+    width: 100%;
+    margin-top:20px;
+}
+/* Form text tech content */
+.taxtech-form-content br{
+    display: none;
+}
+.taxtech-form-content .taxtech-list{
+    display: flex;
+    width: 100%;
+    margin-bottom: 15px;
+}
+.taxtech-form-content .taxtech-list .title{
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-left: 29px;
+}
+.taxtech-form-content .taxtech-list .title .tc{
+        background-color: #11a6a6;
+        padding: 9px 10px;
+        width: 100px;
+        padding-left: 30px;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 500;
+        color: #8DFFFF;
+        position: relative;
+}
+.taxtech-form-content .taxtech-list .title .tc:after{
+    content: '';
+    position: absolute;
+    right: -16px;
+    top: 6.7px;
+    border: 16.2px solid #11a6a6;
+    border-left-color: transparent;
+    border-top-color: transparent;
+    transform: rotate(-45deg);
+}
+.taxtech-form-content .taxtech-list .title .icon{
+    background-color: #009999;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 4px solid #fff;
+    position: absolute;
+    left: 0;
+    z-index:2;
+}
+.taxtech-form-content .taxtech-list .item{
+    display: flex;
+    padding-left: 35px;
+}
+.taxtech-form-content .taxtech-list .item > div{
+    display: flex;
+} 
+.taxtech-form-content .taxtech-list .item .title-inner{
+    font-size: 14px;
+    background-color: #EEFFFF;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #009999;
+    text-align: center;
+}
+.taxtech-form-content .taxtech-list .item ul{
+    padding-left: 0;
+    list-style-type: none;
+    display: flex;
+    font-size: 13px;
+    text-align: center;
+}
+.taxtech-form-content .taxtech-list .item ul li{
+    padding: 30px 10px;
+    box-shadow: 0px 3px 6px rgba(0,0,0,0.1);
+    background-color: #fff;
+    margin: 0 7px;
+    border-radius: 10px;
+    position: relative;
+}
+.taxtech-form-content .taxtech-list .item ul li input{
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 9;
+    height: auto;
+    width: auto;
+    cursor: pointer;
+}
+.taxtech-form-content .taxtech-list .item ul li .check{
+    height: 20px;
+    width: 20px;
+    border: 1px solid #c2c2c2;
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    display: inline-block;
+    border-radius: 50%;
+    
+}
+.taxtech-form-content .taxtech-list .item ul li input:checked ~ .check::before{
+    content: '';
+    background-color: transparent;
+    position: absolute;
+    left: 7px;
+    top: 2px;
+    width: 5px;
+    border-bottom: 3px solid #fff;
+      /* long arm */
+    height: 11px;
+    border-right: 3px solid #fff;
+    
+    /* rotate the mirrored L to make it a checkbox */
+    transform: rotate(45deg);
+      -o-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      -webkit-transform: rotate(45deg);
+}
+.taxtech-form-content .taxtech-list .item ul li input:checked ~ .check{
+    background-color: #009999;
+    border-color:#009999;
+}
 @media only screen and (max-width: 1400px) {
     .primary-navigation .menu-wrapper li.menu-item{
         padding: 0 5px;
@@ -2863,3 +3047,417 @@ h1{
     font-size: 32px;
 }
 }
+
+
+/* / section css / */
+
+
+.service-section {
+    text-align: center;
+}
+
+.service-section .icon-box h3,
+.grid-data-content .icon-box-title-content h3,
+.grid-border-section .icon-box h3
+ {
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: bold;
+    margin-bottom: 9px;
+}
+
+.service-section .icon-box {
+    position: relative;
+    background-color: #fff;
+    padding: 65px 22px 24px;
+    border-radius: 10px;
+    margin-top: 43px;
+}
+
+.service-section .icon-box * {
+    transition: unset;
+}
+
+.service-section .icon-box:hover {
+    background-color: #009999;
+    color: #fff;
+    transition: all .5s ease 0s;
+    cursor: pointer;
+}
+
+.service-section .icon-box:hover .description  {
+    color: #fff;
+}
+
+.service-section .icon-box:hover .icon {
+    filter: drop-shadow( 0 2px 25px  rgba(0,0, 0 , 0.07));
+}
+
+
+.service-section .icon-box:hover span {
+    color: #fff;
+}
+
+.service-section .icon-box:hover * {
+    transition: unset;
+}
+
+
+.service-section .title-heading h2 {
+    margin-bottom: 30px;
+    padding-bottom: 0;
+}
+
+.service-section .heading-border,
+.service-section  .icon-box .icon:after,
+.grid-border-section  .icon-box .icon:after,
+.grid-data-content .heading-border,
+.grid-border-section   .heading-border
+ {
+    display: none;
+}
+
+.service-section .icon-box .icon {
+    position: absolute;
+    top: -43px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.service-section .icon-box .description,
+.grid-data-content .iconbox-description,
+.grid-border-section .description,
+.testimonial-section .testimonial .short-decoration p.p2  {
+    font-size: 14px !important;
+    line-height: 19px;
+    font-weight: normal;
+    color: #0D0D0D;
+}
+.grid-border-section .icon-box h3 {
+    color: #009999;
+}
+.owl-controls  .icon-slider .owl-nav button span img,
+.owl-controls .owl-nav button span img {
+    display: none;
+}
+
+.owl-controls  .icon-slider .owl-nav button span:before,
+.owl-controls .owl-nav button span:before {
+    content: '';
+    background-image: url('./images/arrow-icon.png');
+    height: 20px;
+    width: 20px;
+    display: inline-block;
+}
+
+.owl-controls  .owl-nav button {
+    top: 50%;
+}
+
+.owl-controls   .owl-nav button.disabled {
+    opacity: .5;
+}
+
+.owl-controls .icon-slider .owl-nav button span,
+.owl-controls .owl-nav button span  {
+    height: 42px;
+    width: 42px;
+    border-radius: 100%;
+    filter: drop-shadow( 0 3px 6px  rgba(0,0, 0 , 0.16));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+}
+
+.grid-data-content {
+    background-color: #fff;
+    text-align: center;
+}
+.grid-data-content .icon-box-inner .icon {
+    background-color: transparent;
+    padding: 10px;
+}
+
+.grid-data-content .icon-box-inner .icon img {
+    max-width: 32px;
+}
+
+.grid-data-content .icon-box .icon:after {
+    display: none;
+}
+
+.grid-data-content .title-heading h2 {
+    margin-bottom: 68px;
+    padding-bottom: 0;
+
+}
+
+.grid-border-section {
+    background-color: #fff;
+    text-align: left;
+}
+
+.grid-border-section  .icon {
+    background-color: transparent;
+    position: relative;
+    padding-bottom: 35px;
+    margin-bottom: 22px;
+    display: inline-block;
+    width: 100%;
+}
+
+
+.grid-border-section .owl-item.active::before {
+    content: '';
+    background-color: #3D3D3E;
+    width: 1px;
+    height: 300px;
+    position: absolute;
+    left: -2px;
+    opacity: .5;
+}
+.grid-border-section .title-heading h2 {
+    margin-bottom: 46px;
+    padding-bottom: 0;
+}
+
+.grid-border-section  .icon img {
+    max-width: 50px;
+    position: relative;
+    margin-left: 10px;
+}
+
+.grid-border-section  .icon-box:hover .icon {
+    transform: unset;
+} 
+
+.grid-border-section  .icon-box:hover .icon img {
+    transform: scale(1.1);
+}
+.grid-border-section  .icon-box {
+    padding-right: 30px;
+    padding-left: 50px;
+}
+
+.grid-border-section  .icon::before {
+    content: '';
+    background-image: url('./images/shape.png');
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: inline-block;
+    z-index: 11;
+    object-fit: contain;
+    background-size: 110px;
+    background-repeat: no-repeat;
+    left: 0;
+    top: -5px;
+    background-position: bottom left;
+    z-index: -1;
+}
+
+.testimonial-data-section .testimonial {
+    background-color: #fff;
+    padding: 50px;
+    border-radius: 40px;
+    width: calc(100% - 200px);
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.testimonial-data-section .testimonial .client-details img {
+    height: 200px;
+    width: 200px;
+    border-radius: 100%;
+}
+
+.testimonial-data-section .testimonial .client-details {
+    min-width: 200px;
+    margin-right: 95px;
+}
+
+.testimonial-data-section .testimonial  .short-decoration {
+    position: relative;
+}
+.testimonial-data-section .testimonial  .short-decoration::before {
+    content: '';
+    background-image: url('./images/quote.svg');
+    height: 27px;
+    display: inline-block;
+    position: absolute;
+    top: 12px;
+    left: -47px;
+    width: 37px;
+    background-repeat: no-repeat;
+}
+
+.testimonial-data-section .testimonial .short-decoration h3 {
+    font-size: 22px;
+    font-weight: bold;
+    color: #009999;
+    line-height: 27px;
+}
+
+.testimonial-data-section .testimonial .short-decoration div.p2 {
+    font-size: 14px !important;
+    line-height: 42px;
+    font-weight: normal;
+}
+
+.testimonial-data-section .testimonial .short-decoration p.p2 {
+    margin-bottom: 17px;
+}
+
+.testimonial-data-section.owl-controls .owl-nav button.owl-prev  {
+    left: -120px;
+}
+
+.testimonial-data-section.owl-controls .owl-nav button.owl-next  {
+    right: -120px;
+}
+@media (max-width: 991px) {
+    .service-section .icon-box {
+        padding: 65px 30px 24px;
+    }
+
+    .testimonial-data-section .testimonial-content  {
+        flex-direction: column;
+    }
+
+    .testimonial-data-section .testimonial .client-details {
+        margin-right: 0;
+    }
+
+    .testimonial-data-section .testimonial .client-details img {
+        margin: 0 auto;
+        margin-bottom: 20px;
+    }
+
+    .testimonial-data-section .testimonial .short-decoration::before {
+        left: 0;
+        top: 0;
+    }
+
+    .testimonial-data-section .testimonial .short-decoration {
+        padding-left: 60px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .service-section .title-heading h2,
+    .grid-data-content .title-heading h2,
+    .grid-border-section  .title-heading h2 {
+        font-size: 30px;
+    }
+
+    .grid-border-section .icon-box {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+
+    .grid-data-content .title-heading h2 {
+        margin-bottom: 30px;
+    }
+
+    .grid-data-content .iconbox-description {
+        max-width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .grid-data-content .icon-box {
+        margin-bottom: 20px;
+    }
+    
+    .owl-controls  .icon-box-list {
+        width: calc(100% - 100px);
+        margin: 0 auto;
+    }
+
+    .grid-border-section .title-heading h2 {
+        margin-bottom: 30px;
+    }
+
+    .testimonial-data-section .testimonial {
+        width: calc(100% - 100px);
+    }
+
+    .testimonial-data-section.owl-controls .owl-nav button.owl-prev  {
+        left: -80px;
+    }
+    
+    .testimonial-data-section.owl-controls .owl-nav button.owl-next  {
+        right: -80px;
+    }
+
+    
+}
+
+@media (max-width: 768px) {
+    .service-section .title-heading h2,
+    .grid-data-content .title-heading h2,
+    .grid-border-section  .title-heading h2 {
+        font-size: 25px;
+    }
+
+    .owl-controls  .icon-box-list {
+        width: calc(100% - 100px);
+        margin: 0 auto;
+    }
+
+    .owl-controls .owl-carousel .owl-nav .owl-prev,
+    .testimonial-data-section.owl-controls .owl-nav button.owl-prev {
+        left: -50px;
+    }
+
+    .owl-controls .owl-carousel .owl-nav .owl-next,
+    .testimonial-data-section.owl-controls .owl-nav button.owl-next {
+        right: -50px;
+    }
+
+    .grid-border-section .owl-item.active::before {
+        display: none;
+    }
+
+    .testimonial-data-section .testimonial .client-details img {
+        height: 120px;
+        width: 120px;
+    }
+
+    .grid-border-section .icon-box {
+        padding-left: 0;
+        padding-right: 0;
+        text-align: center;
+    }
+
+    .service-section .icon-box {
+        padding: 65px 15px 24px;
+    }
+
+    .grid-border-section .icon img {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .grid-border-section .icon::before {
+        background-position: bottom center;
+    }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+    .testimonial-data-section .testimonial .short-decoration {
+        padding-left: 0;
+        padding-top: 50px;
+    }
+
+
+    .testimonial-data-section .testimonial {
+        padding: 50px 20px;
+        width: calc(100% - 50px);
+    }
+}
+
