@@ -31,7 +31,7 @@
  }
  
 body {
-    background-color: #ffffff;
+    background-color: #ffffff !important;
     font-family: "Roboto", sans-serif;
 	font-size: 14px;
     font-weight: 400;
@@ -961,19 +961,18 @@ input[type=checkbox]:after{
     font-size: 32px;
     display: inline-block;
     position: relative;
-    padding-bottom: 20px;
-    margin-bottom: 60px;
+    padding-bottom: 25px;
     font-weight: 500;
     line-height: 38px;
 }
-.heading-border{
+/* .heading-border{
     position: absolute;
     bottom: 0;
     height: 3px;
     background-color: #009999;
     left: calc(50% - 60px);
     width: 120px;
-}
+} */
 
 .sub-title{
     color:#3D3D3E;
@@ -990,7 +989,7 @@ input[type=checkbox]:after{
 }
 /* banner content */
 
-.banner-content .banner-inner-content{
+.banner-content{
     background-size: cover;
     background-position: center bottom;   
     position: relative;
@@ -999,11 +998,10 @@ input[type=checkbox]:after{
     display: flex;
     align-items: center;
     padding-top: 100px;
-    background-image: url(./images/inner-page-bg-img.png) !important;
     background-blend-mode: multiply;
     background-repeat: no-repeat;  
     position: relative;
-    padding: 120px 0 50px;
+    padding: 51px 0 0px;
 }
 .banner-content .banner-inner-content{
     min-height: 90vh;    
@@ -1473,12 +1471,16 @@ section{
       padding-right: 80px;
       text-align: right;
  }
+ .two-colum-layout .heading-border{
+     display: none;
+ }
  .two-colum-layout .content-title-heading h2{
      font-weight: 500;
      line-height: 38px;
      margin-bottom: 40px;
      position: relative;
      color: #0C3761;
+     font-size: 28px;
  }
  .two-colum-layout .title-heading{
      margin-bottom: 30px;
@@ -1486,29 +1488,29 @@ section{
  .two-colum-layout.left-title .two-colum-content .col-left{
      text-align: left;     
  }
- /* Home About us */
- .two-colum-layout.cfr-tw-col-item.about-us .two-colum-content .col-left{
-    width: 40%;
+ .two-colum-layout ul{
+     font-size: 18px;
+     padding-left: 0;
+     list-style-type: none;
  }
- .two-colum-layout.cfr-tw-col-item.about-us .two-colum-content .col-right{
-     padding-right: 0;   
-     width: 60%;
-     position: relative;
- }
- .two-colum-layout.cfr-tw-col-item.about-us .two-colum-content .col-right:after{
+ .two-colum-layout ul li::before{
+    top: 10px;
     content: '';
-    width: 200px;
-    height: 200px;
-    background-color: rgba(24, 181, 123, 0.11);
-    border-radius: 50%;
     position: absolute;
-    right: 35px;
-    top: 70px;
-    z-index: 0;
+    left: 0;
+    height: 8px;
+    width: 8px;
+    background-color: #0C3761;
+    border-radius: 50%;
  }
- .two-colum-layout.cfr-tw-col-item.about-us .p2{
-     margin-bottom: 30px;
+ .two-colum-layout ul li{
+     position: relative;
+     padding: 3px 0 3px 30px;
  }
+ .two-colum-layout .col-left{
+     padding-left: 60px;
+ }
+
  /* End Home About us */
  /* background_image_with_content  */
  .background_image_with_content {
@@ -1525,94 +1527,40 @@ section{
 .banner-content .banner-inner-content{
     background-color: transparent;
     background-blend-mode: unset;
-    background-image: url(./images/banner-bg.jpg) !important;
-    min-height: 750px;
+    background-image: url(./images/modern-tokyo-street-background.png) !important;
+    min-height: 500px;
     align-items: center;
     background-attachment: unset;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 .banner-content .banner-inner-content .text-content{
-    margin-top: 30px;
-    padding-right: 100px;  
+    margin-top: 100px;
     width: 100%;
 } 
 .banner-content .banner-inner-content .text-content h1{
     font-size: 54px;
     line-height: 1;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
+    font-weight: 100;
+    color: #fff;
 }
 .banner-content .banner-inner-content .text-content h3{
-    font-size: 26px;
-    font-weight: lighter;
-    color: #414042 !important;
+    font-size: 54px;
+    font-weight: bold;
+    color: #72FFFF !important;
     line-height: 1.5;
+
 }
- .mask1 {
-    -webkit-mask-image: url(./images/send.svg);
-    mask-image: url(./images/send.svg);
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
-    /* transform: rotate(45deg); */
-    right: 0px;
-    position: relative;
-    top: 0px;
-  }
-  .mask1 .bg-animation{
-    height: 500px;
-    min-width: 2000px;
-    background-size: contain;
-    background-position: 0px 0px;
-	animation: animatedBackground 15s linear infinite;
-	-moz-animation: animatedBackground 15s linear infinite;
-	-webkit-animation: animatedBackground 15s linear infinite;
-	-ms-animation: animatedBackground 15s linear infinite;
-	-o-animation: animatedBackground 15s linear infinite;
-  }
-  @keyframes animatedBackground {
-	0% { background-position: 0 0; }
-	100% { background-position: -2000px 0; }
+.home-banner.banner-content .banner-inner-content .col-lg-7{
+    text-align: center;
+    width: 100% !important;
 }
-@-moz-keyframes animatedBackground {
-	0% { background-position: 0 0; }
-	100% { background-position: -2000px 0; }
-}
-@-webkit-keyframes animatedBackground {
-	0% { background-position: 0 0; }
-	100% { background-position: -2000px 0; }
-}
-@-ms-keyframes animatedBackground {
-	0% { background-position: 0 0; }
-	100% { background-position: -2000px 0; }
-}
-@-o-keyframes animatedBackground {
-	0% { background-position: 0 0; }
-	100% { background-position: -2000px 0; }
+.home-banner.banner-content .banner-inner-content .col-lg-5{
+    display: none !important;
 }
 
-/* .banner-content .img-content{
-    background-image: url(./images/Screen.png) !important;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    position: relative;
-    height: 471px;
-    width: 570px;
-    margin-top: 30px;
-    right: 32px;
-} */
-/* .banner-content .inner-img-content{
-    width: 496px;
-    height: 279px;
-    overflow: auto;
-    position: absolute;
-    left: 39px;
-    top: 29px;
-} */
-/* .banner-content .col-lg-7 .align-items-center{
-    align-items: flex-start !important;
-} */
-/*  .banner-text-heading-content{
-    min-height: 300px;
-} */
+
 .owl-dots{
     margin-left: 0;
     position: absolute;
@@ -1664,55 +1612,6 @@ section{
 .Screen-withFeature{
     width: 900px;
     margin: auto;
-}
-.icon svg{
-    width: 60px;
-    height: 60px;
-    fill:#fff;
-}
-.icon{
-background-color: #099;
-display: inline-block;
-padding: 15px;
-border-radius: 50%;
-margin: auto;
-position: relative;
-transform: scale(1);
-}
- .icon-box:hover  .icon{
-    transform: scale(1.2);
-}
-.home-features .icon-box .icon-box-inner{
-    text-align: center;
-}
- .icon-box  .icon:after{
-    content: '';
-    position: absolute;
-    border: 10px solid #009999;
-    border-top-color: transparent;
-    border-left-color: transparent;
-    bottom: -22px;
-    transform: rotate(45deg);
-    left: calc(50% - 5px);
-    transition: .3s all linear;
-}
-.icon-box:hover  .icon:after{
-    border-width: 8px;
-    left: calc(50% - 4px);
-    bottom: -6px;
-}
-.home-features .icon-box .icon-box-title-content{
-    margin-top: 50px;
-}
-.home-features .icon-box {
-    margin-bottom: 80px;
-    padding: 0 25px;
-}
-.home-features .icon-box-list{
-    justify-content: center;
-}
-.home-features .icon-box h3{
-    margin-bottom: 30px;
 }
 
 .icon-box .iconbox-description.showlesscontent .SecSec,
@@ -2226,7 +2125,129 @@ p{
     top: 10px;
     padding: 0px 15px;
 }
+.client-logo-slider .owl-stage .owl-item img {
+    margin: auto;
+    width: 140px;
+}
+.client-logo-slider .owl-stage .owl-item  {
+    display: flex;
+    align-items: center;
+}
+.client-logo-slider .owl-stage {
+    display: flex;
+}
+.bg-gradiant,
+.offering-tab{    
+    background: linear-gradient(263deg, rgba(15, 55, 100, 0.10) 0%,  rgba(0, 153, 153, 0.10) 50%, rgba(219, 93, 30, 0.10) 100%);
+}
+/* offering tab section */
+.offering-tab {
+    border-bottom-left-radius: 200px;
+    border-bottom-right-radius: 200px;
+    padding-bottom: 400px;
+}
+.offering-tab .content .title{
+    background-color: hsla(180, 100%, 30%, 0.15);
+    display: flex;
+    align-items: center;
+    padding: 20px 16px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+.offering-tab .content .title h3{
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 22px;
+    padding-left: 16px;
+    color: #0F3764;
+} 
+.offering-tab .list-tabs .list-item{
+    background-color: #fff;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+.offering-tab .list-tabs .list-item:first-child{
+    margin-top: 5px;
+}
+.offering-tab .list-tabs .list-item .list-title{
+    padding: 14px 16px;
+    font-size: 16px;
+    color: #0D0D0D;
 
+}
+.offering-tab .list-tabs .list-item  p{
+    padding: 14px 16px;
+    font-size: 14px;
+    color: #0D0D0D;
+}
+.our-solutions-offer{   
+    padding-top: 0;
+    margin-top: -320px;
+}
+.our-solutions-offer .icon-box-list .col-lg-3{
+    width: 20% !important;
+    border-right: 1px solid #d6d6d6;
+    padding:30px 25px;
+  
+}
+.our-solutions-offer .icon-box-list .col-lg-3:last-child{
+    border-right: 0;
+}
+.our-solutions-offer .icon-box-list .icon-box-inner .icon{
+    margin-bottom: 20px;
+}
+.our-solutions-offer .icon-box-list .icon-box-inner h3{
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+.our-solutions-offer .icon-box-list .icon-box-inner .iconbox-description{
+    font-size: 14px !important;
+}
+.our-solutions-offer .icon-box-list {
+        background-color: #fff;
+        box-shadow: 0 0 6px 0px #d5d5d5;
+        border-radius: 148px;
+}
+.our-solutions-offer .icon-box-list .icon-box-inner{
+    text-align: center;
+}
+.tax-tech-architect.two-colum-layout .two-colum-content .col-right{
+    width: 300px;
+}
+.tax-tech-architect.two-colum-layout .two-colum-content .col-left{
+    width: calc(100% - 300px);
+    padding-left: 88px;
+}
+.two-colum-layout.tax-tech-architect .content-title-heading h2{
+    font-size: 50px;
+}
+.two-colum-layout.tax-tech-architect .content-title-heading h2 span{
+    font-weight: bold;
+    color: #009999;
+
+}
+.two-colum-layout.tax-tech-architect .two-colum-content{
+    width: 1010px;
+    max-width: 100%;
+    margin: auto;
+}
+.architect-help.two-colum-layout  ul li{
+    background-color: #fff;
+    margin-bottom: 15px;
+    padding: 15px;
+    padding-left: 65px;
+    border-radius: 45px;
+    box-shadow: 0px 2px 6px #c8c8c8;
+}
+.architect-help.two-colum-layout ul li::before{
+    background-image: url(./images/check.svg);
+    background-size: contain;
+    width: 37px;
+    height: 37px;
+    background-color: #fff;
+    left: 15px;
+}
 @media only screen and (max-width: 1400px) {
     .primary-navigation .menu-wrapper li.menu-item{
         padding: 0 5px;
