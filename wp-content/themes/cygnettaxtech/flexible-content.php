@@ -87,17 +87,17 @@
 				<?php if (have_rows('count_section')) :  ?>
 					<div class="count-section-main <?php echo the_field('count_section_class'); ?>">
 						<?php while (have_rows('count_section')) : the_row(); ?>
-							<div class="count-section-inner">
+							<div class="count-inner">
+								<?php if (get_sub_field('count_section_value')){ ?>
+									<div class="count-label">
+										<?php echo the_sub_field('count_section_value'); ?>
+									</div>
+								<?php } ?>
 								<?php if (get_sub_field('count_section_label')){ ?>
-									<div class="count-section-inner-value">
+									<div class="count-value">
 										<h2>
 											<?php echo the_sub_field('count_section_label'); ?>
 										</h2>
-									</div>
-								<?php } ?>						   
-								<?php if (get_sub_field('count_section_value')){ ?>
-									<div class="count-section-inner-label">
-										<?php echo the_sub_field('count_section_value'); ?>
 									</div>
 								<?php } ?>
 							</div>
@@ -794,7 +794,7 @@
 																<div id="collapse<?php echo $c.'_'.$cm; ?>" class="accordion-collapse collapse" aria-labelledby="accordionheading<?php echo $c.'_'.$cm; ?>" data-bs-parent="#accordionSection<?php echo $c; ?>">
 																  <div class="accordion-body">
 																	<?php if (get_sub_field('inner_content_description')){ ?>
-																		<p class="description"><?php echo the_sub_field('inner_content_description'); ?></p>
+																		<div class="description"><?php echo the_sub_field('inner_content_description'); ?></div>
 																	<?php } ?>
 																  </div>
 																</div>

@@ -225,16 +225,16 @@ function testimonial_slider()
                                     
                                 </div>
                                 <div class="short-decoration">
-                                    <h3 class="p1 wow fadeInUp" data-wow-delay="0.3s" ><?php echo $testimonial->post_title;?></h3>
-                                    <div class="p2 wow fadeInUp"  data-wow-delay="0.6s"><?php if (get_field('designation', $testimonial->ID)) {
-                                            echo the_field('designation', $testimonial->ID);
-                                        }?></div>
-                                    <p class="p2 wow fadeInUp"  data-wow-delay="0.9s">
+                                       <p class="p2 wow fadeInUp"  data-wow-delay="0.9s">
                                    <?php                                  
                                    $testimonialContent = $testimonial->post_content;
                                     echo wp_trim_words( $testimonial->post_content, 250 );
                                    ?>
                                    </p>
+                                    <h3 class="p1 wow fadeInUp" data-wow-delay="0.3s" ><?php echo $testimonial->post_title;?></h3>
+                                    <div class="p2 wow fadeInUp"  data-wow-delay="0.6s"><?php if (get_field('designation', $testimonial->ID)) {
+                                            echo the_field('designation', $testimonial->ID);
+                                        }?></div>                                    
 
                                 </div>                                   
                             </div>

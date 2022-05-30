@@ -961,7 +961,7 @@ input[type=checkbox]:after{
     font-size: 32px;
     display: inline-block;
     position: relative;
-    padding-bottom: 25px;
+    padding-bottom: 40px;
     font-weight: 500;
     line-height: 38px;
 }
@@ -2175,11 +2175,35 @@ p{
     color: #0D0D0D;
 
 }
-.offering-tab .list-tabs .list-item  p{
-    padding: 14px 16px;
+.offering-tab .list-tabs .list-item .list-title button{
+    padding: 0;
+    background-color: transparent;
+    color: #000;
+    font-weight: normal;
+    box-shadow: none;
+    outline: 0;
+}
+.offering-tab .list-tabs .list-item .list-title button:focus{
+    box-shadow: none;
+    outline: 0;
+}
+.accordion-button::after{
+    background-image: url('./images/accodiaon-icon.svg');
+}
+.accordion-button:not(.collapsed)::after {
+    background-image: url('./images/accodiaon-icon-top.svg');
+    transform: rotate(-180deg);
+}
+.offering-tab .list-tabs .list-item  .description{
     font-size: 14px;
     color: #0D0D0D;
 }
+
+.accordion-button:not(.collapsed){
+    color: #009999 !important;
+    font-weight: bold !important;
+}
+
 .our-solutions-offer{   
     padding-top: 0;
     margin-top: -320px;
@@ -2299,6 +2323,10 @@ p{
 .sec-bottom-radius{
     border-bottom-left-radius: 200px;
     border-bottom-right-radius: 200px;
+}
+.sec-top-radius{
+    border-top-left-radius: 200px;
+    border-top-right-radius: 200px;
 }
 .businesses-global .address-content img{
     width: 100%;
@@ -2432,6 +2460,43 @@ p{
     background-color: #009999;
     border-color:#009999;
 }
+/* Count section */
+.count-section-main {
+    position: absolute;
+    width: 750px;
+    z-index: 6;
+    background-color: #fff;
+    display: flex;
+    left: calc(50% - 375px);    
+    right: 0;
+    justify-content: space-between;
+    text-align: center;
+    padding: 30px 45px;
+    border-radius: 6px;
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
+    background-image: url('./images/count-arrow.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    bottom: -66px;
+}
+.count-section-main .count-inner h2{
+    font-size: 14px;
+}
+.count-section-main .count-inner{
+    width: 90px;
+}
+.count-section-main .count-inner .count-label{
+    font-weight: 600;
+    color: #009999;
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+.pt-90{
+    padding-top: 90px !important;
+}
+.client-logos{
+    padding-top: 20px;
+}
 @media only screen and (max-width: 1400px) {
     .primary-navigation .menu-wrapper li.menu-item{
         padding: 0 5px;
@@ -2492,9 +2557,6 @@ p{
         font-size: 30px;
     }
    
-    section{
-        padding: 50px 0;
-    }
     .primary-navigation .menu-wrapper li.menu-item a {
         padding: 23px 8px;
         font-size: 12px;
@@ -3069,9 +3131,11 @@ h1{
 .service-section .icon-box {
     position: relative;
     background-color: #fff;
-    padding: 65px 22px 24px;
+    padding: 65px 50px 24px;
     border-radius: 10px;
     margin-top: 43px;
+    box-shadow: 0px 2px 25px rgb(0 0 0 / 10%);
+    margin-bottom: 30px;
 }
 
 .service-section .icon-box * {
@@ -3085,14 +3149,9 @@ h1{
     cursor: pointer;
 }
 
-.service-section .icon-box:hover .description  {
+.service-section .icon-box:hover .iconbox-description  {
     color: #fff;
 }
-
-.service-section .icon-box:hover .icon {
-    filter: drop-shadow( 0 2px 25px  rgba(0,0, 0 , 0.07));
-}
-
 
 .service-section .icon-box:hover span {
     color: #fff;
@@ -3122,9 +3181,12 @@ h1{
     top: -43px;
     left: 50%;
     transform: translateX(-50%);
+    background: transparent linear-gradient(270deg, #3CB4E6 0%, #009999 0%, #0F3764 100%) 0% 0% no-repeat padding-box;
+    padding: 20px;
+    border-radius: 50%;
 }
 
-.service-section .icon-box .description,
+.service-section .icon-box .iconbox-description,
 .grid-data-content .iconbox-description,
 .grid-border-section .description,
 .testimonial-section .testimonial .short-decoration p.p2  {
