@@ -2461,7 +2461,7 @@ p{
     border-color:#009999;
 }
 /* Count section */
-.count-section-main {
+.count-section-main-inner {
     position: absolute;
     width: 750px;
     z-index: 6;

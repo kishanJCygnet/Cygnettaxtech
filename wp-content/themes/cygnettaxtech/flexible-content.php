@@ -83,25 +83,31 @@
 					});
 				});
 				</script>
-				<!-- Start count section -->
+				<!-- Start count section -->				
 				<?php if (have_rows('count_section')) :  ?>
 					<div class="count-section-main <?php echo the_field('count_section_class'); ?>">
-						<?php while (have_rows('count_section')) : the_row(); ?>
-							<div class="count-inner">
-								<?php if (get_sub_field('count_section_value')){ ?>
-									<div class="count-label">
-										<?php echo the_sub_field('count_section_value'); ?>
-									</div>
-								<?php } ?>
-								<?php if (get_sub_field('count_section_label')){ ?>
-									<div class="count-value">
-										<h2>
-											<?php echo the_sub_field('count_section_label'); ?>
-										</h2>
-									</div>
-								<?php } ?>
+						<?php if (get_field('count_section_title')){ ?>
+							<div class="count-section-title">
+								<h2><?php echo the_field('count_section_title'); ?></h2>
 							</div>
-						<?php endwhile;	?> 
+						<?php } ?>
+						<div class="count-section-main-inner">
+							<?php while (have_rows('count_section')) : the_row(); ?>
+								<div class="count-inner">
+								<?php if (get_sub_field('count_section_value')){ ?>
+										<div class="count-label">
+											<?php echo the_sub_field('count_section_value'); ?>
+										</div>
+									<?php } ?>
+									<?php if (get_sub_field('count_section_label')){ ?>
+										<div class="count-value">
+											<h2>
+												<?php echo the_sub_field('count_section_label'); ?>
+											</h2>
+										</div>
+									<?php } ?></div>
+							<?php endwhile;	?> 
+						</div>
 					</div>
 				<?php endif; ?>
 				<!-- End count section -->
@@ -873,7 +879,7 @@
 											</div>
 										</div>
 									</div>
-									<!-- Modal popup section end -->
+									<!-- Modal popup section end --> 
 							<?php $j++;
 							endwhile; ?>
 						</div>
