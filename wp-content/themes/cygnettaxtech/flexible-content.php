@@ -308,9 +308,7 @@
 							<div class="client-logos">
 								<div class="owl-carousel client-logo-slider" id="<?php echo 'logo_slider_'.$logo_slider_cnt; ?>">
 								   <?php while (have_rows('logo_list')) : the_row(); ?>
-										<?php if (get_sub_field('logo_image')) { ?>
-											<span class="icon-item">
-												<span class="icon">
+										<?php if (get_sub_field('logo_image')) { ?>											
 											    	<!--<img src="<?php echo the_sub_field('logo_image'); ?>" alt="<?php echo the_sub_field('logo_title'); ?>" >-->
 													<?php $extension = pathinfo(get_sub_field('logo_image'), PATHINFO_EXTENSION);
 														if($extension == 'svg'){
@@ -318,11 +316,7 @@
 															echo file_get_contents($logo_image);  
 														} else { ?>
 															<img src="<?php echo the_sub_field('logo_image'); ?>" alt="<?php echo the_sub_field('logo_title'); ?>" />
-													<?php } ?>
-												</span>
-												<!--<span class="text"><?php echo the_sub_field('logo_title'); ?></span>-->
-												<div class="text description p2 showlesscontent"><?php echo the_sub_field('logo_title'); ?></div>
-											</span>												
+													<?php } ?>							
 										<?php } ?>										
 								   <?php endwhile;?>
 								</div>
@@ -743,47 +737,47 @@
 			
 			/* Offering Tab code start */  
 			if (get_row_layout() == 'offering_tab') : ?> 
-			<section class="offering-tab">
+			<section class="offering-tab" >
 				<div class="container">
 					<?php if (have_rows('tabs')) : ?>
-						<div class="offering-tab-inner">
+					
 							<div class="row">
 							<?php while (have_rows('tabs')) : the_row();	?>								
-								<div class="col-md-4">
-									<div class="d-flex align-items-center h-100">											
-										<div class="title-heading text-start">												
+								<div class="col-md-3">
+									<div class="content">											
+										<div class="title text-start">												
 											<?php if (get_sub_field('tab_icon')){ ?>
 												<div class="">
 													<img src="<?php echo the_sub_field('tab_icon'); ?>" alt="<?php echo the_sub_field('tab_title'); ?>">
 												</div>
 											<?php } ?>
 											<?php if (get_sub_field('tab_title')){ ?>
-												<h2><?php echo the_sub_field('tab_title'); ?>
+												<h3><?php echo the_sub_field('tab_title'); ?>
 													<span class="heading-border"></span>
 												</h2>
 											<?php } ?>		
-											
+										</div>
 											<?php if (have_rows('inner_content')) : ?>
-												<div class="offering-tab-inner-content">
+												<div class="list-tabs">
 													<?php while (have_rows('inner_content')) : the_row(); ?>
-														<div class="offering-tab-inner-content-class">
+														<div class="list-item">
 															<?php if (get_sub_field('inner_content_title')){ ?>
-																<p class="sub-title"><?php echo the_sub_field('inner_content_title'); ?></p>
+																<h4 class="list-title"><?php echo the_sub_field('inner_content_title'); ?></h4>
 															<?php } ?>
 															<?php if (get_sub_field('inner_content_description')){ ?>
-																<p class="sub-title"><?php echo the_sub_field('inner_content_description'); ?></p>
+																<p class="description"><?php echo the_sub_field('inner_content_description'); ?></p>
 															<?php } ?>
 														</div>
 													<?php endwhile; ?>
 												</div>
 											<?php endif; ?>
 											
-										</div>
+										
 									</div>
 								</div>								
 							<?php endwhile; ?>
 							</div>
-						</div>
+					
 					<?php endif; ?>								
 				</div>
 			</section>
