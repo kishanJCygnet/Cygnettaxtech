@@ -85,7 +85,7 @@
 				</script>
 				<!-- Start count section -->
 				<?php if (have_rows('count_section')) :  ?>
-					<div class="count-section-main <?php echo the_sub_field('count_section_class'); ?>">
+					<div class="count-section-main <?php echo the_field('count_section_class'); ?>">
 						<?php while (have_rows('count_section')) : the_row(); ?>
 							<div class="count-section-inner">
 								<?php if (get_sub_field('count_section_label')){ ?>
@@ -761,50 +761,106 @@
 			if (get_row_layout() == 'offering_tab') : ?> 
 			<section class="offering-tab" >
 				<div class="container">
-					<?php if (have_rows('tabs')) : ?>
-					
+					<?php if (have_rows('tabs')) : ?>					
 							<div class="row">
-							<?php while (have_rows('tabs')) : the_row();	?>								
-								<div class="col-md-3">
-									<div class="content">											
-										<div class="title text-start">												
-											<?php if (get_sub_field('tab_icon')){ ?>
-												<div class="">
-													<img src="<?php echo the_sub_field('tab_icon'); ?>" alt="<?php echo the_sub_field('tab_title'); ?>">
-												</div>
-											<?php } ?>
-											<?php if (get_sub_field('tab_title')){ ?>
-												<h3><?php echo the_sub_field('tab_title'); ?>
-													<span class="heading-border"></span>
-												</h2>
-											<?php } ?>		
-										</div>
-											<?php if (have_rows('inner_content')) : ?>
-												<div class="list-tabs">
+								<?php while (have_rows('tabs')) : the_row();	?>								
+									<div class="col-md-3">
+										<div class="content">											
+											<div class="title text-start">												
+												<?php if (get_sub_field('tab_icon')){ ?>
+													<div class="">
+														<img src="<?php echo the_sub_field('tab_icon'); ?>" alt="<?php echo the_sub_field('tab_title'); ?>">
+													</div>
+												<?php } ?>
+												<?php if (get_sub_field('tab_title')){ ?>
+													<h3><?php echo the_sub_field('tab_title'); ?>
+														<span class="heading-border"></span>
+													</h2>
+												<?php } ?>		
+											</div>
+											<?php $c = str_replace(' ', '_', get_sub_field('tab_title'));
+											if (have_rows('inner_content')) : 
+											$cm=1;
+											?>
+												<div class="list-tabs accordion" id="accordionSection<?php echo $c; ?>">
 													<?php while (have_rows('inner_content')) : the_row(); ?>
 														<div class="list-item">
 															<?php if (get_sub_field('inner_content_title')){ ?>
-																<h4 class="list-title"><?php echo the_sub_field('inner_content_title'); ?></h4>
-															<?php } ?>
-															<?php if (get_sub_field('inner_content_description')){ ?>
-																<p class="description"><?php echo the_sub_field('inner_content_description'); ?></p>
+																<h4 class="list-title accordion-header" id="accordionheading<?php echo $c.'_'.$cm; ?>">
+																	<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?php echo $c.'_'.$cm; ?>" aria-expanded="true" aria-controls="collapse<?php echo $c.'_'.$cm; ?>">
+																		<span><?php echo the_sub_field('inner_content_title'); ?></span>
+																	</button>
+																</h4>
+																<div id="collapse<?php echo $c.'_'.$cm; ?>" class="accordion-collapse collapse" aria-labelledby="accordionheading<?php echo $c.'_'.$cm; ?>" data-bs-parent="#accordionSection<?php echo $c; ?>">
+																  <div class="accordion-body">
+																	<?php if (get_sub_field('inner_content_description')){ ?>
+																		<p class="description"><?php echo the_sub_field('inner_content_description'); ?></p>
+																	<?php } ?>
+																  </div>
+																</div>
 															<?php } ?>
 														</div>
-													<?php endwhile; ?>
+													<?php $cm++;  
+													endwhile; ?>
 												</div>
-											<?php endif; ?>
-											
-										
-									</div>
-								</div>								
-							<?php endwhile; ?>
-							</div>
-					
+											<?php $c++; 
+											endif; ?>
+										</div>
+									</div>								
+								<?php endwhile; ?>
+							</div>					
 					<?php endif; ?>								
 				</div>
 			</section>
 			<?php endif;  
 			/* Offering Tab code end */
+			
+			/* Global Address Section Start */
+			if (get_row_layout() == 'global_address') : ?>
+				<section class="address-cls <?php echo the_sub_field('global_address_class'); ?>">
+					<div class="container">
+						<?php if (have_rows('address')) : ?>
+						<div class="address-content pt-4">
+							<?php $j = 0;
+							while (have_rows('address')) : the_row();	?>
+									<div class="address-inner-content">
+										<div class="address-inner-div">
+											<div class="address-top-section <?php echo the_sub_field('address_class'); ?>">
+												<?php if(get_sub_field('country_icon')) { ?>
+													<div class="country-icon">
+														<img src="<?php echo the_sub_field('country_icon'); ?>" alt="<?php echo the_sub_field('country_name'); ?>" />
+													</div>
+												<?php } ?>
+												<?php if(get_sub_field('country_name')) { ?>
+													<div class="country-name">
+														<h3><?php echo the_sub_field('country_name'); ?></h3>
+													</div>
+												<?php } ?>												
+											</div>						
+											<?php if(get_sub_field('address_description')) {
+												$add_desc = get_sub_field('address_description');
+												$pieces = explode(" ", $add_desc);
+												$first_part = implode(" ", array_splice($pieces, 0, 30));
+											?>
+											<div class="address-bottom-section">
+												<div class="text-content">
+													<p class="address-description"><?php echo $first_part; ?>...</p>
+													<?php //echo wp_trim_words( $add_desc, 15 ); ?>
+													<a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#exampleModal-<?php echo $j; ?>" class="read-more-link" title="Read More">Read More<i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+												</div>
+											</div>
+											<?php } ?>
+										</div>
+									</div>
+									
+							<?php $j++;
+							endwhile; ?>
+						</div>
+						<?php endif; ?>
+					</div>
+				</section>
+		    <?php endif; 
+			/* Global Address Section End */
 			
 			$logo_slider_cnt++;
 		endwhile;
