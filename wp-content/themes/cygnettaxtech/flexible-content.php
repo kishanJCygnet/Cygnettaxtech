@@ -272,12 +272,19 @@
 												<?php $extension = pathinfo(get_sub_field('icon_box_image'), PATHINFO_EXTENSION);
 													if($extension == 'svg'){
 														$icon_box_image = get_sub_field('icon_box_image');
-														echo file_get_contents($icon_box_image);  
+														//echo file_get_contents($icon_box_image);  
 														/*$response = wp_remote_get($icon_box_image);
 														if ( is_array( $response ) && ! is_wp_error( $response ) ) {
 															//$headers = $response['headers']; // array of http header lines
 															echo $body = $response['body']; // use the content
 														}*/
+														$stream_opts = [
+															"ssl" => [
+																"verify_peer"=>false,
+																"verify_peer_name"=>false,
+															]
+														];														 
+														echo file_get_contents($icon_box_image, false, stream_context_create($stream_opts));
 													} else { ?>
 														<img src="<?php echo the_sub_field('icon_box_image'); ?>" alt="<?php echo the_sub_field('icon_box_title'); ?>" />
 												<?php } ?>
@@ -641,7 +648,14 @@
 												<?php $extension = pathinfo(get_sub_field('icon_box_image'), PATHINFO_EXTENSION);
 													if($extension == 'svg'){
 														$icon_box_image = get_sub_field('icon_box_image');
-														echo file_get_contents($icon_box_image);  
+														//echo file_get_contents($icon_box_image);  
+														$stream_opts = [
+															"ssl" => [
+																"verify_peer"=>false,
+																"verify_peer_name"=>false,
+															]
+														];														 
+														echo file_get_contents($icon_box_image, false, stream_context_create($stream_opts));
 													} else { ?>
 														<img src="<?php echo the_sub_field('icon_box_image'); ?>" alt="<?php echo the_sub_field('icon_box_title'); ?>" />
 												<?php } ?>

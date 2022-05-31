@@ -139,11 +139,11 @@ if (have_posts()) :
             </section>
             <section id="newsletter" class="default-content bg-light pb-0 free-trial-access-content newsletter pt-0">
             <div class="container">       
-            <?php if (get_field('show_sidebar') == 'Yes') : ?>  
+            <?php //if (get_field('show_sidebar') == 'Yes') : ?>  
                     <div class="free-trial-access text-center wow fadeInUp" style="background-image:url('<?php echo THEME_PATH; ?>/images/file-access-bg.png')">
 						<?php echo do_shortcode('[email-subscribers-form id="1"]'); ?>
 					</div>
-                <?php endif; ?>
+                <?php //endif; ?>
             </div>
             </section>
         </div>
