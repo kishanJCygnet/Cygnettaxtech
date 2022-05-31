@@ -105,7 +105,8 @@
 												<?php echo the_sub_field('count_section_label'); ?>
 											</h2>
 										</div>
-									<?php } ?></div>
+									<?php } ?>
+								</div>
 							<?php endwhile;	?> 
 						</div>
 					</div>
