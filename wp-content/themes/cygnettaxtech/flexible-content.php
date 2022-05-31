@@ -850,7 +850,7 @@
 											?>
 											<div class="address-bottom-section">
 												<div class="text-content">
-													<p class="address-description"><?php echo $first_part; ?>...</p>
+													<div class="address-description"><?php echo $first_part; ?></div>
 													<?php //echo wp_trim_words( $add_desc, 15 ); ?>
 													<a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#exampleModal-<?php echo $j; ?>" class="read-more-link" title="Read More">Read More<i class="bi bi-arrow-right" aria-hidden="true"></i></a>
 												</div>
