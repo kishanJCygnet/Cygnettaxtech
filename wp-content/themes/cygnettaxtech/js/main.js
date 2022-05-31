@@ -110,12 +110,12 @@ function AddReadMore() {
   //This limit you can set after how much characters you want to show Read More.
   var carLmt = 25;
   // Text to show when text is collapsed
-  var readMoreTxt = " View More";
+  var readMoreTxt = " Read More";
   // Text to show when text is expanded
-  var readLessTxt = " View Less";
+  var readLessTxt = " Read Less";
   
   //Traverse all selectors with this class and manupulate HTML part to show Read More
-  jQuery(".icon-box .iconbox-description").each(function() {
+  jQuery(".icon-box .description").each(function() {
     
     //alert(words.length);
       if (jQuery(this).find(".firstSec").length)
@@ -145,7 +145,7 @@ function AddReadMore() {
   });
   //Read More and Read Less Click Event binding
   jQuery(document).on("click", ".readMore, .readLess", function() {
-      jQuery(this).closest(".icon-box .iconbox-description").toggleClass("showlesscontent showmorecontent");
+      jQuery(this).closest(".icon-box .description").toggleClass("showlesscontent showmorecontent");
   });
 }
 jQuery(function() {

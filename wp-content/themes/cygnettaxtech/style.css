@@ -989,6 +989,7 @@ input[type=checkbox]:after{
 }
 /* banner content */
 
+
 .banner-content{
     background-size: cover;
     background-position: center bottom;   
@@ -1002,6 +1003,39 @@ input[type=checkbox]:after{
     background-repeat: no-repeat;  
     position: relative;
     padding: 51px 0 0px;
+    
+}
+
+.banner-content.inner-section-banner{
+    background-image: url(./images/bg-inner.png) !important;
+    background-size: cover !important;
+    justify-content: center;
+}
+.banner-content.inner-section-banner .banner-inner-content{
+    min-height: 500px;
+}
+.banner-content.inner-section-banner .banner-text-heading-content{
+     display: flex;
+     align-items: center;   
+}
+.banner-content.inner-section-banner .banner-text-heading-content h1,
+.banner-content.inner-section-banner .banner-text-heading-content h3{
+    font-size: 44px !important;
+    margin-bottom: 0;
+    margin: 0 5px;
+    color: #0F3764 !important;
+}
+.banner-content.inner-section-banner .text-content .banner-text-heading-content   h3{
+    color: #DB5C1E !important;
+}
+.banner-content.inner-section-banner .count-section-main .count-section-title h2{
+    color: #0F3764 !important;
+}
+.banner-content.inner-section-banner .col-lg-7{
+    width: 100%;
+}
+.banner-content.inner-section-banner .col-lg-5 {
+    display: none !important;
 }
 .banner-content .banner-inner-content{
     min-height: 90vh;    
@@ -1524,7 +1558,8 @@ section{
 /* esignature-solution  how-it-works */
 
 /* Home banner */
-.banner-content .banner-inner-content{
+
+.banner-content.home-banner .banner-inner-content{
     background-color: transparent;
     background-blend-mode: unset;
     background-image: url(./images/modern-tokyo-street-background.png) !important;
@@ -1614,42 +1649,42 @@ section{
     margin: auto;
 }
 
-.icon-box .iconbox-description.showlesscontent .SecSec,
-.icon-box .iconbox-description.showlesscontent .readLess {
+.icon-box .description.showlesscontent .SecSec,
+.icon-box .description.showlesscontent .readLess {
     display: none;
 }
 
-.icon-box .iconbox-description.showmorecontent .readMore {
+.icon-box .description.showmorecontent .readMore {
     display: none;
 }
-.client-logos .iconbox-description.showlesscontent .SecSec,
-.client-logos .iconbox-description.showlesscontent .readLess {
-    display: none;
-}
-
-.client-logos .iconbox-description.showmorecontent .readMore {
+.client-logos .description.showlesscontent .SecSec,
+.client-logos .description.showlesscontent .readLess {
     display: none;
 }
 
-.icon-box .iconbox-description .readMore,
-.icon-box .iconbox-description .readLess {
+.client-logos .description.showmorecontent .readMore {
+    display: none;
+}
+
+.icon-box .description .readMore,
+.icon-box .description .readLess {
     font-weight: normal;
     margin-left: 2px;
-    color: #009999;
+    color: rgba(65, 64, 66, 0.5);
     cursor: pointer;
     font-size: 14px;
     text-transform: uppercase;
     
 }
-.icon-box .iconbox-description .readMore:hover,
-.icon-box .iconbox-description .readLess:hover{
+.icon-box .description .readMore:hover,
+.icon-box .description .readLess:hover{
     color: #18B57B;
 }
 .icon-box .showlesscontent .readMore,
 .icon-box .showmorecontent .readLess{
     display: inline-block;
     width: 100%;
-    margin-top: 10px;
+    margin-top: 25px;
 }
 .icon-box .showmorecontent .dot,
 .client-logos .showmorecontent .dot{
@@ -3347,13 +3382,14 @@ h1{
     padding-bottom: 35px;
     margin-bottom: 22px;
     display: inline-block;
-    width: 100%;
+    width: 111px;
+    text-align: center;
 }
 
 
 .grid-border-section .owl-item.active::before {
     content: '';
-    background-color: #3D3D3E;
+    background-color: #cbcbcb;
     width: 1px;
     height: 300px;
     position: absolute;
