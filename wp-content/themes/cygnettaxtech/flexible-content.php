@@ -94,7 +94,12 @@
 						<div class="count-section-main-inner">
 							<?php while (have_rows('count_section')) : the_row(); ?>
 								<div class="count-inner">
-								<?php if (get_sub_field('count_section_value')){ ?>
+									<?php if (get_sub_field('count_section_icon_image')){ ?>
+										<div class="count-icon-image">
+											<img src="<?php echo the_sub_field('count_section_icon_image'); ?>" alt="<?php echo the_sub_field('count_section_label'); ?>">
+										</div>
+									<?php } ?>
+									<?php if (get_sub_field('count_section_value')){ ?>
 										<div class="count-label">
 											<?php echo the_sub_field('count_section_value'); ?>
 										</div>
@@ -861,7 +866,7 @@
 											<?php if(get_sub_field('address_description')) {
 												$add_desc = get_sub_field('address_description');
 												$pieces = explode(" ", $add_desc);
-												$first_part = implode(" ", array_splice($pieces, 0, 30));
+												$first_part = implode(" ", array_splice($pieces, 0, 8));
 											?>
 											<div class="address-bottom-section">
 												<div class="text-content">

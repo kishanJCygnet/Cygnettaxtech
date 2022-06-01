@@ -122,7 +122,7 @@
 	<script>
 	  var url = '<?php echo site_url(); ?>';
 	  document.addEventListener('wpcf7mailsent', function(e) {
-		if(e.detail.contactFormId == 172) {
+		if(e.detail.contactFormId == 172 || e.detail.contactFormId == 39050) {
 			location = url + '/thank-you-for-contacting-us';
 		}
 	  }, false);
