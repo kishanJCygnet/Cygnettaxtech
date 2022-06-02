@@ -586,12 +586,12 @@ flex-direction: row;
 }
 .contact-form-content{
     padding-top: 0;
-    background-color: #edf8f8;
+    background-color: #ffffff;
     padding-bottom: 0;
 }
    
 .footer{
-    background-color: #edf8f8;
+    background-color: #ffffff;
 }
 .contact-form .section-shape {
     z-index: -1;
@@ -607,7 +607,7 @@ bottom: calc(100% - 1px);
 
 
 .contact-form .form-content{
-    width: 880px;
+    /* width: 880px; */
     margin: auto;
     max-width: 100%;
 }
@@ -645,7 +645,7 @@ bottom: calc(100% - 1px);
 }
 
 .contact-form .form-content{
-    width: 880px;
+    /* width: 880px; */
     margin: auto;
     max-width: 100%;
 }
@@ -965,14 +965,22 @@ input[type=checkbox]:after{
     font-weight: 500;
     line-height: 38px;
 }
-/* .heading-border{
-    position: absolute;
-    bottom: 0;
-    height: 3px;
-    background-color: #009999;
-    left: calc(50% - 60px);
-    width: 120px;
-} */
+.contact-form .title-heading h2{
+    padding-bottom: 0;
+}
+.contact-form .form-content form h3{
+    font-size: 16px;
+    text-align: center;
+    line-height: 1.5;
+    margin-bottom: 40px;
+}
+.contact-form  h3{
+    font-size: 16px;
+    text-align: center;
+    line-height: 1.5;
+    margin-bottom: 40px
+}
+
 
 .sub-title{
     color:#3D3D3E;
@@ -1011,12 +1019,32 @@ input[type=checkbox]:after{
     background-size: cover !important;
     justify-content: center;
 }
+.banner-content.inner-section-banner.service-banner .banner-inner-content{
+    width: 100%;
+    background-size: cover;
+}
+.banner-content.inner-section-banner.service-banner > div{
+    width: 100%;    
+}
 .banner-content.inner-section-banner .banner-inner-content{
     min-height: 500px;
+}
+.banner-content.inner-section-banner.service-banner .banner-text-heading-content h1{
+ color: #fff !important;
+ font-weight: 500;
+ text-align: center;
+ line-height: 1.5;
+}
+.banner-content.inner-section-banner.service-banner .banner-text-heading-content h1 span{
+    font-weight: bolder;
+    display: inline-block;
+    width: 100%;
 }
 .banner-content.inner-section-banner .banner-text-heading-content{
      display: flex;
      align-items: center;   
+     justify-content: center;
+     flex-wrap: wrap;
 }
 .banner-content.inner-section-banner .banner-text-heading-content h1,
 .banner-content.inner-section-banner .banner-text-heading-content h3{
@@ -1024,6 +1052,7 @@ input[type=checkbox]:after{
     margin-bottom: 0;
     margin: 0 5px;
     color: #0F3764 !important;
+    padding: 5px;
 }
 .banner-content.inner-section-banner .text-content .banner-text-heading-content   h3{
     color: #DB5C1E !important;
@@ -1031,6 +1060,7 @@ input[type=checkbox]:after{
 .banner-content.inner-section-banner .count-section-main .count-section-title h2{
     color: #0F3764 !important;
 }
+
 .banner-content.inner-section-banner .col-lg-7{
     width: 100%;
 }
@@ -1457,7 +1487,7 @@ margin-top: 15px;
     box-shadow: none;
 }
 section{
-    padding: 100px 0;
+    padding: 70px 0;
 }
 /* Two Colum */
 .two-colum-layout .two-colum-content{
@@ -2421,6 +2451,16 @@ p{
     display: flex;
     padding-left: 35px;
 }
+.taxtech-form-content .taxtech-list .item.databases,
+.taxtech-form-content .taxtech-list .item.databases ul,
+.taxtech-form-content .taxtech-list .item.databases ul li,
+.taxtech-form-content .taxtech-list .item.databases .col1,
+.taxtech-form-content .taxtech-list .item.databases .wpcf7-form-control{
+    width: 100%;
+}
+.taxtech-form-content .taxtech-list .item.databases .wpcf7-form-control .wpcf7-list-item{
+    width: 25%;
+}
 .taxtech-form-content .taxtech-list .item > div{
     display: flex;
 } 
@@ -2434,15 +2474,18 @@ p{
     justify-content: center;
     color: #009999;
     text-align: center;
+    max-width: 140px;
 }
-.taxtech-form-content .taxtech-list .item ul{
+.taxtech-form-content .taxtech-list .item ul {
     padding-left: 0;
     list-style-type: none;
+}
+.taxtech-form-content .taxtech-list .item ul span.wpcf7-form-control { 
     display: flex;
     font-size: 13px;
     text-align: center;
 }
-.taxtech-form-content .taxtech-list .item ul li{
+.taxtech-form-content .taxtech-list .item ul li span.wpcf7-list-item { 
     padding: 30px 10px;
     box-shadow: 0px 3px 6px rgba(0,0,0,0.1);
     background-color: #fff;
@@ -2462,7 +2505,11 @@ p{
     width: auto;
     cursor: pointer;
 }
-.taxtech-form-content .taxtech-list .item ul li .check{
+.taxtech-form-content .taxtech-list .item ul li .wpcf7-list-item-label{
+    font-size: 13px;
+    
+}
+.taxtech-form-content .taxtech-list .item ul li .wpcf7-list-item-label:after{
     height: 20px;
     width: 20px;
     border: 1px solid #c2c2c2;
@@ -2473,25 +2520,23 @@ p{
     border-radius: 50%;
     
 }
-.taxtech-form-content .taxtech-list .item ul li input:checked ~ .check::before{
+.taxtech-form-content .taxtech-list .item ul li input:checked ~ .wpcf7-list-item-label::before{
     content: '';
     background-color: transparent;
     position: absolute;
-    left: 7px;
-    top: 2px;
+    left: 13px;
+    top: 8px;
     width: 5px;
     border-bottom: 3px solid #fff;
-      /* long arm */
     height: 11px;
     border-right: 3px solid #fff;
-    
-    /* rotate the mirrored L to make it a checkbox */
     transform: rotate(45deg);
-      -o-transform: rotate(45deg);
-      -ms-transform: rotate(45deg);
-      -webkit-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    z-index: 1;
 }
-.taxtech-form-content .taxtech-list .item ul li input:checked ~ .check{
+.taxtech-form-content .taxtech-list .item ul li input:checked ~ .wpcf7-list-item-label:after{
     background-color: #009999;
     border-color:#009999;
 }
@@ -2574,6 +2619,9 @@ p{
 .address-content .country-icon{
     margin-right: 7px;
 }
+.address-content .country-icon img{
+    width: 25px;
+}
 .address-content .country-name h3{
     font-size: 18px;
     font-weight: 500;
@@ -2613,6 +2661,157 @@ p{
 .circle-blue.address-top-section::before{
     background-color: #0F3764 !important;
 }
+
+
+.banner-overlay-section h2, 
+.banner-overlay-section h3,
+.banner-overlay-section p
+ {
+     color: #fff;
+ }
+
+ .banner-overlay-section  {
+     padding: 68px 0;
+ }
+
+ .banner-overlay-section   .dynamic-btn .btn {
+     min-width: 178px;
+ }
+ .banner-overlay-section .title-heading h2 {
+     text-transform: uppercase;
+     margin-bottom: 46px;
+ }
+
+ .banner-overlay-section .title-heading h3 {
+     font-size: 22px;
+     position: relative;
+     padding-bottom: 10px;
+     margin-bottom: 20px;
+ }
+
+ .banner-overlay-section .title-heading h3::before {
+     content: '';
+     height: 2px;
+     width: 200px;
+     background-color: #009999;
+     position: absolute;
+     bottom: 0;
+     left: 50%;
+     transform: translateX(-50%)
+ }
+
+ .banner-overlay-section .heading-border {
+     display: none;
+}
+
+.banner-overlay-section p {
+    font-size: 18px;
+    line-height: 28px;
+}
+
+.banner-overlay-section .editor-description {
+    margin-bottom: 40px;
+}
+.grid-data-content .icon-box{
+    background-color: #ffffff;
+    border-radius: 10px;
+    height: 100%;
+    padding: 10px;
+}
+
+.grid-data-content.type-2 .icon-box {
+    padding: 56px 45px 55px;
+    border-radius: 20px;
+    filter: drop-shadow( 0 3px 6px  rgba(0,0, 0 , 0.15));
+    cursor: pointer;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+
+.grid-data-content.type-2 .icon-box img  {
+    filter: brightness(0) invert(1);
+}
+
+.grid-data-content.type-2 .icon-box:hover img  {
+    filter: unset;
+}
+
+.grid-data-content.type-2 .icon-box:hover .icon {
+    background-color: #fff;
+
+}
+
+
+.grid-data-content.type-2 .icon-box-inner .icon {
+    height: 109px;
+    width: 109px;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    width: 109px;
+    background-color: #009999;
+    transform: unset;
+    margin-bottom: 25px;
+}
+
+.grid-data-content.type-2 .icon-box-inner .icon img {
+    max-width: 100%;
+}
+
+.grid-data-content.type-2 .icon-box:hover {
+    background-color: #009999;
+}
+
+.grid-data-content.type-2 .icon-box:hover .icon-box-title-content h3,
+.grid-data-content.type-2 .icon-box:hover .iconbox-description {
+    color: #fff;
+}
+
+.grid-data-content .icon-box-title-content h3 {
+    color: #0F3764;
+    margin-bottom: 24px;
+}
+/* --------------------------------------------------- */
+.count-section-main.benifits-count{
+    left: 0;
+    bottom: 0;
+   
+}
+.count-section-main.benifits-count .count-section-main-inner{
+    border-radius: 0;
+    box-shadow: none;
+    background-color: rgba(255,255,255,0.25);
+    padding: 30px 104px;
+}
+.count-section-main.benifits-count  .count-inner{
+    width: 22%;
+    text-align: left;
+    color: #fff;
+  
+}
+.count-section-main.benifits-count .count-icon-image{
+    margin-bottom: 40px;
+}
+.solution-tab-content .nav.nav-pills .nav-link .title{
+    font-size: 18px;
+    color: #099;
+    font-weight: 500;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+.solution-tab-content .nav.nav-pills .nav-link p{
+    font-size: 16px;
+    color: #0d0d0d;
+}
+.solution-tab-content .nav.nav-pills .nav-link{
+    background-color: #fff;
+    width: 250px;
+}
+
 @media only screen and (max-width: 1400px) {
     .primary-navigation .menu-wrapper li.menu-item{
         padding: 0 5px;
@@ -2717,6 +2916,7 @@ p{
     .banner-content .banner-inner-content .text-content h1{
         font-size: 40px
     }
+     service-banner
     /* .banner-content .banner-inner-content{
         margin-top: 0;
     } */
@@ -3578,7 +3778,8 @@ h1{
 @media (max-width: 768px) {
     .service-section .title-heading h2,
     .grid-data-content .title-heading h2,
-    .grid-border-section  .title-heading h2 {
+    .grid-border-section  .title-heading h2,
+    .banner-overlay-section .title-heading h2 {
         font-size: 25px;
     }
 
