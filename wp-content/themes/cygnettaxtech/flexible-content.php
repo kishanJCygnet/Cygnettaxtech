@@ -909,6 +909,56 @@
 		    <?php endif; 
 			/* Global Address Section End */
 			
+			/* Our Solution Section Start */
+			if (get_row_layout() == 'our_solution_section') : ?>
+				<section class="our-solution-cls <?php echo the_sub_field('our_solution_custom_class'); ?>">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="title-heading">
+								<?php if (get_sub_field('our_solution_title')){ ?>
+									<h2 class="wow fadeInUp" data-wow-delay="0.3s"><?php echo the_sub_field('our_solution_title'); ?>
+										<span class="heading-border"></span>
+									</h2>
+								<?php } ?>
+								<?php if (get_sub_field('our_solution_sub_title')){ ?>
+									<h3 class="wow fadeInUp" data-wow-delay="0.6s"><?php echo the_sub_field('our_solution_sub_title'); ?></h3>
+								<?php } ?>
+								</div>
+								<?php if (get_sub_field('our_solution_main_content')){ ?>
+									<div class="editor-description wow fadeInUp"><?php echo the_sub_field('our_solution_main_content'); ?></div>
+								<?php } ?>
+							</div>
+						</div>
+						<?php if (have_rows('our_solution')) : 
+						$img_cnt = 1; 
+						$con_cnt = 1;  ?>
+						<div class="d-flex align-items-start solution-tab-content">								
+							<div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+								<?php while (have_rows('our_solution')) : the_row(); ?>
+									<div class="nav-link <?php if($img_cnt == 1){ ?> active <?php } ?>" id="v-pills-home-tab-<?php echo $img_cnt; ?>" data-bs-toggle="pill" data-bs-target="#v-pills-home-<?php echo $img_cnt; ?>" role="tab" aria-controls="v-pills-home-<?php echo $img_cnt; ?>" aria-selected="true">
+										<?php echo the_sub_field('our_solution_content'); ?>
+									</div>
+								<?php $img_cnt++; 
+									endwhile; ?>	
+							</div>
+							<div class="tab-content" id="v-pills-tabContent">
+								<?php while (have_rows('our_solution')) : the_row(); ?>
+									<div class="tab-pane fade <?php if($con_cnt == 1){ ?> show active <?php } ?> " id="v-pills-home-<?php echo $con_cnt; ?>" role="tabpanel" aria-labelledby="v-pills-home-tab-<?php echo $con_cnt; ?>">
+										<div class="img-content">
+											<img src="<?php echo the_sub_field('our_solution_image'); ?>" alt="" />
+										</div>
+									</div> 
+								<?php $con_cnt++; 
+								endwhile; ?>
+							</div>
+						</div>
+						<?php endif; ?>
+					</div>
+				</section>
+		    <?php endif; 
+			/* Our Solution Section End */
+			
 			$logo_slider_cnt++;
 		endwhile;
 	endif; 	
