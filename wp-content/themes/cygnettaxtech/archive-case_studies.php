@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 <!-- Banner Slider start -->
-<section class="banner-content inner-page-banner">
+<section class="banner-content inner-page-banner resources-banner">
 	<span class="bottom-arrow"></span> 
 	<div class="banner-inner-content w-100" <?php if (get_field('case_studies_listing_banner_image', 'option')) : ?> style="background-image: url('<?php echo the_field('case_studies_listing_banner_image', 'option'); ?>')" <?php endif; ?>>  
 		<div class="container"> 

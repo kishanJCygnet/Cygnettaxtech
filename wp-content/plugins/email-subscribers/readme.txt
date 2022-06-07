@@ -4,9 +4,9 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Author URI: https://www.icegram.com/
 Tags: email marketing, subscription, autoresponder, post notification, welcome email
 Requires at least: 3.9
-Tested up to: 5.9.3
+Tested up to: 6.0
 Requires PHP: 5.6
-Stable tag: 5.3.15
+Stable tag: 5.3.16
 License: GPLv3
 License URI: http://www.gnu.org/licenses
 
@@ -310,12 +310,28 @@ Refer [here](https://www.icegram.com/documentation/es-faq/).
 
 == Upgrade Notice ==
 
-= 5.3.15 =
+= 5.3.16 =
 
-* New: Advanced audience filters[PRO]
-* Fix: Template already exists issue on some setup using Amazon SES[PRO]
+* Enhancement: Improved dashboard stats
+* Fix: Warning message when using Gmail/Yahoo email addresses in From email setting
+* Fix: Email sending issue with Amazon SES when subject contains emojis[PRO]
+* Fix: Duplicate post digest notifications[PRO]
+* Fix: Unsubscribe message getting inserted after HTML tag
+* Fix: Caching issue when editing campaign when Redis cache enable
+* Fix: PHP warning when subscription form is deleted from backend and form widget is active on frontend
+* Fix: Incorrect link tracking stats for campaigns created using Drag-n-Drop editor[PR0]
 
 == Changelog ==
+
+**5.3.16 (02.06.2022)**
+* Enhancement: Improved dashboard stats
+* Fix: Warning message when using Gmail/Yahoo email addresses in From email setting
+* Fix: Email sending issue with Amazon SES when subject contains emojis[PRO]
+* Fix: Duplicate post digest notifications[PRO]
+* Fix: Unsubscribe message getting inserted after HTML tag
+* Fix: Caching issue when editing campaign when Redis cache enable
+* Fix: PHP warning when subscription form is deleted from backend and form widget is active on frontend
+* Fix: Incorrect link tracking stats for campaigns created using Drag-n-Drop editor[PR0]
 
 **5.3.15 (18.05.2022)**
 

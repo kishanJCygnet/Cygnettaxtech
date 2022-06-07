@@ -704,7 +704,12 @@ if ( ! class_exists( 'ES_Mailer' ) ) {
 					if ( $this->add_unsubscribe_link ) {
 						$unsubscribe_message = get_option( 'ig_es_unsubscribe_link_content', '' );
 						$unsubscribe_message = stripslashes( $unsubscribe_message );
-						$content            .= $unsubscribe_message;
+						if ( false === strpos( $content, '<html' ) ) {
+							$content = $content . $unsubscribe_message;
+						} else {
+							// If content is HTML then we need to place unsubscribe message and tracking image inside body tag.
+							$content = str_replace( '</body>', $unsubscribe_message . '</body>', $content );
+						}
 					}
 
 					$subject = $this->replace_global_tags( $subject );
@@ -718,7 +723,12 @@ if ( ! class_exists( 'ES_Mailer' ) ) {
 					if ( $this->can_track_open() ) {
 						$tracking_pixel_variable_name = $this->mailer->get_variable_prefix() . $this->mailer->get_variable_string( 'tracking_pixel_url' ) . $this->mailer->get_variable_suffix();
 						$tracking_image               = '<img src="' . $tracking_pixel_variable_name . '" width="1" height="1" alt=""/>';
-						$content                     .= $tracking_image;
+						if ( false === strpos( $content, '<html' ) ) {
+							$content = $content . $tracking_image;
+						} else {
+							// If content is HTML then we need to place unsubscribe message and tracking image inside body tag.
+							$content = str_replace( '</body>', $tracking_image . '</body>', $content );
+						}
 					}
 
 					if ( $this->unsubscribe_headers_enabled() && is_callable( array( $this->mailer, 'set_list_unsubscribe_header' ) ) ) {
@@ -968,7 +978,14 @@ if ( ! class_exists( 'ES_Mailer' ) ) {
 			// Can Track Email Open? Add pixel.
 			$email_tracking_image = $this->get_tracking_pixel();
 
-			$message->body = $message->body . $unsubscribe_message . $email_tracking_image;
+			
+			if ( false === strpos( $message->body, '<html' ) ) {
+				$message->body = $message->body . $unsubscribe_message . $email_tracking_image;
+			} else {
+				// If content is HTML then we need to place unsubscribe message and tracking image inside body tag.
+				$message->body = str_replace( '</body>', $unsubscribe_message . $email_tracking_image . '</body>', $message->body );
+			}
+
 
 			if ( $nl2br ) {
 				$message->body = nl2br( $message->body );
@@ -1252,7 +1269,7 @@ if ( ! class_exists( 'ES_Mailer' ) ) {
 				$link_data['action'] = 'click';
 
 				// get all links from the basecontent
-				preg_match_all( '# href=(\'|")?(https?[^\'"]+)(\'|")?#', $content, $links );
+				preg_match_all( '#<a\s+(?:[^>]*?\s+)?href=(\'|")?(https?[^\'"]+)(\'|")?#', $content, $links );
 
 				$links = $links[2];
 
@@ -1332,7 +1349,7 @@ if ( ! class_exists( 'ES_Mailer' ) ) {
 			if ( $this->can_track_clicks() ) {
 
 				// get all links from the basecontent
-				preg_match_all( '# href=(\'|")?(https?[^\'"]+)(\'|")?#', $content, $links );
+				preg_match_all( '#<a\s+(?:[^>]*?\s+)?href=(\'|")?(https?[^\'"]+)(\'|")?#', $content, $links );
 
 				$links = $links[2];
 
@@ -1761,7 +1778,7 @@ if ( ! class_exists( 'ES_Mailer' ) ) {
 				$mail_to_subject   = sprintf( __( 'Unsubscribe %1$s from %2$s', 'email-subscribers' ), $email, get_bloginfo( 'name' ) );
 				$list_unsub_header = sprintf(
 					/* translators: 1. Unsubscribe link 2. Blog admin email */
-					'<%1$s>,<mailto:%2$s?subject=%3$s',
+					'<%1$s>,<mailto:%2$s?subject=%3$s>',
 					$unsubscribe_link,
 					get_bloginfo( 'admin_email' ),
 					$mail_to_subject

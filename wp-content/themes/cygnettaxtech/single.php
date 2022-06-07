@@ -66,8 +66,8 @@ if (have_posts()) :
                     </div>
                 </div>
             </section>
-            <section>
-                <?php if (get_field('show_sidebar') == 'Yes') : ?>
+			 <?php if (get_field('show_sidebar') == 'Yes') : ?>
+            <section>               
                         <div class="container">
                         <?php
                         $relatedPost = get_posts(
@@ -135,9 +135,10 @@ if (have_posts()) :
                             </div>
                            <?php endif; ?>
                           </div>     
-                <?php endif; ?>
+                
             </section>
-            <section id="newsletter" class="default-content bg-light pb-0 free-trial-access-content newsletter pt-0">
+			<?php endif; ?>
+            <section id="newsletter" class="default-content bg-light pb-0 free-trial-access-content newsletter pt-0 bg-gradiant">
             <div class="container">       
             <?php //if (get_field('show_sidebar') == 'Yes') : ?>  
                     <div class="free-trial-access text-center wow fadeInUp" style="background-image:url('<?php echo THEME_PATH; ?>/images/file-access-bg.png')">

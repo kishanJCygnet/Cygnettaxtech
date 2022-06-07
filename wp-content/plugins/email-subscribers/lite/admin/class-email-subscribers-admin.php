@@ -219,6 +219,10 @@ class Email_Subscribers_Admin {
 			'is_pro'    => ES()->is_pro() ? true : false,
 		);
 
+		if ( 'es_settings' === $get_page ) {
+			$ig_es_js_data['popular_domains'] = ES_Common::get_popular_domains();
+		}
+
 		wp_localize_script( $this->email_subscribers, 'ig_es_js_data', $ig_es_js_data );
 
 		if ( 'es_workflows' === $get_page ) {
