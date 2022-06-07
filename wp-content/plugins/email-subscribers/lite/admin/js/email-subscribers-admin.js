@@ -880,6 +880,19 @@
 
 			jQuery('.es-note-category-parent').trigger('change');
 
+			jQuery('#tabs-general input[name="ig_es_from_email"]').on('change', function () {
+				let from_email        = jQuery(this).val();
+				let is_valid_email    = ig_es_is_valid_email(from_email);
+				if ( is_valid_email ) {
+					let from_email_domain = from_email.split('@')[1].toLowerCase();
+					let is_popolar_domain = ig_es_js_data.popular_domains.indexOf(from_email_domain) > -1;
+					if ( is_popolar_domain ) {
+						jQuery('#ig-es-from-email-notice').removeClass('hidden');
+					} else {
+						jQuery('#ig-es-from-email-notice').addClass('hidden');
+					}
+				}
+			});
 
 			//es mailer settings
 			jQuery(document).on('change', '.es_mailer', function (e) {
@@ -2614,6 +2627,38 @@
 
 				}
 
+
+			// Find al rating items
+			const ratings = document.querySelectorAll(".es-engagement-score");
+
+			// Iterate over all rating items
+			ratings.forEach((rating) => {
+			// Get content and get score as an int
+			const ratingContent = rating.innerHTML;
+			const ratingScore = ratingContent;
+			const ratingPercentage = ( ratingScore / 5 ) * 100;
+
+			// Define if the score is good, meh or bad according to its value
+			//   const scoreClass =
+			//     ratingScore < 40 ? "bad" : ratingScore < 60 ? "meh" : "good";
+
+			//   // Add score class to the rating
+			//   rating.classList.add(scoreClass);
+
+			// After adding the class, get its color
+			const ratingColor = window.getComputedStyle(rating).backgroundColor;
+
+			// Define the background gradient according to the score and color
+			const gradient = `background: conic-gradient(${ratingColor} ${ratingPercentage}%, transparent 0 100%)`;
+
+			// Set the gradient as the rating background
+			rating.setAttribute("style", gradient);
+
+			// Wrap the content in a tag to show it above the pseudo element that masks the bar
+			rating.innerHTML = `<span>${ratingScore} ${
+				ratingContent.indexOf("%") >= 0 ? "<small>%</small>" : ""
+			}</span>`;
+			});
 		});
 
 		function ig_es_uc_first(string){
@@ -2936,7 +2981,10 @@ function ig_es_is_valid_json( string ) {
 	return true;
 }
 
-
+function ig_es_is_valid_email( email ) {
+	let regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+	return regex.test(email);
+}
 
 window.ig_es_is_valid_json = ig_es_is_valid_json;
 

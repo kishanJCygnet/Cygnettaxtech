@@ -191,8 +191,25 @@ class ES_Admin_Settings {
 		<?php
 	}
 
+	public static function get_from_email_notice( $from_email ) {
+		$from_email_notice 		 = '';
+		$from_email              = get_option( 'ig_es_from_email' );
+		$is_popular_domain	     = ES_Common::is_popular_domain( $from_email );
+		$from_email_notice_class = $is_popular_domain ? '' : 'hidden';
+		$from_email_notice       = '<span id="ig-es-from-email-notice" class="text-red-600 ' . $from_email_notice_class . '">' . __( 'Your emails might land in spam if you use above email address..', 'email-subscribers' );
+		$site_url				 = site_url();
+		$site_domain             = ES_Common::get_domain_from_url( $site_url );
+		/* translators: %s: Site domain */
+		$from_email_notice      .= '<br/>' . sprintf( __( 'Consider using email address matching your site domain like %s', 'email-subscribers' ), 'info@' . $site_domain ) . '</span>';
+		return $from_email_notice;
+	}
+
 	public static function get_registered_settings() {
 
+		$from_email_description  = __( 'The "from" email address for all emails.', 'email-subscribers' );
+
+		$from_email              = get_option( 'ig_es_from_email' );
+		$from_email_description .= '<br/>' . self::get_from_email_notice( $from_email );
 		$general_settings = array(
 
 			'sender_information'                    => array(
@@ -211,7 +228,7 @@ class ES_Admin_Settings {
 					'from_email' => array(
 						'id'          => 'ig_es_from_email',
 						'name'        => __( 'Email', 'email-subscribers' ),
-						'desc'        => __( 'The "from" email address for all emails.', 'email-subscribers' ),
+						'desc'        => $from_email_description,
 						'type'        => 'text',
 						'placeholder' => __( 'Email Address', 'email-subscribers' ),
 						'default'     => '',
