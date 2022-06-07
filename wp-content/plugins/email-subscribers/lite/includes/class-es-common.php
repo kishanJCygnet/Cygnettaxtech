@@ -474,7 +474,7 @@ class ES_Common {
 	 * @since 4.8.2
 	 */
 	public static function generate_random_string( $length = 6 ) {
-		$str        = 'abcdefghijklmnopqrstuvwxyz';
+		$str = 'abcdefghijklmnopqrstuvwxyz';
 
 		return substr( str_shuffle( $str ), 0, $length );
 	}
@@ -2300,7 +2300,7 @@ class ES_Common {
 				<svg class="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
 				<span class="break-words invisible h-auto lg:w-48 xl:w-64 tracking-wide absolute z-70 tooltip-text bg-black text-gray-300 text-xs rounded p-3 py-2">
 					' . $tooltip_text . '
-					<svg class="absolute mt-2 text-black text-opacity-100 h-2.5 left-0" x="0px" y="0px" viewBox="0 0 255 255" xml:space="preserve">
+					<svg class="tooltip-arrow absolute mt-2 text-black text-opacity-100 h-2.5 left-0" x="0px" y="0px" viewBox="0 0 255 255" xml:space="preserve">
 						<polygon class="fill-current" points="0,0 127.5,127.5 255,0"/>
 					</svg>
 				</span>
@@ -2584,6 +2584,108 @@ class ES_Common {
 		}
 
 		return '';
+	}
+
+	public static function get_popular_domains() {
+		/** Domains list from https://github.com/mailcheck/mailcheck/wiki/List-of-Popular-Domains */
+		$popular_domains = array(
+			/* Default domains included */
+			'aol.com', 'att.net', 'comcast.net', 'facebook.com', 'gmail.com', 'gmx.com', 'googlemail.com',
+			'google.com', 'hotmail.com', 'hotmail.co.uk', 'mac.com', 'me.com', 'mail.com', 'msn.com',
+			'live.com', 'sbcglobal.net', 'verizon.net', 'yahoo.com', 'yahoo.co.uk',
+		  
+			/* Other global domains */
+			'email.com', 'fastmail.fm', 'games.com' /* AOL */, 'gmx.net', 'hush.com', 'hushmail.com', 'icloud.com',
+			'iname.com', 'inbox.com', 'lavabit.com', 'love.com' /* AOL */, 'outlook.com', 'pobox.com', 'protonmail.ch', 'protonmail.com', 'tutanota.de', 'tutanota.com', 'tutamail.com', 'tuta.io',
+		   'keemail.me', 'rocketmail.com' /* Yahoo */, 'safe-mail.net', 'wow.com' /* AOL */, 'ygm.com' /* AOL */,
+			'ymail.com' /* Yahoo */, 'zoho.com', 'yandex.com',
+		  
+			/* United States ISP domains */
+			'bellsouth.net', 'charter.net', 'cox.net', 'earthlink.net', 'juno.com',
+		  
+			/* British ISP domains */
+			'btinternet.com', 'virginmedia.com', 'blueyonder.co.uk', 'live.co.uk',
+			'ntlworld.com', 'orange.net', 'sky.com', 'talktalk.co.uk', 'tiscali.co.uk',
+			'virgin.net', 'bt.com',
+		  
+			/* Domains used in Asia */
+			'sina.com', 'sina.cn', 'qq.com', 'naver.com', 'hanmail.net', 'daum.net', 'nate.com', 'yahoo.co.jp', 'yahoo.co.kr', 'yahoo.co.id', 'yahoo.co.in', 'yahoo.com.sg', 'yahoo.com.ph', '163.com', 'yeah.net', '126.com', '21cn.com', 'aliyun.com', 'foxmail.com',
+		  
+			/* French ISP domains */
+			'hotmail.fr', 'live.fr', 'laposte.net', 'yahoo.fr', 'wanadoo.fr', 'orange.fr', 'gmx.fr', 'sfr.fr', 'neuf.fr', 'free.fr',
+		  
+			/* German ISP domains */
+			'gmx.de', 'hotmail.de', 'live.de', 'online.de', 't-online.de' /* T-Mobile */, 'web.de', 'yahoo.de',
+		  
+			/* Italian ISP domains */
+			'libero.it', 'virgilio.it', 'hotmail.it', 'aol.it', 'tiscali.it', 'alice.it', 'live.it', 'yahoo.it', 'email.it', 'tin.it', 'poste.it', 'teletu.it',
+		  
+			/* Russian ISP domains */
+			'bk.ru', 'inbox.ru', 'list.ru', 'mail.ru', 'rambler.ru', 'yandex.by', 'yandex.com', 'yandex.kz', 'yandex.ru', 'yandex.ua', 'ya.ru',
+		  
+			/* Belgian ISP domains */
+			'hotmail.be', 'live.be', 'skynet.be', 'voo.be', 'tvcablenet.be', 'telenet.be',
+		  
+			/* Argentinian ISP domains */
+			'hotmail.com.ar', 'live.com.ar', 'yahoo.com.ar', 'fibertel.com.ar', 'speedy.com.ar', 'arnet.com.ar',
+		  
+			/* Domains used in Mexico */
+			'yahoo.com.mx', 'live.com.mx', 'hotmail.es', 'hotmail.com.mx', 'prodigy.net.mx',
+		  
+			/* Domains used in Canada */
+			'yahoo.ca', 'hotmail.ca', 'bell.net', 'shaw.ca', 'sympatico.ca', 'rogers.com',
+		  
+			/* Domains used in Brazil */
+			'yahoo.com.br', 'hotmail.com.br', 'outlook.com.br', 'uol.com.br', 'bol.com.br', 'terra.com.br', 'ig.com.br', 'r7.com', 'zipmail.com.br', 'globo.com', 'globomail.com', 'oi.com.br'
+		);
+
+		return $popular_domains;
+	}
+
+	public static function is_popular_domain( $email ) {
+
+		$is_email = is_email( $email );
+		if ( ! $is_email ) {
+			return false;
+		}
+		
+		$email_parts = explode( '@', $email );
+		$domain 	 = end( $email_parts );
+		$$domain     = strtolower( $domain );
+
+		$popular_domains = self::get_popular_domains();
+
+		return in_array( $domain, $popular_domains, true );
+	}
+
+	public static function get_domain_from_url( $url ) {
+		$pieces = parse_url($url);
+		$domain = isset($pieces['host']) ? $pieces['host'] : $pieces['path'];
+		return $domain;
+	}
+	public static function get_engagement_score_html( $engagement_score ) {
+		if ( is_numeric( $engagement_score ) ) {
+			$score_class = 'bad';
+
+			if ( $engagement_score > 0 ) {
+				$score_text = number_format_i18n( $engagement_score, 1 );
+			} else {
+				$score_text = 0;
+			}
+
+			if ( $engagement_score >= 4 ) {
+				$score_class = 'excellent';
+			} elseif ( $engagement_score >= 3 ) {
+				$score_class = 'good';
+			} elseif ( $engagement_score >= 2 ) {
+				$score_class = 'low';
+			} elseif ( $engagement_score >= 1 ) {
+				$score_class = 'very-low';
+			}
+		}
+		$engagement_score_html = ( is_numeric( $engagement_score ) ? '<div class="es-engagement-score ' . $score_class . '">' . $score_text . '</div>' : '-' );
+
+		return $engagement_score_html;
 	}
 
 }

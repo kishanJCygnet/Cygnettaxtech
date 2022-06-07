@@ -92,12 +92,29 @@
 							</div>
 						<?php } ?>
 						<div class="count-section-main-inner">
-							<?php while (have_rows('count_section')) : the_row(); ?>
+							<?php $cnt=1;
+							while (have_rows('count_section')) : the_row(); 
+								if($cnt < 7){ ?>
 								<div class="count-inner">
 									<?php if (get_sub_field('count_section_icon_image')){ ?>
-										<div class="count-icon-image">
+										<!--<div class="count-icon-image">
 											<img src="<?php echo the_sub_field('count_section_icon_image'); ?>" alt="<?php echo the_sub_field('count_section_label'); ?>">
-										</div>
+										</div>-->							
+										
+										<?php $extension = pathinfo(get_sub_field('count_section_icon_image'), PATHINFO_EXTENSION);
+											if($extension == 'svg'){
+												$count_section_icon_image = get_sub_field('count_section_icon_image');
+												$stream_opts = [
+													"ssl" => [
+														"verify_peer"=>false,
+														"verify_peer_name"=>false,
+													]
+												];														 
+												echo file_get_contents($count_section_icon_image, false, stream_context_create($stream_opts));
+											} else { ?>
+												<img src="<?php echo the_sub_field('count_section_icon_image'); ?>" alt="<?php echo the_sub_field('count_section_label'); ?>">
+										<?php } ?>										
+										
 									<?php } ?>
 									<?php if (get_sub_field('count_section_value')){ ?>
 										<div class="count-label">
@@ -112,7 +129,9 @@
 										</div>
 									<?php } ?>
 								</div>
-							<?php endwhile;	?> 
+								<?php }
+								$cnt++;
+							endwhile;	?> 
 						</div>
 					</div>
 				<?php endif; ?>
@@ -121,110 +140,36 @@
 		<?php endif;
 	/* End banner content */	
 	
-	/* Product Features Sections */
-	if (have_rows('product_features')) : ?>
-	<section class="py-0">
-		<div class="product-feature-tab">
-			<ul>
-				<?php while (have_rows('product_features')) : the_row(); 
-				$dynamicid = str_replace(' ', '_', get_sub_field('tab_title'));  ?>				
-						<li>
-							<a href="#<?php echo $dynamicid; ?>"><?php echo the_sub_field('tab_title'); ?></a>
-						</li>
-						<?php endwhile; ?>
-					</ul>
-				<span class="ac-fow"><i class="fas fa-angle-left"></i></span>
-				<span class="ac-back"><i class="fas fa-angle-right"></i></span>
-		</div>
-		<div class="product-feature">		
-				<?php $o=1; 
-				while (have_rows('product_features')) : the_row(); 
-				$dynamicinnerid = str_replace(' ', '_', get_sub_field('tab_title'));  ?>
-					<section id="<?php echo $dynamicinnerid; ?>">
-					<div class="container">
-						<div>
-							<div class="two-colum-layout cfr-tw-col-item left-title">	
-							<div class="two-colum-content">
-									<div class="col-left">								
-										<div class="d-flex align-items-center h-100 ">
-											<div>
-												<?php if (get_sub_field('title')){ ?>
-												<div class="content-title-heading">
-													<h2 class="wow fadeInUp" data-wow-delay="0.3s"><?php echo the_sub_field('title'); ?>
-														<span class="heading-border"></span>
-													</h2>
-												</div>
-												<?php } ?>						   
-												<?php if (get_sub_field('description')){ ?>
-													<div class="description p2 wow fadeInUp" data-wow-delay="0.6s"><?php echo the_sub_field('description'); ?></div>
-												<?php } ?>
-											</div>
-										</div>
-									</div>	
-									<div class="col-right">
-										<?php if (get_sub_field('image')){ ?>
-										<div class="icon">
-											<img src="<?php echo the_sub_field('image'); ?>" alt="<?php echo the_sub_field('title'); ?>" class=" wow fadeIn" data-wow-delay="0.9s" />
-										</div>
-										<?php } ?>
-									</div>
-							</div>		
-						</div>				
-						<?php if (have_rows('features')) :  ?>
-							<div class="accordion" id="accordionExample<?php echo $o; ?>">								
-									<?php $m=1;
-									while (have_rows('features')) : the_row(); ?>
-										<div class="accordion-content-item">
-											<div class="accordion-item">
-												<h2 class="accordion-header" id="heading<?php echo $o.'_'.$m; ?>">
-												  <!--<button class="accordion-button <?php if($m != 1){ ?> collapsed <?php } ?>" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?php echo $o.'_'.$m; ?>" aria-expanded="true" aria-controls="collapse<?php echo $o.'_'.$m; ?>">-->
-												  <button class="accordion-button <?php if($m == 1 && $o == 1){ echo ''; } else { ?> collapsed <?php } ?>" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?php echo $o.'_'.$m; ?>" aria-expanded="true" aria-controls="collapse<?php echo $o.'_'.$m; ?>">
-													<?php if (get_sub_field('feature_title')){ ?>
-														<span><?php echo the_sub_field('feature_title'); ?></span>
-													<?php } ?>	
-												  </button>
-												</h2>
-												<div id="collapse<?php echo $o.'_'.$m; ?>" class="accordion-collapse collapse <?php if($m == 1 && $o == 1){ ?> show <?php } ?>" aria-labelledby="heading<?php echo $o.'_'.$m; ?>" data-bs-parent="#accordionExample<?php echo $o; ?>">
-												  <div class="accordion-body">
-													<?php if (get_sub_field('feature_description')){ ?>
-														<div class="description p2"><?php echo the_sub_field('feature_description'); ?></div>
-													<?php } ?>
-												  </div>
-												</div>
-											</div>
-											<?php /*if (get_sub_field('feature_title')){ ?>
-												<span><?php echo the_sub_field('feature_title'); ?></span>
-											<?php } ?>						   
-											<?php if (get_sub_field('feature_description')){ ?>
-												<div class="description p2"><?php echo the_sub_field('feature_description'); ?></div>
-											<?php } */ ?>
-										</div>
-									<?php $m++; 
-									endwhile; ?>
-							</div>
-						<?php $o++;  
-						endif; ?>
-						<?php if (get_sub_field('button_url')){ ?>							
-							<div class="col-md-12 text-center">
-								<a href="<?php echo the_sub_field('button_url'); ?>" class="btn" ><?php echo the_sub_field('button_label'); ?></a>
-							</div>
-						<?php } ?>
+	/* Top Tab Section block */
+	if (have_rows('top_tab_content')) :  ?>
+		<div class="top-tab <?php echo the_field('top_tab_section_class'); ?>"> 
+			<div class="top-tab-label"><?php echo the_field('tab_label'); ?> :</div>
+			<div class="top-tab-main-section">
+				<?php while (have_rows('top_tab_content')) : the_row(); ?>
+					<?php if (get_sub_field('tab_title')){ ?>
+						<div class="top-tab-inner">
+							<a href="#<?php echo the_sub_field('tab_id'); ?>"><?php echo the_sub_field('tab_title'); ?></a>
 						</div>
-						</section>
-			<?php endwhile;  ?>			
-			</div>	
-		</section>
-	<?php endif; 
-	/* End Product Features Sections */
-
+					<?php } ?>
+				<?php endwhile;	 ?>
+			</div>
+		</div>
+	<?php endif;
+	/* End Top Tab Section block */	
+	
 	/* Manage content block */
-	if (have_rows('manage_content')) :
-	$logo_slider_cnt = 1;
+	if (have_rows('manage_content')) :		
+		$logo_slider_cnt = 1;
 		while (have_rows('manage_content')) : the_row(); 
-			
+			if (get_sub_field('top_tab_title')){
+				//$slug = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '', get_sub_field('top_tab_title')));
+				$slugid = 'id="'.get_sub_field('top_tab_title').'"';
+			} else {
+				$slugid = '';
+			}
 			/* Default Content Start */
 			if (get_row_layout() == 'default_content') : ?>
-				<section class="curved-section default-content <?php echo the_sub_field('default_section_custom_class'); ?>">
+				<section class="curved-section default-content <?php echo the_sub_field('default_section_custom_class'); ?>" <?php echo $slugid; ?>>
 					 <?php //if (get_sub_field('default_page_content')) : ?>
 						<div class="container section-container-padding">
 							<div class="title-heading">
@@ -252,7 +197,7 @@
 			
 			/* Icon Box Start */
 			if (get_row_layout() == 'icon_box') : ?>
-				<section class="<?php echo the_sub_field('icon_box_custom_class'); ?>">
+				<section class="<?php echo the_sub_field('icon_box_custom_class'); ?>" <?php echo $slugid; ?>>
 					<div class="container">
 						<div class="title-heading">
 							<?php if (get_sub_field('title')){ ?>
@@ -325,14 +270,16 @@
 			/* Icon Box end */
 			
 			/* Testimonial Start */
-			if (get_row_layout() == 'testimonials') : 
-				echo do_shortcode('[testimonials]');
-		    endif; 
+			if (get_row_layout() == 'testimonials') :  ?>
+				<div <?php echo $slugid; ?>>
+					<?php echo do_shortcode('[testimonials]');  ?>
+				</div>
+		    <?php endif; 
 			/* Testimonial End */
 			
 			/* Client Logo section Start */ 
 			if (get_row_layout() == 'client_logos') : ?>
-				<section class="<?php echo the_sub_field('client_logos_section_custom_class'); ?>">
+				<section class="<?php echo the_sub_field('client_logos_section_custom_class'); ?>" <?php echo $slugid; ?>>
 					<div class="container">
 						<div class="title-heading">
 							<?php if (get_sub_field('title')){ ?>
@@ -403,15 +350,19 @@
 			/* Client Logo section End */
 			
 			/* Insights Start */
-			if (get_row_layout() == 'insights') : 
-				echo do_shortcode('[insights]');
-		    endif; 
+			if (get_row_layout() == 'insights') :  ?>
+				<div <?php echo $slugid; ?>>
+					<?php echo do_shortcode('[insights]'); ?>
+				</div>
+		    <?php endif; 
 			/* Insights End */
 			
 			/* Case Studies Start */
-			if (get_row_layout() == 'case_studies') : 
-				echo do_shortcode('[case_studies]');
-		    endif; 
+			if (get_row_layout() == 'case_studies') : ?>
+				<div <?php echo $slugid; ?>>
+					<?php echo do_shortcode('[case_studies]');  ?>
+				</div>
+		    <?php endif; 
 			/* Case Studies End */
 			
 			/* Two Column Layout Start */
@@ -422,7 +373,7 @@
 					$clsl = '';
 				}
 			?>
-				<section class="two-colum-layout <?php echo $clsl; ?> <?php echo the_sub_field('two_column_section_custom_class'); ?>">
+				<section class="two-colum-layout <?php echo $clsl; ?> <?php echo the_sub_field('two_column_section_custom_class'); ?>" <?php echo $slugid; ?>>
 					<div class="container">
 						<div class="title-heading">
 						<?php if (get_sub_field('title')){ ?>
@@ -469,7 +420,7 @@
 			
 			/* Zig Zag Section Start */
 			if (get_row_layout() == 'zig_zag_section') : ?>
-				<section class="why-cygnature <?php echo the_sub_field('zig_zag_section_custom_class'); ?>">
+				<section class="why-cygnature <?php echo the_sub_field('zig_zag_section_custom_class'); ?>" <?php echo $slugid; ?>>
 					<div class="container">
 						<div class="title-heading">
 							<?php if (get_sub_field('title')){ ?>
@@ -529,7 +480,7 @@
 			/* Contact Us Button Start */
 			if (get_row_layout() == 'contact_us_button') : ?>
 				<?php if (get_sub_field('contact_us')){ ?>
-					<section class="CTA-btn text-center bg-white pb-5 <?php echo the_sub_field('contact_us_button_section_custom_class'); ?>">
+					<section class="CTA-btn text-center bg-white pb-5 <?php echo the_sub_field('contact_us_button_section_custom_class'); ?>" <?php echo $slugid; ?>>
 						<div class="container">
 							<div class="row">
 								<div class="col-md-12">
@@ -545,7 +496,7 @@
 			/* Three Column Layout Start */
 			if (get_row_layout() == 'three_column_layout') :
 			?>
-				<section class="esignature-solution <?php echo the_sub_field('three_column_section_custom_class'); ?>">
+				<section class="esignature-solution <?php echo the_sub_field('three_column_section_custom_class'); ?>" <?php echo $slugid; ?>>
 					<div class="container">
 						<div class="title-heading">
 							<?php if (get_sub_field('title')){ ?>
@@ -594,7 +545,7 @@
 			
 			/* Background Image with Content section Start */
 			if (get_row_layout() == 'background_image_with_content') : 	?>
-				<section class="background_image_with_content <?php echo the_sub_field('background_image_with_content_custom_class'); ?>" <?php if (get_sub_field('background_image')): ?> style="background-image:url('<?php echo get_sub_field('background_image'); ?>')" <?php endif; ?> >
+				<section class="background_image_with_content <?php echo the_sub_field('background_image_with_content_custom_class'); ?>" <?php if (get_sub_field('background_image')): ?> style="background-image:url('<?php echo get_sub_field('background_image'); ?>')" <?php endif; ?> <?php echo $slugid; ?> >
 					<?php if (get_sub_field('title')){ ?>
 						<div class="tag-title">
 							<?php echo the_sub_field('tag_title'); ?>
@@ -628,7 +579,7 @@
 				
 			/* Icon Box Slider Start */
 			if (get_row_layout() == 'icon_box_slider') : ?>
-				<section class="<?php echo the_sub_field('icon_box_custom_class'); ?>">
+				<section class="<?php echo the_sub_field('icon_box_custom_class'); ?>" <?php echo $slugid; ?>>
 					<div class="container">
 						<div class="title-heading">
 							<?php if (get_sub_field('title')){ ?>
@@ -731,7 +682,7 @@
 			
 			/* Accordion code start */  
 			if (get_row_layout() == 'accordion') : ?> 
-			<section class="accordion_section faq-accordian">
+			<section class="accordion_section faq-accordian" <?php echo $slugid; ?>>
 				<div class="container">
 					<div class="title-heading">
 						<?php if (get_sub_field('accordion_image')){ ?>
@@ -785,8 +736,18 @@
 			
 			/* Offering Tab code start */  
 			if (get_row_layout() == 'offering_tab') : ?> 
-			<section class="offering-tab" >
+			<section class="offering-tab" <?php echo $slugid; ?>>
 				<div class="container">
+					<div class="title-heading">
+						<?php if (get_sub_field('offering_tab_title')){ ?>
+							<h2><?php echo the_sub_field('offering_tab_title'); ?>
+								<span class="heading-border"></span>
+							</h2>
+						<?php } ?>
+						<?php if (get_sub_field('offering_tab_sub_title')){ ?>
+							<h3><?php echo the_sub_field('offering_tab_sub_title'); ?></h3>
+						<?php } ?>
+					</div>	
 					<?php if (have_rows('tabs')) : ?>					
 							<div class="row">
 								<?php while (have_rows('tabs')) : the_row();	?>								
@@ -804,7 +765,8 @@
 													</h2>
 												<?php } ?>		
 											</div>
-											<?php $c = str_replace(' ', '_', get_sub_field('tab_title'));
+											<?php //$c = str_replace(' ', '_', get_sub_field('tab_title'));
+											$c = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '_', get_sub_field('tab_title')));
 											if (have_rows('inner_content')) : 
 											$cm=1;
 											?>
@@ -843,7 +805,7 @@
 			
 			/* Global Address Section Start */
 			if (get_row_layout() == 'global_address') : ?>
-				<section class="address-cls <?php echo the_sub_field('global_address_class'); ?>">
+				<section class="address-cls <?php echo the_sub_field('global_address_class'); ?>" <?php echo $slugid; ?>>
 					<div class="container">
 						<?php if (have_rows('address')) : ?>
 						<div class="address-content pt-4">
@@ -911,7 +873,7 @@
 			
 			/* Our Solution Section Start */
 			if (get_row_layout() == 'our_solution_section') : ?>
-				<section class="our-solution-cls <?php echo the_sub_field('our_solution_custom_class'); ?>">
+				<section class="our-solution-cls <?php echo the_sub_field('our_solution_custom_class'); ?>" <?php echo $slugid; ?>>
 					<div class="container">
 						<div class="row">
 							<div class="col-md-12">

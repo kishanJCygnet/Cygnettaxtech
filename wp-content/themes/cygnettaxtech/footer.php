@@ -33,14 +33,14 @@
 			<?php } ?>
 			<?php //if ( is_front_page() ) : ?>
 				<div class="technology-move">
-					<div class="text-center"> <img src="<?php echo THEME_PATH; ?>/images/finance.png" alt="" /></div>
+					<div class="text-center"> <img src="<?php echo THEME_PATH; ?>images/phraise.png" alt="" /></div>
 				</div>
 			<?php //endif; ?>
 			</div>
 		</div>
 	</section>
     <!-- Footer -->
-    <footer class="footer" style="background-image:url('<?php echo THEME_PATH; ?>/images/footer-curve.png')">
+    <footer class="footer" style="background-image:url('<?php echo THEME_PATH; ?>images/footer-curve.png')">
     <div class="container">   
 	<div class="footer-container">
             <div class="footer-contents d-flex justify-content-end">
@@ -77,7 +77,7 @@
                         <address
                             class="copyright-text d-inline-flex mb-2 mb-md-0 justify-content-center justify-content-md-end fw-medium">
                             Copyright – <?php echo date('Y'); ?> <?php echo the_field('copyright_text', 'option'); ?> </address>
-                        <div class="menu-footer-links-container">
+                        <div class="menu-footer-links-container" style="display:none;">
 						<?php wp_nav_menu(array(
 							'theme_location'  => 'footer_menu',
 							'menu_class' => 'footer-links ps-0 d-inline-flex list-none mb-0 justify-content-center justify-content-md-end',
@@ -85,7 +85,7 @@
 							'echo'            => true
 						  )); ?>
                         </div>
-						<div class="footer-sub-menu">
+						<div class="footer-sub-menu" style="display:none;">
 							<?php wp_nav_menu(array(
 								'theme_location'  => 'footer',
 								'menu_class' => 'footer-links ps-0 d-inline-flex list-none mb-0 justify-content-center justify-content-md-end',
@@ -144,6 +144,17 @@
 			});
 
 		});
+		
+		/* Top Tab Onclick event for active class */
+		jQuery(".top-tab-main-section div a").click(function() {  
+			jQuery('.top-tab-main-section div').removeClass('tab-active');
+			jQuery(this).parent().addClass("tab-active");
+		});
+		
+		/*function top_tab_click(varid){
+			jQuery('.top-tab-main-section a').removeClass('tab-active');
+			jQuery('#top_tab_'+varid).addClass('tab-active');
+		}*/
 	</script>
 	
 	
@@ -228,7 +239,7 @@
 			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 		  </div>
 		  <div class="modal-body">
-			<?php echo do_shortcode("[contact-form-7 id='25308' title='Download form']"); ?>
+			<?php echo do_shortcode("[contact-form-7 id='26304' title='Download form']"); ?>
 		  </div>
 		</div>
 	  </div>

@@ -27,7 +27,7 @@ get_header();
 	</section>
 <?php /* End banner content */	?>
 
-
+<section class="bg-light">
 <?php
 if ( have_posts() ) {
 	?>
@@ -109,5 +109,7 @@ if ( have_posts() ) {
 } else {
 	get_template_part( 'template-parts/content/content-none' );
 }
-
+?>
+</section>
+<?php
 get_footer();
