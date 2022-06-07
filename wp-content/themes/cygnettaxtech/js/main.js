@@ -419,5 +419,18 @@ else if(scroll >= 1200) {
       }, "slow");
    });
 
+   if(jQuery(window).width() < 992){
+    jQuery('.mega-menu .sub-menu li a').click(function(){
+      jQuery('.mega-menu .sub-menu li').removeClass('active-ms-menu');
+      jQuery(this).parent('li').addClass('active-ms-menu');
+    });
+   }
+   $('.grid-border-section.center-slider .icon-slider').owlCarousel({
+    center: true,  
+   });
+
+
+   
+
 
 
