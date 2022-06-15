@@ -142,18 +142,61 @@
 	
 	/* Top Tab Section block */
 	if (have_rows('top_tab_content')) :  ?>
-		<div class="top-tab <?php echo the_field('top_tab_section_class'); ?>"> 
+		<!--<div class="top-tab <?php echo the_field('top_tab_section_class'); ?>"> 
 			<div class="top-tab-label"><?php echo the_field('tab_label'); ?> :</div>
 			<div class="top-tab-main-section">
-				<?php while (have_rows('top_tab_content')) : the_row(); ?>
-					<?php if (get_sub_field('tab_title')){ ?>
+				<?php $o = 1;
+				while (have_rows('top_tab_content')) : the_row(); ?>
+					<?php /*if (get_sub_field('tab_title')){ ?>
 						<div class="top-tab-inner">
 							<a href="#<?php echo the_sub_field('tab_id'); ?>"><?php echo the_sub_field('tab_title'); ?></a>
 						</div>
-					<?php } ?>
-				<?php endwhile;	 ?>
+					<?php }*/ ?>
+					<div class="top-tab-inner">
+						<a href="#" data-bs-toggle="modal" data-bs-target="#toptabModal" data-tagtoptab="<?php echo the_sub_field('tab_id'); ?>"><?php echo the_sub_field('tab_title'); ?></a>
+					</div>
+				<?php $o++; 
+				endwhile;	 ?>
 			</div>
 		</div>
+		
+		
+		<div class="modal fade" id="toptabModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="toptabModalLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-lg">
+			<div class="modal-content">
+			  <div class="modal-body">
+				<div class="text-end"><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+				<div class="bodycontent">								  
+				  
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+		<script>
+			
+		  jQuery(document).ready(function() {
+			autoPlaytoptabModal();
+		  });
+		  function autoPlaytoptabModal() {
+			  var triggerOpen = jQuery("body").find('[data-tagtoptab]');
+			  triggerOpen.click(function() {
+				var theModal = jQuery(this).data("bs-target"),
+				  toptabSRC = jQuery(this).attr("data-tagtoptab");
+				  //finalcontent = jQuery('#'+toptabSRC).html();
+				  finalcontent = jQuery('#'+toptabSRC)[0].outerHTML;
+				  //alert(finalcontent);
+				  //console.log(jQuery('.bodycontent').html());
+				  jQuery('.bodycontent').html(finalcontent);
+				  jQuery(theModal + ' button.btn-close').click(function() {
+				});
+			  });
+			}
+		</script>-->
+		
+		
+		
+		
 	<?php endif;
 	/* End Top Tab Section block */	
 	

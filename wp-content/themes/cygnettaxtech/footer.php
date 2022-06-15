@@ -157,6 +157,24 @@
 			jQuery('.top-tab-main-section a').removeClass('tab-active');
 			jQuery('#top_tab_'+varid).addClass('tab-active');
 		}*/
+		
+		/* jquery for home page form */
+		jQuery(document).ready(function(){
+			jQuery("#customize > span:first-child input").click(function() { 
+				var checkbox_val = jQuery("input[type=checkbox][name=customize]:checked").val();				
+				jQuery('html, body').animate({
+					scrollTop: jQuery("#taxtech-home-form").offset().top-100
+				  }, 800);
+			});			
+			jQuery("#customize > span:last-child input").click(function() { 
+				var checkbox_val = jQuery("input[type=checkbox][name=customize]:checked").val();
+				jQuery('html, body').animate({
+					scrollTop: jQuery("#taxtech-terms-cond").offset().top-100
+				  }, 800);
+			});
+		});
+		/* end jquery for home page form */
+		
 	</script>
 	
 	
