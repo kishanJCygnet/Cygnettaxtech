@@ -425,9 +425,12 @@ else if(scroll >= 1200) {
       jQuery(this).parent('li').addClass('active-ms-menu');
     });
    }
-   $('.grid-border-section.center-slider .icon-slider').owlCarousel({
+   jQuery('.grid-border-section.center-slider .icon-slider').owlCarousel({
     center: true,  
    });
+   $('.top-tab .top-tab-main-section .top-tab-inner a').click(function(){
+       jQuery('.modal .icon-box').css("visibility", "visible !important");
+      });
 
 
    
