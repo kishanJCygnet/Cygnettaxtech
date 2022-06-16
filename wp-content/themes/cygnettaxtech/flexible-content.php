@@ -142,32 +142,47 @@
 	
 	/* Top Tab Section block */
 	if (have_rows('top_tab_content')) :  ?>
-		<!--<div class="top-tab <?php echo the_field('top_tab_section_class'); ?>"> 
-			<div class="top-tab-label"><?php echo the_field('tab_label'); ?> :</div>
+		<div class="top-tab <?php echo the_field('top_tab_section_class'); ?>"> 
+			<!--<div class="top-tab-label"><?php echo the_field('tab_label'); ?> :</div>-->
 			<div class="top-tab-main-section">
-				<?php $o = 1;
-				while (have_rows('top_tab_content')) : the_row(); ?>
+				<?php while (have_rows('top_tab_content')) : the_row(); ?>
 					<?php /*if (get_sub_field('tab_title')){ ?>
 						<div class="top-tab-inner">
 							<a href="#<?php echo the_sub_field('tab_id'); ?>"><?php echo the_sub_field('tab_title'); ?></a>
 						</div>
 					<?php }*/ ?>
 					<div class="top-tab-inner">
-						<a href="#" data-bs-toggle="modal" data-bs-target="#toptabModal" data-tagtoptab="<?php echo the_sub_field('tab_id'); ?>"><?php echo the_sub_field('tab_title'); ?></a>
+						<a href="#" data-bs-toggle="modal" data-bs-target="#toptabModal" data-tagtoptab="<?php echo the_sub_field('tab_id'); ?>">
+							<?php $extension = pathinfo(get_sub_field('top_tab_icon'), PATHINFO_EXTENSION);
+								if($extension == 'svg'){
+									$top_tab_icon = get_sub_field('top_tab_icon');
+									$stream_opts = [
+										"ssl" => [
+											"verify_peer"=>false,
+											"verify_peer_name"=>false,
+										]
+									];														 
+									echo file_get_contents($top_tab_icon, false, stream_context_create($stream_opts));
+								} else { ?>
+									<img src="<?php echo the_sub_field('top_tab_icon'); ?>" alt="<?php echo the_sub_field('tab_title'); ?>" />
+							<?php } ?>
+							<span><?php echo the_sub_field('tab_title'); ?></span>
+						</a>
 					</div>
-				<?php $o++; 
-				endwhile;	 ?>
+				<?php endwhile;	 ?>
 			</div>
 		</div>
 		
 		
 		<div class="modal fade" id="toptabModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="toptabModalLabel" aria-hidden="true">
-		  <div class="modal-dialog modal-lg">
+		  <div class="modal-dialog modal-fullscreen modal-dialog-scrollable">
 			<div class="modal-content">
-			  <div class="modal-body">
+			<div class="modal-header">
+				<img src="<?php echo THEME_PATH; ?>images/tattechlogo.svg" alt="<?php echo the_field('logo_title', 'option'); ?>">
 				<div class="text-end"><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
-				<div class="bodycontent">								  
-				  
+			</div>
+			  <div class="modal-body">
+				<div class="bodycontent">				  
 				</div>
 			  </div>
 			</div>
@@ -192,7 +207,7 @@
 				});
 			  });
 			}
-		</script>-->
+		</script>
 		
 		
 		
@@ -249,7 +264,7 @@
 								</h2>
 							<?php } ?>
 							<?php if (get_sub_field('sub_title')){ ?>
-								<h3 class="wow fadeInUp" data-wow-delay=".5s" data-wow-offset="50"><?php echo the_sub_field('sub_title'); ?></h3>
+								<h3 class="wow fadeInUp" data-wow-delay=".5s"><?php echo the_sub_field('sub_title'); ?></h3>
 							<?php } ?>
 						</div>
 						<?php 
@@ -641,7 +656,7 @@
 								<div class="row icon-box-list">
 									<div class="owl-carousel icon-slider">
 										<?php while (have_rows('icon_box_content')) : the_row(); ?>
-											<div class="icon-box wow fadeInUp" data-wow-delay="<?php echo $s; ?>s" data-wow-offset="50">
+											<div class="icon-box wow fadeInUp" data-wow-delay="<?php echo $s; ?>s">
 												<?php if (get_sub_field('icon_box_image')){ ?>
 												<div class="icon">
 												<?php $extension = pathinfo(get_sub_field('icon_box_image'), PATHINFO_EXTENSION);
