@@ -178,7 +178,8 @@
 		  <div class="modal-dialog modal-fullscreen modal-dialog-scrollable">
 			<div class="modal-content">
 			<div class="modal-header">
-				<img src="<?php echo THEME_PATH; ?>images/tattechlogo.svg" alt="<?php echo the_field('logo_title', 'option'); ?>">
+				<?php $header_logo_url = get_field("desktop_logo", "option"); ?>
+				<img src="<?php echo $header_logo_url; ?>" alt="<?php echo the_field('logo_title', 'option'); ?>">
 				<div class="text-end"><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
 			</div>
 			  <div class="modal-body">
@@ -647,6 +648,11 @@
 							<?php } ?>
 							<?php if (get_sub_field('sub_title')){ ?>
 								<h3><?php echo the_sub_field('sub_title'); ?></h3>
+							<?php } ?>
+						</div>
+						<div class="icon-box-top-image">
+							<?php if (get_sub_field('icon_box_top_image')){ ?>
+								<img src="<?php echo the_sub_field('icon_box_top_image'); ?>" alt="<?php echo the_sub_field('title'); ?>">
 							<?php } ?>
 						</div>
 						<?php 
