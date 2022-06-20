@@ -1647,6 +1647,9 @@ section{
     margin-top: 100px;
     width: 100%;
 } 
+.banner-content.half-banner .banner-inner-content .text-content{
+    margin-top: 0;
+}
 .banner-content .banner-inner-content .text-content h1{
     font-size: 54px;
     line-height: 1.4;
@@ -2420,7 +2423,7 @@ padding: 10px 30px;
 }
 .accordion-button:not(.collapsed)::after {
     background-image: url('./images/accodiaon-icon-top.svg');
-    transform: rotate(-180deg);
+    transform: rotate(0deg);
 }
 .offering-tab .list-tabs .list-item  .description{
     font-size: 14px;
@@ -2449,6 +2452,11 @@ padding: 10px 30px;
 
 .our-solutions-offer .icon-box-list .icon-box-inner .icon{
     margin-bottom: 20px;
+}
+.our-solutions-offer .icon-box-list .icon-box-inner .icon svg{
+    width: 65px;
+    height: 65px;
+    fill: #009999;
 }
 .our-solutions-offer .icon-box-list .icon-box-inner h3{
     font-size: 16px;
@@ -2568,7 +2576,7 @@ padding: 10px 30px;
 }
 /* Form text tech content */
 .taxtech-form-content{
-    margin-bottom: 55px;
+    margin-bottom: 30px;
 }
 .taxtech-form-content br{
     display: none;
@@ -2738,7 +2746,6 @@ padding: 10px 30px;
 .count-section-main-inner {      
     background-color: #fff;
     display: flex;   
-
     right: 0;
     justify-content: space-between;
     text-align: center;
@@ -2747,8 +2754,7 @@ padding: 10px 30px;
     box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
     /* background-image: url('./images/count-arrow.png'); */
     background-position: center center;
-    background-repeat: no-repeat;
-    
+    background-repeat: no-repeat;    
 }
 .count-section-main-inner  > div{
     flex: 1;
@@ -3422,6 +3428,9 @@ padding: 10px 30px;
 .wpcf7-response-output{
     font-size: 14px;
 }
+.top-tab {
+    display: none !important;
+}
 .top-tab .top-tab-main-section{
     position: fixed;
     right: 0;
@@ -3657,6 +3666,134 @@ padding: 10px 30px;
     animation-delay: 0s !important;  
     animation-name: fadeInUp !important ;
 }
+.customize-option .wpcf7-not-valid-tip{
+    left: 113%;
+    top: 0;
+}
+
+video {
+    width: 800px;
+    border-radius: 14px;
+    margin-top: 50px;
+    max-width: 100%;
+  }
+  .discover-more > div{
+   flex-wrap: wrap;
+  }
+  .discover-more a{
+    margin: 10px;
+    min-width: 190px;    
+  }
+  .banner-content.half-banner .banner-inner-content{
+    display: flex;
+    align-items: center;
+  }
+   /* .e-invoice-genration .container{
+        max-width: 100% !important;
+    } */
+    .ei-genration{
+        display: flex;
+        justify-content: space-between;
+        margin: 0 -12px;
+        align-items: flex-start;
+    }
+    .ei-genration br{
+        display: none;
+    }
+    .ei-genration .col-left,
+    .ei-genration .col-right{
+        /* background: transparent linear-gradient(179deg, #3CB4E6 0%, #009999 0%, #0F3764 100%) 0% 0% no-repeat padding-box; */
+        color: #0D0D0D;
+        width: 49%;
+    }
+    .ei-genration .col-right{
+    
+        border-top-left-radius:50px ;
+        border-bottom-left-radius:50px ;
+    }
+    .ei-genration .col-left{
+        border-top-right-radius:50px ;
+        border-bottom-right-radius:50px ;
+    }
+    .ei-genration h2{
+        text-align: center;
+        font-weight: bold;
+        font-size: 22px;
+        margin-bottom: 20px;
+        background-color: #0099991a;
+        color: #0C3761;
+        padding: 15px;
+        border-radius: 10px;    
+    }
+    .ei-genration ul{
+        list-style-type:none;
+        padding-left: 0;
+    }
+    .ei-genration ul li .img{
+        position: absolute;
+        left: 20px;
+        top: 12px;
+        background-color: #03848e;
+        padding: 9px;
+        border-radius: 50%;
+    }
+    .ei-genration ul li .img img,
+    .ei-genration ul li .img svg{
+        width: 45px;
+        height: 45px;
+        fill: #fff;
+    }
+    .ei-genration ul li{
+        margin-bottom: 20px;
+        position: relative;
+        box-shadow: 0px 2px 25px rgb(0 0 0 / 10%);
+        padding: 15px;
+        border-radius: 10px;
+        padding-left: 100px;
+        min-height: 148px;
+    }
+    .ei-genration ul li:last-child{
+        margin-bottom: 0;
+    }
+    .ei-genration ul li h3{
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 5px;
+    }
+    .ei-genration ul li p{
+        font-size: 16px;
+        margin-bottom: 0px;
+    }
+    .ei-genration ul li .btn{
+        font-size: 12px;
+        background-color: #009999;
+        color: #ffffff;
+        padding: 2px 10px;
+        line-height: 2;
+    }
+    .table{
+        font-size: 14px;
+        margin-bottom: 0;
+        border-radius: 20px;
+        overflow: hidden;
+        background-color: #fff;
+    }
+    .table  tr > td:first-child{
+        border-left: 0; 
+    }
+    .table  tr > td:last-child{
+        border-right: 0;
+    }
+    .table  tr{
+        display: flex;
+        flex: 1;
+    }
+    .table  tr td{
+        flex: 1;
+    }
+    .overFlow-hide{
+        overflow: hidden;
+    }
 @media only screen and (max-width: 1400px) {
     .primary-navigation .menu-wrapper li.menu-item{
         padding: 0 5px !important;
@@ -3727,6 +3864,17 @@ padding: 10px 30px;
     .primary-navigation > .primary-menu-container ul > li.mega-menu .sub-menu-toggle[aria-expanded=false] ~ ul,
     .primary-navigation > .primary-menu-container ul > li.mega-menu .sub-menu-toggle[aria-expanded=true] ~ ul{
         padding: 0px 25px 30px !important
+    }
+    .form-content .form-check.whatup-check.terms-condition-check{
+        padding-bottom: 15px;
+    }
+    .form-content .form-check.whatup-check.terms-condition-check .wpcf7-not-valid-tip{
+      position: static;
+      margin-top: 28px;
+    }
+    .form-content .form-check.whatup-check.terms-condition-check .wpcf7-list-item label{
+        position: absolute;
+        top: 0;
     }
 }
 @media only screen and (max-width: 1200px) {
@@ -3991,11 +4139,12 @@ padding: 10px 30px;
             position: fixed !important;
             left: 0 !important;
             right: 0 !important;
-            top: 135px !important;
+            top: 115px !important;
             bottom: 0 !important;
             background: #fff !important;
             z-index: 9999 !important;
             overflow: auto !important;
+            display: block !important;
             
     }
     .primary-navigation .menu-wrapper li.menu-item{
@@ -4226,6 +4375,7 @@ padding: 10px 30px;
 
     .testimonial-data-section .testimonial .client-details {
         margin-right: 0;
+        margin-top: 20px;
     }
 
     .testimonial-data-section .testimonial .client-details img {
@@ -4323,37 +4473,36 @@ padding: 10px 30px;
     .top-tab {
         display: none;
     }
-    .pt-90 {
-        padding-top: 20px !important;
-        padding-bottom: 20px !important;
-    }
+   
     .count-section-main.benifits-count .count-section-main-inner, 
     .banner-content.inner-section-banner .count-section-main .count-section-main-inner {
         padding: 20px 15px;
         flex-wrap: wrap;
         justify-content: space-between;
     }
-    .count-section-main{
-        position: static;
-    }
+   
     .banner-content.inner-section-banner{
         flex-wrap: wrap;
     }
     .banner-content.inner-section-banner .banner-inner-content{
         min-height: 350px;
     }
+    /* .count-section-main{
+        position: static;
+    } */
     .count-section-main.benifits-count .count-inner, 
     .banner-content.inner-section-banner .count-section-main .count-inner{
-        width: 32%;
+        width: 31%;
         padding: 15px;
         border-radius: 10px;
         text-align: center;
         border-right: 0;
         border: 1px solid #00000017;
+        margin: 10px 8px;
     }
-    .count-section-main-inner > div{
+    /* .count-section-main-inner > div{
         flex: unset;
-    }
+    } */
     .solution-tab-content{
         flex-wrap: wrap;
     }
@@ -4390,8 +4539,30 @@ padding: 10px 30px;
     .primary-navigation > div > .menu-wrapper > li.mega-menu > .sub-menu > li > a {
         padding: 10px 10px !important;
     }
+    .form-content .form-check.whatup-check.terms-condition-check .wpcf7-list-item label{
+        position: static;
+    }
+    .form-content .form-check.whatup-check.terms-condition-check .wpcf7-not-valid-tip{
+        margin-top: 0;
+    }
+    .count-section-main{
+        max-width: 100%;
+        position: static;
+        margin: auto;
+        background: #fff;
+        padding: 15px 30px 15px;
+        border-bottom: 1px solid #f2f2f2;
+        width: 100%;
+    }
+    .count-section-main-inner > div {
+        flex: unset;
+    }
   }
 @media only screen and (max-width: 768px) {
+    .pt-90 {
+        padding-top: 20px !important;
+        padding-bottom: 20px !important;
+    }
   .banner-content .text-content{
       text-align: center;
   }
@@ -4403,7 +4574,7 @@ padding: 10px 30px;
         width: 100%;
     }
     .title-heading h2 {
-        font-size: 20px;    
+        font-size: 24px;    
         line-height: 1.4;    
     }
     
@@ -4437,6 +4608,9 @@ padding: 10px 30px;
            min-height: 480px;
            padding-bottom: 40px;
        }
+       .banner-content.half-banner .banner-inner-content{
+            padding-bottom: 0px;
+        }
        .banner-content .text-content{
            margin-top: 30px;
        }
@@ -4540,10 +4714,10 @@ padding: 10px 30px;
         right: -50px;
     }
     .testimonial-data-section.owl-controls .owl-nav button.owl-next {
-        right: -31px;
+        right: -35px;
     }
     .testimonial-data-section.owl-controls .owl-nav button.owl-prev {
-        left: -31px;
+        left: -35px;
     }
     .grid-border-section .owl-item.active::before {
         display: none;
@@ -4583,23 +4757,19 @@ padding: 10px 30px;
         width: 50% !important;
         margin-bottom: 15px;
     }
-    .count-section-main{
-        max-width: 100%;
-        position: static;
-        margin: auto;
-        background: #fff;
-        padding: 15px 30px 15px;
-        border-bottom: 1px solid #e8d7d7;
-    }
+  
     .container{
         max-width: 100% !important;
     }
     .count-section-main-inner{
-        flex-wrap: wrap;        
+        flex-wrap: wrap;      
+        padding: 0px 0px 20px;  
+        box-shadow: none;
     }
     .count-section-main .count-inner {
-        width: 50%;
+        width: 25%;
         margin: 15px 0;
+        padding: 0 7px;
     } 
     .banner-content{
         flex-wrap: wrap;      
@@ -4614,6 +4784,7 @@ padding: 10px 30px;
     .banner-content.home-banner .banner-inner-content{
         min-height: 400px;
         display: flex;
+        padding-top: 36px;
     }
     .pt-90 {
         padding-top: 10px !important;
@@ -4654,7 +4825,7 @@ padding: 10px 30px;
         width: 25px;
         height: 25px;
         background-repeat: no-repeat;
-        top: 10px;
+        top: calc(50% - 12px);
     }
     .architect-help.two-colum-layout ul li{
         font-size: 16px;
@@ -4669,7 +4840,7 @@ padding: 10px 30px;
         flex-wrap: wrap;
     }
     .testimonial-data-section .testimonial{
-        padding: 15px 20px;
+        padding: 15px 35px;
     }
     .address-inner-content{
         width: 100%;
@@ -4734,7 +4905,7 @@ padding: 10px 30px;
         font-size: 32px !important;
     }
     .count-section-main{
-        padding: 15px 0px 15px;
+        padding: 15px 15px 15px;
     }
     .solution-tab-content .tab-content{
         margin-left: 0;
@@ -4745,9 +4916,7 @@ padding: 10px 30px;
    .service-section .icon-box-list > div:last-child{
        margin-bottom: 30px;
    }
-   .form-content .form-check.whatup-check.terms-condition-check{
-       padding-bottom: 0;
-   }
+
    .form-content .form-check.whatup-check.terms-condition-check .wpcf7-not-valid-tip {
         bottom: 3px;
         padding-left: 10px;
@@ -4764,7 +4933,11 @@ padding: 10px 30px;
     .banner-content .banner-inner-content .text-content{
         margin-top: 0;
     }
-    .two-colum-layout .two-colum-content > div.col-right{ padding-right: 0; }
+    .two-colum-layout .two-colum-content > div.col-right{ 
+        padding-right: 0;
+        padding-top: 20px;
+        padding-bottom: 20px;
+     }
     .footer-logo img {
         width: 240px;
         margin-bottom: 0px;
@@ -4772,7 +4945,7 @@ padding: 10px 30px;
     .banner-overlay-section p {
         font-size: 14px;
      }
-   
+    
      .service-banner .count-section-main.benifits-count .count-inner h2{
         color: #000 !important;
      }
@@ -4791,6 +4964,48 @@ padding: 10px 30px;
      .banner-overlay-section {
         padding: 40px 0;
     }
+    .banner-content .banner-inner-content .text-content h3 {
+        font-size: 38px;
+        margin-bottom: 0;
+    }
+    .taxtech-form-content{
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+    .solution-tab-content .nav.nav-pills .nav-link .title{
+        line-height: 1.2;
+    }
+    .customize-option{
+        flex-wrap: wrap;
+    }
+    .customize-option .customize .wpcf7-form-control .first{
+        margin-left: 0;
+    }
+    .customize-option .wpcf7-not-valid-tip{
+        width: 160px;
+        top: 25px;
+        padding-left: 0;
+    }
+    .count-section-main.benifits-count .count-inner, .banner-content.inner-section-banner .count-section-main .count-inner{
+        width: 100%;
+    }
+    .count-section-main-inner > div{
+        flex: unset;
+     }
+     .owl-controls .icon-slider .owl-nav button span, .owl-controls .owl-nav button span{
+        height: 30px;
+        width: 30px;
+     }
+     .count-section-main.benifits-count .count-section-main-inner, .banner-content.inner-section-banner .count-section-main .count-section-main-inner{
+        padding: 20px 0px;
+     }
+     .solution-tab-content .nav.nav-pills .nav-link{
+        padding-top: 15px;
+     }
+     .owl-controls.center-slider .icon-box-list:not(.service-section.owl-controls .icon-box-list){
+        width: calc(100% - 0px);
+     }
+
 }
 @media only screen and (max-width: 576px) {
     .offering-tab .col-md-3{
@@ -4820,9 +5035,9 @@ padding: 10px 30px;
     }
     .taxtech-form-content .taxtech-list .item ul li span.wpcf7-list-item,
     .taxtech-form-content .taxtech-list .item.databases .wpcf7-form-control .wpcf7-list-item {
-        width: 47%;
+        width: 46%;
         margin-bottom: 10px !important;
-    }
+    }   
     .two-colum-layout.tax-tech-architect .content-title-heading h2, .building-block.two-colum-layout .content-title-heading h2{
         font-size: 24px;
     }
@@ -4844,9 +5059,7 @@ padding: 10px 30px;
         max-width: 100%;
         min-width: 100%;
     }
-    .count-section-main.benifits-count .count-inner, .banner-content.inner-section-banner .count-section-main .count-inner{
-        width: 100%;
-    }
+ 
     .solution-tab-content .nav.nav-pills .nav-link p{
         font-size: 14px;
     }
@@ -4856,7 +5069,10 @@ padding: 10px 30px;
     .testimonial-data-section .testimonial{
         width: calc(100% - 0px);
     }
-  
+    .discover-more a{
+        margin: 10px 5px;
+        min-width: 162px;
+    }
     
 }
 
@@ -4926,10 +5142,20 @@ padding: 10px 30px;
      .primary-navigation > div > .menu-wrapper{
          display: block !important;
      }
+     .count-section-main .count-section-title h2{
+        font-size: 20px;
+     }
+     .count-section-main .count-inner{
+        width: 50%;
+     }
+   
+     .count-section-main .count-inner:nth-child(2){
+        border-right: 0;
+     }
 }
 @media only screen and (max-width: 375px) {
 .navbar-brand img{
-    width: 120px;
+    width: 140px;
 
 }
 .navbar-brand{
@@ -4959,4 +5185,3 @@ h1{
     font-size: 32px;
 }
 }
-

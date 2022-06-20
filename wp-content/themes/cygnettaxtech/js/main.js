@@ -427,10 +427,32 @@ else if(scroll >= 1200) {
    }
    jQuery('.grid-border-section.center-slider .icon-slider').owlCarousel({
     center: true,  
+    responsive : {
+      0 : {
+        items:1,
+      },
+      991: {
+        items:3,
+      },
+    }
    });
    $('.top-tab .top-tab-main-section .top-tab-inner a').click(function(){
        jQuery('.modal .icon-box').css("visibility", "visible !important");
       });
+
+      jQuery(window).scroll(function() {
+
+      });
+    //  var element_position = $('.our-solution-cls').offset().top - 100;
+    //  jQuery(window).on('scroll', function() {
+    //       var y_scroll_pos = window.pageYOffset;
+    //       var scroll_pos_test = element_position;
+
+    //       if(y_scroll_pos > scroll_pos_test) {
+    //           //do stuff
+    //           jQuery('html').addClass('overFlow-hide');
+    //       }
+    //   });
 
 
    

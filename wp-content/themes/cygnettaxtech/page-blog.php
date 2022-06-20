@@ -1,8 +1,7 @@
 <?php get_header(); 
 
 /* banner content */ ?>
-	<section class="banner-content inner-page-banner resources-banner">   
-		<span class="bottom-arrow"></span> 
+	<section class="banner-content inner-page-banner">    
 		<div class="banner-inner-content w-100" <?php if (get_field('blog_listing_banner_image', 'option')) : ?> style="background-image: url('<?php echo the_field('blog_listing_banner_image', 'option'); ?>')" <?php endif; ?>>  
 			<div class="container">  
 			<div class="d-md-flex flex-wrap slide-content-main align-items-center justify-content-center w-100">
@@ -87,7 +86,7 @@
 	</section>   */ ?>
 	<!-- Featured Blog section end -->
 	<!-- More Blog section start -->
-	<section class="bg-light">
+	<section class="">
 		<div class="container section-container-padding blog-page-listing">
 			<!--<div class="section-top-bar d-flex">
 				<div class="section-top-bar-container">
@@ -95,7 +94,7 @@
 				</div>
 			</div>-->
 			<!-- Filter block start -->
-			<div class="filter-box mb-5">
+			<?php /* <div class="filter-box mb-5">
 				<h5 class="text-dark-blue mb-3">Filter By:</h5>
 				<form class="submit-all-filter">
 					<div class="row gy-3">
@@ -103,7 +102,7 @@
 							<select class="form-select select-category filter-by-category" name="filter-by-category">
 								<option value=""></option>
 								<?php
-								$categories = get_terms(['taxonomy' => 'category', 'hide_empty' => true]);
+								$categories = get_terms(['taxonomy' => 'category', 'hide_empty' => false]);
 								foreach ($categories as $category) {?>
 									<option value="<?php echo $category->term_id;?>"><?php echo $category->name;?></option>
 								<?php }?>
@@ -111,13 +110,13 @@
 						</div>
 						<div class="col-md-6 col-lg-12 col-xl-3">
 							<div class="d-md-flex justify-content-start justify-content-lg-end justify-content-xl-start">
-								<input type="button" class="btn me-2" title="Submit" value="Submit" id="filter_submit">
-								<input type="button" class="btn" title="Clear all" value="Clear all" id="clear-filter-research">
+								<input type="button" class="btn btn-primary me-2" title="Submit" value="Submit" id="filter_submit">
+								<input type="button" class="btn btn-outline-danger" title="Clear all" value="Clear all" id="clear-filter-research">
 							</div>
 						</div>
 					</div>
 				</form>
-			</div>
+			</div>   */ ?>
 			<!-- Filter block end -->
 			<!-- Blog start -->
 			<div class="blog-container"></div>
