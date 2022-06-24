@@ -309,7 +309,7 @@ if ( ! class_exists( 'Email_Subscribers' ) ) {
 			if ( ! current_user_can( 'manage_options' ) ) {
 				return;
 			}
-			
+
 			// Halloween offer
 			$show_offer   = false;
 			$current_page = ig_es_get_request_data( 'page' );
@@ -366,7 +366,7 @@ if ( ! class_exists( 'Email_Subscribers' ) ) {
 						array(
 							'es_dismiss_admin_notice' => 1,
 							'option_name'             => 'wp_cron_notice',
-						) 
+						)
 					),
 					'es_dismiss_admin_notice'
 				);
@@ -576,8 +576,7 @@ if ( ! class_exists( 'Email_Subscribers' ) ) {
 			}
 			if ( ! defined( 'IG_ES_MAX_EMAIL_SEND_AT_ONCE' ) ) {
 				define( 'IG_ES_MAX_EMAIL_SEND_AT_ONCE', 30 );
-			}
-
+			}			
 			if ( ! defined( 'IG_ES_CAMPAIGN_STATUS_IN_ACTIVE' ) ) {
 				define( 'IG_ES_CAMPAIGN_STATUS_IN_ACTIVE', 0 );
 			}
@@ -836,7 +835,7 @@ if ( ! class_exists( 'Email_Subscribers' ) ) {
 				'lite/includes/workflows/db/class-es-db-workflows-queue.php',
 				'lite/includes/workflows/class-es-workflows-table.php',
 				'lite/includes/workflows/class-es-workflow-gallery.php',
-				
+
 				// Workflow Abstracts
 				'lite/includes/workflows/abstracts/class-es-workflow-registry.php',
 				'lite/includes/workflows/abstracts/class-es-workflow-trigger.php',
@@ -939,6 +938,8 @@ if ( ! class_exists( 'Email_Subscribers' ) ) {
 				'lite/admin/class-ig-es-campaign-rules.php',
 				'lite/admin/class-es-campaign-admin.php',
 				'lite/admin/class-es-gallery.php',
+				
+				'lite/admin/class-es-form-admin.php',
 
 				'starter/starter-class-email-subscribers.php',
 				'pro/pro-class-email-subscribers.php',
@@ -1966,7 +1967,7 @@ if ( ! class_exists( 'Email_Subscribers' ) ) {
 		 * Check if offer period
 		 *
 		 * @return boolean
-		 * 
+		 *
 		 * @since 4.8.6
 		 */
 		public function is_offer_period( $offer_name = '' ) {
@@ -1982,7 +1983,7 @@ if ( ! class_exists( 'Email_Subscribers' ) ) {
 					$offer_start_time = strtotime( '2021-11-24 12:00:00' ); // Offer start time in IST
 					$offer_end_time   = strtotime( '2021-12-01 12:00:00' ); // Offer end time in IST
 				}
-	
+
 				$is_offer_period = $current_ist_time >= $offer_start_time && $current_ist_time <= $offer_end_time;
 			}
 

@@ -6,7 +6,7 @@ Tags: email marketing, subscription, autoresponder, post notification, welcome e
 Requires at least: 3.9
 Tested up to: 6.0
 Requires PHP: 5.6
-Stable tag: 5.3.16
+Stable tag: 5.4.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses
 
@@ -310,18 +310,27 @@ Refer [here](https://www.icegram.com/documentation/es-faq/).
 
 == Upgrade Notice ==
 
-= 5.3.16 =
+= 5.4.0 =
 
-* Enhancement: Improved dashboard stats
-* Fix: Warning message when using Gmail/Yahoo email addresses in From email setting
-* Fix: Email sending issue with Amazon SES when subject contains emojis[PRO]
-* Fix: Duplicate post digest notifications[PRO]
-* Fix: Unsubscribe message getting inserted after HTML tag
-* Fix: Caching issue when editing campaign when Redis cache enable
-* Fix: PHP warning when subscription form is deleted from backend and form widget is active on frontend
-* Fix: Incorrect link tracking stats for campaigns created using Drag-n-Drop editor[PR0]
+* New: Added drag and drop editor for building forms
+* Update: Added status dropdown to add to list action
+* Update: Support to exclude some Broadcast emails in Broadcast archive shortcode
 
 == Changelog ==
+
+**5.4.0 (23.06.2022)**
+
+* New: Added drag and drop editor for building forms
+* Update: Added status dropdown to add to list action
+* Update: Support to exclude some Broadcast emails in Broadcast archive shortcode
+
+**5.3.18 (17.06.2022)**
+
+* New: Added shortcode to display broadcast archive
+* Update: Improve spam score service
+
+**5.3.17 (08.06.2022)**
+* New: Added support for sending notifications on page publish
 
 **5.3.16 (02.06.2022)**
 * Enhancement: Improved dashboard stats
@@ -348,8 +357,8 @@ Refer [here](https://www.icegram.com/documentation/es-faq/).
 
 **5.3.13 (27.04.2022)**
 
-* New: Support for categories for custom post type
-* New: Added preview for sequence emails
+* New: Support for categories for custom post type[PRO]
+* New: Added preview for sequence emails[PRO]
 
 **5.3.12 (21.04.2022)**
 

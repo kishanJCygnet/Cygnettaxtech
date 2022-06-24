@@ -1006,7 +1006,7 @@ if ( ! class_exists( 'ES_Install' ) ) {
 				'ig_es_max_email_send_at_once'                    => array(
 					'default'    => IG_ES_MAX_EMAIL_SEND_AT_ONCE,
 					'old_option' => '',
-				),
+				),				
 				'ig_es_test_mailbox_user'                         => array(
 					'default'    => ES_Common::generate_test_mailbox_user(),
 					'old_option' => '',
@@ -1092,7 +1092,7 @@ if ( ! class_exists( 'ES_Install' ) ) {
 				`timezone` varchar(255) NULL DEFAULT NULL,
 				`form_id` int(10) NOT NULL DEFAULT '0',
 				`status` varchar(10) DEFAULT NULL,
-				`reference_site` varchar(255) NULL DEFAULT NULL, 
+				`reference_site` varchar(255) NULL DEFAULT NULL,
 				`unsubscribed` tinyint(1) NOT NULL DEFAULT '0',
 				`hash` varchar(50) DEFAULT NULL,
 				`engagement_score` float DEFAULT NULL,

@@ -977,7 +977,7 @@ class Email_Subscribers_Admin {
 
 			// Add subject if set.
 			if ( ! empty( $subject ) ) {
-				$header .= 'Subject:' . $subject . "\n";
+				$header .= 'Subject: ' . $subject . "\n";
 			}
 
 			$header         .= 'Date: ' . gmdate( 'r' ) . "\n";

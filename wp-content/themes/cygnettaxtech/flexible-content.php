@@ -371,8 +371,9 @@
 							<script>
 							jQuery(document).ready(function() {
 								jQuery(<?php echo 'logo_slider_'.$logo_slider_cnt; ?>).length && jQuery(<?php echo 'logo_slider_'.$logo_slider_cnt; ?>).owlCarousel({
-									loop: false,									
-									autoplay: false,
+									loop: true,									
+									autoplay: true,
+									autoplayTimeout:3000,
 									nav: true,
 									dots: false,									
 									navText: [
