@@ -219,7 +219,7 @@ class IG_ES_Subscribers_Query {
 							if ( '_lists__in' === $field ) {
 
 								if ( $value ) {
-									$sub_cond[] = "lists_subscribers.contact_id IN ( SELECT contact_id FROM {$wpbd->prefix}ig_lists_contacts WHERE list_id IN (" . implode( ',', array_filter( $value, 'is_numeric' ) ) . ') )';
+									$sub_cond[] = "lists_subscribers.contact_id IN ( SELECT contact_id FROM {$wpbd->prefix}ig_lists_contacts WHERE list_id IN (" . implode( ',', array_filter( $value, 'is_numeric' ) ) . ") AND status IN( 'subscribed', 'confirmed' ) )";
 								}
 							} elseif ( '_lists__not_in' === $field ) {
 

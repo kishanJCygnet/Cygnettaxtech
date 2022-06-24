@@ -102,8 +102,7 @@ class Access extends CommonUtils\Access {
 			'video_thumbnail',
 			'video_scan_date',
 			'created',
-			'updated',
-			'tabs',
+			'updated'
 		]
 	];
 

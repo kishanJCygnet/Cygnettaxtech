@@ -151,6 +151,7 @@ if ( $show_trial_optin ) {
 }
 
 $feature_blocks = array_merge( $trial_block, $feature_blocks );
+$feature_blocks = apply_filters( 'ig_es_admin_dashboard_feature_blocks', $feature_blocks );
 
 $topics = ES_Common::get_useful_articles();
 
@@ -638,9 +639,10 @@ $allowed_html_tags = ig_es_allowed_html_tags_in_esc();
 					</h3>
 					<?php
 					if ( ! empty( $data['graphics_img'] ) ) {
+						$extra_css = ! empty( $data['graphics_img_class'] ) ? $data['graphics_img_class'] : '';
 						?>
 						<img
-						class="absolute bottom-0 right-0 w-24 -mr-3"
+						class="absolute bottom-0 right-0 w-24 -mr-3 <?php echo esc_attr( $extra_css ); ?>"
 						src= "<?php echo esc_url( ES_PLUGIN_URL . $data['graphics_img'] ); ?>"
 						/>
 						<?php
@@ -648,19 +650,28 @@ $allowed_html_tags = ig_es_allowed_html_tags_in_esc();
 					?>
 					<div class="block-description" style="width: calc(100% - 4rem)">
 						<p class="pt-3 xl:pr-3 2xl:pr-0 text-sm text-gray-500">
-							<?php echo esc_html( $data['desc'] ); ?>
+							<?php
+							if ( ! empty( $data['html_desc'] ) ) {
+								echo wp_kses_post( $data['html_desc'] );
+							} else {
+								echo esc_html( $data['desc'] );
+							}
+							?>
 						</p>
 
+						<?php 
+						if ( !empty($data['feature_url'])) {
+							$feature_url = $data['feature_url'];
+							if ( ! ES()->is_pro() && isset( $data['documentation_url'] ) ) {
+								$feature_url = $data['documentation_url'];
+							}
+							?>
+							<a id="ig-es-<?php echo esc_attr( $feature ); ?>-cta" href="<?php echo esc_url( $feature_url ); ?>" target="_blank" class="es_primary_link">
+								<?php echo esc_html( $data['cta_text'] ); ?> &rarr;
+							</a>
 						<?php
-						$feature_url = $data['feature_url'];
-						if ( ! ES()->is_pro() && isset( $data['documentation_url'] ) ) {
-							$feature_url = $data['documentation_url'];
 						}
 						?>
-
-						<a id="ig-es-<?php echo esc_attr( $feature ); ?>-cta" href="<?php echo esc_url( $feature_url ); ?>" target="_blank" class="es_primary_link">
-							<?php echo esc_html( $data['cta_text'] ); ?> &rarr;
-						</a>
 					</div>
 				</div>
 				<?php
@@ -731,21 +742,6 @@ if ( $show_trial_optin ) {
 						},
 					]
 				};
-
-				// const chart = new frappe.Chart("#ig-es-contacts-growth", {
-				// 	title: "",
-				// 	data: data,
-				// 	type: 'line',
-				// 	colors: ['#743ee2'],
-				// 	lineOptions: {
-				// 		hideDots: 1,
-				// 		heatline: 1
-				// 	},
-				// 	height: 150,
-				// 	axisOptions: {
-				// 		xIsSeries: true
-				// 	}
-				// });
 			}
 
 		});

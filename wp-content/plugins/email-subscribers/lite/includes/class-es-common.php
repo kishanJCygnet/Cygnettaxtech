@@ -31,6 +31,21 @@ class ES_Common {
 
 
 	/**
+	 * Collect all emails.
+	 *
+	 * @return string $all_admin_email
+	 *
+	 * @since 5.3.18
+	 */
+	public static function fetch_admin_email() {
+		$admin_email     = get_option( 'ig_es_admin_emails', '' );
+		$all_admin_email = explode(',', $admin_email);
+
+		return $all_admin_email[0];
+	}
+
+
+	/**
 	 * Callback to replace keywords
 	 * @param $keyword
 	 * @param $search_and_replace
@@ -105,7 +120,7 @@ class ES_Common {
 
 	/**
 	 * Remove quotes from string
-	 * 
+	 *
 	 * @param $string
 	 *
 	 * @return string
@@ -647,6 +662,53 @@ class ES_Common {
 	}
 
 	/**
+	 * Get list of default post types
+	 *
+	 * @since 5.3.17
+	 *
+	 * @return array $default_post_types List of default post types
+	 */
+	public static function get_default_post_types() {
+
+		$args = array(
+			'public'              => true,
+			'exclude_from_search' => false,
+			'_builtin'            => true,
+		);
+
+		$default_post_types = get_post_types( $args );
+
+		// remove attachment from the list
+		unset( $default_post_types['attachment'] );
+
+		// remove attachment from the list
+		unset( $default_post_types['post'] );
+
+		return $default_post_types;
+	}
+
+
+	/**
+	 * Get list of registered custom post types
+	 *
+	 * @since 5.4.0
+	 *
+	 * @return array $custom_post_types List of custom post types
+	 */
+	public static function get_custom_post_types() {
+
+		$args = array(
+			'public'              => true,
+			'exclude_from_search' => false,
+			'_builtin'            => false,
+		);
+
+		$custom_post_types = get_post_types( $args );
+
+		return $custom_post_types;
+	}
+
+	/**
 	 * Prepare custom post types checkboxes
 	 *
 	 * @param $custom_post_types
@@ -656,7 +718,7 @@ class ES_Common {
 	 * @since 4.0.0
 	 */
 	public static function prepare_custom_post_type_checkbox( $custom_post_types ) {
-		$args       = array(
+		$args  = array(
 			'public'              => true,
 			'exclude_from_search' => false,
 			'_builtin'            => false,
@@ -682,33 +744,14 @@ class ES_Common {
 		return $custom_post_type_html;
 	}
 
-	/**
-	 * Get list of registered custom post types
-	 * 
-	 * @since 5.4.0
-	 * 
-	 * @return array $custom_post_types List of custom post types
-	 */
-	public static function get_custom_post_types() {
-
-		$args = array(
-			'public'              => true,
-			'exclude_from_search' => false,
-			'_builtin'            => false,
-		);
-
-		$custom_post_types = get_post_types( $args );
-
-		return $custom_post_types;
-	}
 
 	/**
 	 * Get categories for given post types
-	 * 
+	 *
 	 * @since 5.3.13
-	 * 
+	 *
 	 * @param array $post_type Post type
-	 * 
+	 *
 	 * @return array $post_type_categories List of categories for given post types
 	 */
 	public static function get_post_type_categories( $post_type ) {
@@ -719,7 +762,7 @@ class ES_Common {
 		}
 
 		$post_type_categories = array();
-		
+
 		foreach ( $taxonomies as $taxonomy_slug => $taxonomy ) {
 			$is_category_taxonomy = $taxonomy->hierarchical;
 			if ( ! $is_category_taxonomy ) {
@@ -737,7 +780,7 @@ class ES_Common {
 			if ( empty( $categories ) ) {
 				continue;
 			}
-			
+
 			$taxonomy_categories = array();
 			foreach ( $categories as $category ) {
 				$taxonomy_categories[ $category->term_id ] = $category->name;
@@ -2451,7 +2494,7 @@ class ES_Common {
 	 *
 	 * @param $selected
 	 * @param $default_label
-	 * 
+	 *
 	 * @return string
 	 *
 	 * @since 4.8.4
@@ -2498,12 +2541,12 @@ class ES_Common {
 
 		$slug_name = explode( '_', $slug );
 		unset( $slug_name[0] );
-		unset( $slug_name[1] );	
-		return implode( '_', $slug_name	 );	
+		unset( $slug_name[1] );
+		return implode( '_', $slug_name	 );
 	}
 
 	/**
-	 * Get column datatype for custom field in contacts table 
+	 * Get column datatype for custom field in contacts table
 	 *
 	 * @param $selected
 	 *
@@ -2524,7 +2567,7 @@ class ES_Common {
 			default:
 				return 'longtext';
 		}
-		
+
 	}
 
 	/**
@@ -2532,7 +2575,7 @@ class ES_Common {
 	 *
 	 * @param $selected
 	 * @param $default_label
-	 * 
+	 *
 	 * @return string
 	 *
 	 * @since 5.0.5
@@ -2554,12 +2597,12 @@ class ES_Common {
 
 			$month_name_value = $record['MONTHNAME(`start_at`)'];
 			$year_value 	  = $record['YEAR(`start_at`)'];
-			
+
 			$field_key   = $year_value . gmdate( 'm', strtotime($month_name_value));
 			$field_value = $month_name_value . ' ' . $year_value;
-			
+
 			$field_options[$field_key] = $field_value;
-			
+
 		}
 
 		foreach ($field_options as $key => $option_value) {
@@ -2572,7 +2615,7 @@ class ES_Common {
 
 		}
 
-		return $dropdown; 
+		return $dropdown;
 	}
 
 	public static function get_in_between_content( $content, $start, $end ) {
@@ -2593,48 +2636,48 @@ class ES_Common {
 			'aol.com', 'att.net', 'comcast.net', 'facebook.com', 'gmail.com', 'gmx.com', 'googlemail.com',
 			'google.com', 'hotmail.com', 'hotmail.co.uk', 'mac.com', 'me.com', 'mail.com', 'msn.com',
 			'live.com', 'sbcglobal.net', 'verizon.net', 'yahoo.com', 'yahoo.co.uk',
-		  
+
 			/* Other global domains */
 			'email.com', 'fastmail.fm', 'games.com' /* AOL */, 'gmx.net', 'hush.com', 'hushmail.com', 'icloud.com',
 			'iname.com', 'inbox.com', 'lavabit.com', 'love.com' /* AOL */, 'outlook.com', 'pobox.com', 'protonmail.ch', 'protonmail.com', 'tutanota.de', 'tutanota.com', 'tutamail.com', 'tuta.io',
 		   'keemail.me', 'rocketmail.com' /* Yahoo */, 'safe-mail.net', 'wow.com' /* AOL */, 'ygm.com' /* AOL */,
 			'ymail.com' /* Yahoo */, 'zoho.com', 'yandex.com',
-		  
+
 			/* United States ISP domains */
 			'bellsouth.net', 'charter.net', 'cox.net', 'earthlink.net', 'juno.com',
-		  
+
 			/* British ISP domains */
 			'btinternet.com', 'virginmedia.com', 'blueyonder.co.uk', 'live.co.uk',
 			'ntlworld.com', 'orange.net', 'sky.com', 'talktalk.co.uk', 'tiscali.co.uk',
 			'virgin.net', 'bt.com',
-		  
+
 			/* Domains used in Asia */
 			'sina.com', 'sina.cn', 'qq.com', 'naver.com', 'hanmail.net', 'daum.net', 'nate.com', 'yahoo.co.jp', 'yahoo.co.kr', 'yahoo.co.id', 'yahoo.co.in', 'yahoo.com.sg', 'yahoo.com.ph', '163.com', 'yeah.net', '126.com', '21cn.com', 'aliyun.com', 'foxmail.com',
-		  
+
 			/* French ISP domains */
 			'hotmail.fr', 'live.fr', 'laposte.net', 'yahoo.fr', 'wanadoo.fr', 'orange.fr', 'gmx.fr', 'sfr.fr', 'neuf.fr', 'free.fr',
-		  
+
 			/* German ISP domains */
 			'gmx.de', 'hotmail.de', 'live.de', 'online.de', 't-online.de' /* T-Mobile */, 'web.de', 'yahoo.de',
-		  
+
 			/* Italian ISP domains */
 			'libero.it', 'virgilio.it', 'hotmail.it', 'aol.it', 'tiscali.it', 'alice.it', 'live.it', 'yahoo.it', 'email.it', 'tin.it', 'poste.it', 'teletu.it',
-		  
+
 			/* Russian ISP domains */
 			'bk.ru', 'inbox.ru', 'list.ru', 'mail.ru', 'rambler.ru', 'yandex.by', 'yandex.com', 'yandex.kz', 'yandex.ru', 'yandex.ua', 'ya.ru',
-		  
+
 			/* Belgian ISP domains */
 			'hotmail.be', 'live.be', 'skynet.be', 'voo.be', 'tvcablenet.be', 'telenet.be',
-		  
+
 			/* Argentinian ISP domains */
 			'hotmail.com.ar', 'live.com.ar', 'yahoo.com.ar', 'fibertel.com.ar', 'speedy.com.ar', 'arnet.com.ar',
-		  
+
 			/* Domains used in Mexico */
 			'yahoo.com.mx', 'live.com.mx', 'hotmail.es', 'hotmail.com.mx', 'prodigy.net.mx',
-		  
+
 			/* Domains used in Canada */
 			'yahoo.ca', 'hotmail.ca', 'bell.net', 'shaw.ca', 'sympatico.ca', 'rogers.com',
-		  
+
 			/* Domains used in Brazil */
 			'yahoo.com.br', 'hotmail.com.br', 'outlook.com.br', 'uol.com.br', 'bol.com.br', 'terra.com.br', 'ig.com.br', 'r7.com', 'zipmail.com.br', 'globo.com', 'globomail.com', 'oi.com.br'
 		);
@@ -2648,7 +2691,7 @@ class ES_Common {
 		if ( ! $is_email ) {
 			return false;
 		}
-		
+
 		$email_parts = explode( '@', $email );
 		$domain 	 = end( $email_parts );
 		$$domain     = strtolower( $domain );

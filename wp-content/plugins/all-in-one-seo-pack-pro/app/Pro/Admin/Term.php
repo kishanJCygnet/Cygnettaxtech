@@ -44,7 +44,6 @@ class Term {
 		$term->term_id             = $termId;
 		$term->priority            = 'default';
 		$term->frequency           = 'default';
-		$term->tabs                = Models\Term::getDefaultTabsOptions();
 		$term->seo_score           = 0;
 		$term->schema_type         = 'none';
 		$term->schema_type_options = Models\Term::getDefaultSchemaOptions();

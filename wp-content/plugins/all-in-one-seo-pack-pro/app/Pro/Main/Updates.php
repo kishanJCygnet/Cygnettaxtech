@@ -417,7 +417,7 @@ class Updates extends CommonMain\Updates {
 	 *
 	 * @return void
 	 */
-	public function migratedGoogleAnalyticsToDeprecated() {
+	private function migratedGoogleAnalyticsToDeprecated() {
 		$options = $this->getRawOptions();
 		if (
 			! empty( $options['webmasterTools'] ) &&
@@ -458,7 +458,7 @@ class Updates extends CommonMain\Updates {
 	 *
 	 * @return void
 	 */
-	public function disableTwitterUseOgDefault() {
+	protected function disableTwitterUseOgDefault() {
 		parent::disableTwitterUseOgDefault();
 
 		if ( aioseo()->core->db->tableExists( 'aioseo_terms' ) ) {
@@ -477,7 +477,7 @@ class Updates extends CommonMain\Updates {
 	 *
 	 * @return void
 	 */
-	public function updateMaxImagePreviewDefault() {
+	protected function updateMaxImagePreviewDefault() {
 		parent::updateMaxImagePreviewDefault();
 
 		if ( aioseo()->core->db->tableExists( 'aioseo_terms' ) ) {
@@ -527,7 +527,7 @@ class Updates extends CommonMain\Updates {
 	 *
 	 * @return void
 	 */
-	public function accessControlNewCapabilities() {
+	protected function accessControlNewCapabilities() {
 		$newCapabilities = [
 			'dashboard',
 			'setupWizard'
@@ -560,7 +560,7 @@ class Updates extends CommonMain\Updates {
 	 *
 	 * @return void
 	 */
-	public function migrateDynamicSettings() {
+	protected function migrateDynamicSettings() {
 		parent::migrateDynamicSettings();
 
 		$rawOptions = $this->getRawOptions();
@@ -740,6 +740,25 @@ class Updates extends CommonMain\Updates {
 			if ( 'qapage' === strtolower( aioseo()->dynamicOptions->searchAppearance->postTypes->$postType->webPageType ) ) {
 				aioseo()->dynamicOptions->searchAppearance->postTypes->$postType->webPageType = 'WebPage';
 			}
+		}
+	}
+
+	/**
+	 * Remove the tabs column as it is unnecessary.
+	 *
+	 * @since 4.2.2
+	 *
+	 * @return void
+	 */
+	protected function removeTabsColumn() {
+		parent::removeTabsColumn();
+
+		if ( aioseo()->core->db->columnExists( 'aioseo_terms', 'tabs' ) ) {
+			$tableName = aioseo()->core->db->db->prefix . 'aioseo_terms';
+			aioseo()->core->db->execute(
+				"ALTER TABLE {$tableName}
+				DROP tabs"
+			);
 		}
 	}
 }

@@ -26,7 +26,7 @@ class Sitemap extends CommonSitemap\Sitemap {
 		$this->content       = new CommonSitemap\Content();
 		$this->root          = new CommonSitemap\Root();
 		$this->file          = new CommonSitemap\File();
-		$this->image         = new CommonSitemap\Image();
+		$this->image         = new CommonSitemap\Image\Image();
 		$this->ping          = new CommonSitemap\Ping();
 		$this->output        = new CommonSitemap\Output();
 		$this->xsl           = new CommonSitemap\Xsl();
