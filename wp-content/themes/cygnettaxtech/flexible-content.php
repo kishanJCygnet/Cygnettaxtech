@@ -88,7 +88,7 @@
 					<div class="count-section-main <?php echo the_field('count_section_class'); ?>">
 						<?php if (get_field('count_section_title')){ ?>
 							<div class="count-section-title">
-								<h2><?php echo the_field('count_section_title'); ?></h2>
+								<h2 class="wow fadeInUp" data-wow-delay="0.9s"><?php echo the_field('count_section_title'); ?></h2>
 							</div>
 						<?php } ?>
 						<div class="count-section-main-inner">
@@ -229,6 +229,60 @@
 			} else {
 				$slugid = '';
 			}
+				/* Two Column Layout Start */
+				if (get_row_layout() == 'two_column_layout') :
+					if( get_sub_field('position_of_image_section') == 'left' ) {
+						$clsl = 'pos-left';
+					} else {
+						$clsl = '';
+					}
+				?>
+					<section class="two-colum-layout <?php echo $clsl; ?> <?php echo the_sub_field('two_column_section_custom_class'); ?>" <?php echo $slugid; ?>>
+						<div class="container">
+							<div class="title-heading">
+							<?php if (get_sub_field('title')){ ?>
+								<h2 class="wow fadeInUp" data-wow-delay="0.3s"><?php echo the_sub_field('title'); ?>
+									<span class="heading-border"></span>
+								</h2>
+							<?php } ?>
+							<?php if (get_sub_field('sub_title')){ ?>
+								<h3 class="wow fadeInUp" data-wow-delay="0.6s"><?php echo the_sub_field('sub_title'); ?></h3>
+							<?php } ?>
+							</div>
+							<div class="two-colum-content">
+								<div class="col-left">								
+									<div class="d-flex align-items-center h-100">
+										<div>
+										<div class="content-title-heading wow fadeInUp" data-wow-delay="0.6s">
+											<?php if (get_sub_field('content_title')){ ?>
+												<h2><?php echo the_sub_field('content_title'); ?>
+													<span class="heading-border"></span>
+												</h2>
+											<?php } ?>
+											<?php if (get_sub_field('content_sub_title')){ ?>
+												<h3><?php echo the_sub_field('content_sub_title'); ?></h3>
+											<?php } ?>
+										</div>
+										<div class="wow fadeInUp" data-wow-delay="0.6s" data-wow-offset="50">
+										<?php if (get_sub_field('description')){ ?>
+											<?php echo the_sub_field('description'); ?>
+										<?php } ?>
+										</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-right">
+									<div class="two-inner-image-content">
+										<?php if (get_sub_field('image')){ ?>
+											<img src="<?php echo the_sub_field('image'); ?>"  alt="image" class="wow fadeIn" data-wow-delay="0.3s">
+										<?php } ?>
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
+				<?php endif; 
+				/* Two Column Layout End */
 			/* Default Content Start */
 			if (get_row_layout() == 'default_content') : ?>
 				<section class="curved-section default-content <?php echo the_sub_field('default_section_custom_class'); ?>" <?php echo $slugid; ?>>
@@ -428,58 +482,7 @@
 		    <?php endif; 
 			/* Case Studies End */
 			
-			/* Two Column Layout Start */
-			if (get_row_layout() == 'two_column_layout') :
-				if( get_sub_field('position_of_image_section') == 'left' ) {
-					$clsl = 'pos-left';
-				} else {
-					$clsl = '';
-				}
-			?>
-				<section class="two-colum-layout <?php echo $clsl; ?> <?php echo the_sub_field('two_column_section_custom_class'); ?>" <?php echo $slugid; ?>>
-					<div class="container">
-						<div class="title-heading">
-						<?php if (get_sub_field('title')){ ?>
-							<h2 class="wow fadeInUp" data-wow-delay="0.3s"><?php echo the_sub_field('title'); ?>
-								<span class="heading-border"></span>
-							</h2>
-						<?php } ?>
-						<?php if (get_sub_field('sub_title')){ ?>
-							<h3 class="wow fadeInUp" data-wow-delay="0.6s"><?php echo the_sub_field('sub_title'); ?></h3>
-						<?php } ?>
-						</div>
-						<div class="two-colum-content">
-							<div class="col-left">								
-								<div class="d-flex align-items-center h-100">
-									<div>
-									<div class="content-title-heading">
-										<?php if (get_sub_field('content_title')){ ?>
-											<h2><?php echo the_sub_field('content_title'); ?>
-												<span class="heading-border"></span>
-											</h2>
-										<?php } ?>
-										<?php if (get_sub_field('content_sub_title')){ ?>
-											<h3><?php echo the_sub_field('content_sub_title'); ?></h3>
-										<?php } ?>
-									</div>
-									<?php if (get_sub_field('description')){ ?>
-										<?php echo the_sub_field('description'); ?>
-									<?php } ?>
-									</div>
-								</div>
-							</div>
-							<div class="col-right">
-								<div class="two-inner-image-content">
-									<?php if (get_sub_field('image')){ ?>
-										<img src="<?php echo the_sub_field('image'); ?>"  alt="image" class="wow fadeIn" data-wow-delay="0.3s">
-									<?php } ?>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-		    <?php endif; 
-			/* Two Column Layout End */
+		
 			
 			/* Zig Zag Section Start */
 			if (get_row_layout() == 'zig_zag_section') : ?>
@@ -808,12 +811,12 @@
 				<div class="container">
 					<div class="title-heading">
 						<?php if (get_sub_field('offering_tab_title')){ ?>
-							<h2><?php echo the_sub_field('offering_tab_title'); ?>
+							<h2 class="wow fadeInUp" data-wow-delay="0.3s"><?php echo the_sub_field('offering_tab_title'); ?>
 								<span class="heading-border"></span>
 							</h2>
 						<?php } ?>
 						<?php if (get_sub_field('offering_tab_sub_title')){ ?>
-							<h3><?php echo the_sub_field('offering_tab_sub_title'); ?></h3>
+							<h3 class="wow fadeInUp" data-wow-delay="0.6s"><?php echo the_sub_field('offering_tab_sub_title'); ?></h3>
 						<?php } ?>
 					</div>	
 					<?php if (have_rows('tabs')) : ?>					
@@ -840,7 +843,7 @@
 											?>
 												<div class="list-tabs accordion" id="accordionSection<?php echo $c; ?>">
 													<?php while (have_rows('inner_content')) : the_row(); ?>
-														<div class="list-item">
+														<div class="list-item wow fadeInDown" data-wow-delay="0.3s">
 															<?php if (get_sub_field('inner_content_title')){ ?>
 																<h4 class="list-title accordion-header" id="accordionheading<?php echo $c.'_'.$cm; ?>">
 																	<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?php echo $c.'_'.$cm; ?>" aria-expanded="true" aria-controls="collapse<?php echo $c.'_'.$cm; ?>">

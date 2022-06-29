@@ -231,6 +231,30 @@ jQuery(function() {
 // }
 
 jQuery(document).ready(function(){
+  
+  jQuery('.counter').each(function() {
+    var $this = jQuery(this),
+        countTo = $this.attr('data-count');
+    
+        jQuery({ countNum: $this.text()}).animate({
+      countNum: countTo
+    },
+  
+    {
+  
+      duration: 4000,
+      easing:'linear',
+      step: function() {
+        $this.text(Math.floor(this.countNum));
+      },
+      complete: function() {
+        $this.text(this.countNum);
+        //alert('finished');
+      }
+    });  
+  });
+
+
   jQuery(".accordion_section.faq-accordian:nth-child(2) .accordion-content-item:first-child").find('.accordion-collapse').addClass("show");
   jQuery(".accordion_section.faq-accordian:nth-child(2) .accordion-content-item:first-child").find('.accordion-button').removeClass("collapsed");
 
@@ -443,7 +467,7 @@ else if(scroll >= 1200) {
       jQuery(window).scroll(function() {
 
       });
-    //  var element_position = $('.our-solution-cls').offset().top - 100;
+    //  var element_position = jQuery('.our-solution-cls').offset().top - 0;
     //  jQuery(window).on('scroll', function() {
     //       var y_scroll_pos = window.pageYOffset;
     //       var scroll_pos_test = element_position;
@@ -453,9 +477,18 @@ else if(scroll >= 1200) {
     //           jQuery('html').addClass('overFlow-hide');
     //       }
     //   });
+    // var controller = new ScrollMagic.Controller();
+
+    // new ScrollMagic.Scene({      
+    //   triggerElement: ".our-solution-cls",
+    //   duration: 9000, // the scene should last for a scroll distance of 100px
+    //   triggerHook: 0, 
+    // }).setClassToggle("html", " avc")
+    //   .setPin('.our-solution-cls') // pins the element for the the scene's duration
+    //   .addIndicators() // add indicators (requires plugin)
+    //   .addTo(controller); // assign the scene to the controller
 
 
-   
 
 
 
