@@ -117,8 +117,11 @@
 										
 									<?php } ?>
 									<?php if (get_sub_field('count_section_value')){ ?>
-										<div class="count-label">
+										<!--<div class="count-label">
 											<?php echo the_sub_field('count_section_value'); ?>
+										</div>-->
+										<div class="count-label">
+											<span class="counter" data-count="<?php echo the_sub_field('count_section_value');?>">0</span>+
 										</div>
 									<?php } ?>
 									<?php if (get_sub_field('count_section_label')){ ?>

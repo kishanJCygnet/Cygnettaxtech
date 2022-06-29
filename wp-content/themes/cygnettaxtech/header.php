@@ -37,12 +37,14 @@
     <link rel="icon" type="image/png" sizes="228x228" href="<?php echo get_theme_file_uri(); ?>/images/favicons/228.png">
 	
 	<link rel="stylesheet" href="<?php echo THEME_PATH; ?>/bootstrap.min.css">
-    <link rel="stylesheet" href="<?php echo THEME_PATH; ?>/css/animate.css">	
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 	<!--<script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=626a78d085d62e001964c5d1&product=sop' id='share-this-share-buttons-mu-js' async='async'></script>-->
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" /> -->
+    <link rel="stylesheet" href="<?php echo THEME_PATH; ?>/css/animate.css">
 	<script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=6295d7619a09040019f206fd&product=sop' id='share-this-share-buttons-mu-js' async='async'></script>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js"></script>
 	<!-- Google Tag Manager -->
 	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
