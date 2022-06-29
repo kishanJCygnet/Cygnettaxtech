@@ -23,9 +23,9 @@
     font-style: normal;
     font-display: swap;
 }
-/* *{
+*{
     transition: .3s all linear;
-} */
+}
  html{
     scroll-behavior: smooth !important;
  }
@@ -2458,6 +2458,9 @@ padding: 10px 30px;
     height: 65px;
     fill: #009999;
 }
+.our-solutions-offer .icon-box-list .icon-box-inner .icon svg path{
+    fill: #009999;
+}
 .our-solutions-offer .icon-box-list .icon-box-inner h3{
     font-size: 16px;
     font-weight: 500;
@@ -3104,6 +3107,21 @@ padding: 10px 30px;
 .solution-tab-content .tab-content .img-content img{
     width: 100%;
 }
+/* .our-solution-cls .container-fluid{
+    padding: 0;
+}
+.our-solution-cls .solution-tab-content{
+    height: 550px;
+    overflow: auto;
+}
+.our-solution-cls .solution-tab-content .inner-content{
+    width: 1100px;
+    margin: auto;
+}
+.our-solution-cls .solution-tab-content .inner-content .tab-content{
+    position: sticky;
+    top: 0;
+} */
 /* / section css / */
 
 
@@ -3794,6 +3812,47 @@ video {
     .overFlow-hide{
         overflow: hidden;
     }
+    .stratagic-content .tab-content .card .content-details {
+        visibility: hidden;
+        opacity: 0;
+        position: absolute;
+        width: 350px;
+        top: 126px;
+        left: 40px;
+        background-color: #D9EBF7;
+    }
+    .stratagic-content .tab-content .card .content-details {
+        z-index: 3;
+        border-radius: 5px;
+        padding: 15px;
+        transition: .3s all linear;
+    }
+    .stratagic-content .tab-content .card {
+        position: relative;
+        height: 128px !important;
+    }
+    .partner-content .card {
+        border: 1px solid #B1B1B1;
+    }
+    .stratagic-content .tab-content .card:hover .content-details {
+        display: block;
+        visibility: visible;
+        opacity: 1;
+    }
+    .stratagic-content .tab-content .card .content-details h4 {
+        font-size: .875rem;
+        font-weight: 600;
+    }
+    .stratagic-content .tab-content .card .content-details p {
+        margin-bottom: 5px;
+        font-size: .813rem;
+    }
+    .stratagic-content .tab-content .card .content-details p a {
+        color: #FF7C3B;
+        transition: color .4s ease 0s,box-shadow .4s ease 0s;
+        outline-offset: 1px;
+        text-decoration: none;
+    }
 @media only screen and (max-width: 1400px) {
     .primary-navigation .menu-wrapper li.menu-item{
         padding: 0 5px !important;
@@ -3818,6 +3877,9 @@ video {
    
     section{
         padding: 60px 0;
+    }
+    .banner-content.half-banner .col-lg-5{
+        display: none !important;
     }
     .banner-content .img-content{
         height: 438px;
@@ -3875,6 +3937,12 @@ video {
     .form-content .form-check.whatup-check.terms-condition-check .wpcf7-list-item label{
         position: absolute;
         top: 0;
+    }
+    .ei-genration ul li{
+        height: 170px;
+    }
+    .ei-genration ul li .btn{
+        margin-top: 5px;
     }
 }
 @media only screen and (max-width: 1200px) {
@@ -4557,6 +4625,17 @@ video {
     .count-section-main-inner > div {
         flex: unset;
     }
+    .ei-genration{
+        flex-wrap: wrap;
+    }
+    .ei-genration > div{
+        width: 100% !important;
+        margin-bottom: 20px;
+    }
+    .ei-genration ul li{
+        height: auto;
+        min-height: auto;
+    }
   }
 @media only screen and (max-width: 768px) {
     .pt-90 {
@@ -5005,6 +5084,41 @@ video {
      .owl-controls.center-slider .icon-box-list:not(.service-section.owl-controls .icon-box-list){
         width: calc(100% - 0px);
      }
+     .ei-genration {
+        flex-wrap: wrap;
+        padding: 0 15px;
+    }
+    .ei-genration ul li{
+        padding-left: 15px;
+        text-align: center;
+    }
+    .ei-genration ul li .img{
+        position: static;
+        height: 70px;
+        width: 70px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 15px;
+    
+    }
+    .ei-genration ul li p.text-end{
+        text-align: center !important;
+    }
+    .stratagic-content .tab-content .card {
+        height: auto !important;
+    }
+    .stratagic-content .tab-content .card .content-details {
+        box-shadow: none!important;
+        background-color: transparent;
+        border-radius: 0;
+        border-top: 1px solid #ced4da;
+        padding: 10px 14px 3px;
+        position: static;
+        visibility: visible;
+        opacity: 1;
+        width: 100%;
+    }
 
 }
 @media only screen and (max-width: 576px) {
@@ -5073,6 +5187,7 @@ video {
         margin: 10px 5px;
         min-width: 162px;
     }
+   
     
 }
 
