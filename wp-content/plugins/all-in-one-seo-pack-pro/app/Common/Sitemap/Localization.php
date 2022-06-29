@@ -58,7 +58,11 @@ class Localization {
 
 		$entry['languages'] = [];
 		foreach ( $translations as $translation ) {
-			if ( empty( $translation->element_id ) || ! isset( self::$wpml['activeLanguages'][ $translation->language_code ] ) || (int) $entryId === (int) $translation->element_id ) {
+			if ( empty( $translation->element_id ) || ! isset( self::$wpml['activeLanguages'][ $translation->language_code ] ) ) {
+				continue;
+			}
+
+			if ( (int) $entryId === (int) $translation->element_id ) {
 				$entry['language'] = $translation->language_code;
 				continue;
 			}

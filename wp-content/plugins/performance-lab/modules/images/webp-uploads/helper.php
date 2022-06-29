@@ -55,7 +55,7 @@ function webp_uploads_get_upload_image_mime_transforms() {
  * would be saved in the specified mime and stored in the destination file. If the image can't be saved correctly
  * a WP_Error would be returned otherwise an array with the file and filesize properties.
  *
- * @since n.e.xt
+ * @since 1.0.0
  * @access private
  *
  * @param int    $attachment_id         The ID of the attachment from where this image would be created.
@@ -67,7 +67,6 @@ function webp_uploads_get_upload_image_mime_transforms() {
  * @return array|WP_Error An array with the file and filesize if the image was created correctly otherwise a WP_Error
  */
 function webp_uploads_generate_additional_image_source( $attachment_id, $image_size, array $size_data, $mime, $destination_file_name = null ) {
-
 	/**
 	 * Filter to allow the generation of additional image sources, in which a defined mime type
 	 * can be transformed and create additional mime types for the file.
@@ -84,19 +83,23 @@ function webp_uploads_generate_additional_image_source( $attachment_id, $image_s
 	 * @return array|null|WP_Error An array with the file and filesize if the image was created correctly otherwise a WP_Error
 	 */
 	$image = apply_filters( 'webp_uploads_pre_generate_additional_image_source', null, $attachment_id, $image_size, $size_data, $mime );
-
 	if ( is_wp_error( $image ) ) {
 		return $image;
 	}
 
 	if (
-		is_array( $image )
-		&& ! empty( $image['file'] )
-		&& ! empty( $image['path'] )
+		is_array( $image ) &&
+		! empty( $image['file'] ) &&
+		(
+			! empty( $image['path'] ) ||
+			array_key_exists( 'filesize', $image )
+		)
 	) {
 		return array(
 			'file'     => $image['file'],
-			'filesize' => filesize( $image['path'] ),
+			'filesize' => array_key_exists( 'filesize', $image )
+				? $image['filesize']
+				: wp_filesize( $image['path'] ),
 		);
 	}
 
@@ -110,14 +113,11 @@ function webp_uploads_generate_additional_image_source( $attachment_id, $image_s
 	}
 
 	$image_path = wp_get_original_image_path( $attachment_id );
-
-	// File does not exist.
 	if ( ! file_exists( $image_path ) ) {
 		return new WP_Error( 'original_image_file_not_found', __( 'The original image file does not exists, subsizes are created out of the original image.', 'performance-lab' ) );
 	}
 
 	$editor = wp_get_image_editor( $image_path, array( 'mime_type' => $mime ) );
-
 	if ( is_wp_error( $editor ) ) {
 		return $editor;
 	}
@@ -125,7 +125,6 @@ function webp_uploads_generate_additional_image_source( $attachment_id, $image_s
 	$height = isset( $size_data['height'] ) ? (int) $size_data['height'] : 0;
 	$width  = isset( $size_data['width'] ) ? (int) $size_data['width'] : 0;
 	$crop   = isset( $size_data['crop'] ) && $size_data['crop'];
-
 	if ( $width <= 0 && $height <= 0 ) {
 		return new WP_Error( 'image_wrong_dimensions', __( 'At least one of the dimensions must be a positive number.', 'performance-lab' ) );
 	}
@@ -143,8 +142,12 @@ function webp_uploads_generate_additional_image_source( $attachment_id, $image_s
 		$destination_file_name = $editor->generate_filename( null, null, $extension[0] );
 	}
 
-	$image = $editor->save( $destination_file_name, $mime );
+	// Skip creation of duplicate WebP image if an image file already exists in the directory.
+	if ( file_exists( $destination_file_name ) ) {
+		return new WP_Error( 'webp_image_file_present', __( 'The WebP image already exists.', 'performance-lab' ) );
+	}
 
+	$image = $editor->save( $destination_file_name, $mime );
 	if ( is_wp_error( $image ) ) {
 		return $image;
 	}
@@ -155,7 +158,7 @@ function webp_uploads_generate_additional_image_source( $attachment_id, $image_s
 
 	return array(
 		'file'     => $image['file'],
-		'filesize' => isset( $image['path'] ) ? filesize( $image['path'] ) : 0,
+		'filesize' => isset( $image['path'] ) ? wp_filesize( $image['path'] ) : 0,
 	);
 }
 

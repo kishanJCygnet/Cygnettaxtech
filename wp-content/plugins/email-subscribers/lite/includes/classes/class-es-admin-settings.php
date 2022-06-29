@@ -19,6 +19,7 @@ class ES_Admin_Settings {
 
 	public $subscribers_obj;
 
+
 	public function __construct() {
 		add_filter( 'ig_es_registered_email_sending_settings', array( $this, 'show_cron_info' ) );
 
@@ -415,6 +416,8 @@ class ES_Admin_Settings {
 
 		$pepipost_api_key_defined = ES()->is_const_defined( 'pepipost', 'api_key' );
 
+		$test_email = ES_Common::fetch_admin_email();
+
 		$email_sending_settings = array(
 			'ig_es_cronurl'                 => array(
 				'type'         => 'text',
@@ -468,7 +471,7 @@ class ES_Admin_Settings {
 			'ig_es_test_send_email'         => array(
 				'type'         => 'html',
 				/* translators: %s: Spinner image path */
-				'html'         => sprintf( '<input id="es-test-email" type="email" class="mt-3 mb-1 border-gray-400 form-input h-9"/><input type="submit" name="submit" id="es-send-test" class="ig-es-primary-button" value="Send Email"><span class="es_spinner_image_admin" id="spinner-image" style="display:none"><img src="%s" alt="Loading..."/></span>', ES_PLUGIN_URL . 'lite/public/images/spinner.gif' ),
+				'html'         => sprintf( '<input id="es-test-email" type="email" value=%s class="mt-3 mb-1 border-gray-400 form-input h-9"/><input type="submit" name="submit" id="es-send-test" class="ig-es-primary-button" value="Send Email"><span class="es_spinner_image_admin" id="spinner-image" style="display:none"><img src="%s" alt="Loading..."/></span>', $test_email, ES_PLUGIN_URL . 'lite/public/images/spinner.gif' ),
 				'placeholder'  => '',
 				'supplemental' => '',
 				'default'      => '',
@@ -617,7 +620,7 @@ class ES_Admin_Settings {
 
 				$field_html .= $placeholder . '</input>
 			<span class="es-mail-toggle-line"></span>
-			<span class="es-mail-toggle-dot"></span>	
+			<span class="es-mail-toggle-dot"></span>
 			</span>
 			</label>';
 				break;
@@ -1050,7 +1053,7 @@ class ES_Admin_Settings {
 		</style>
 		<p class="pb-2 text-sm font-normal text-gray-500">
 			<?php echo esc_html__( 'Now you can control all your notifications through workflows.', 'email-subscribers' ); ?>
-			<?php 
+			<?php
 				/* translators: 1. Anchor start tag 2. Anchor end tag */
 				echo sprintf( esc_html__( 'Click %1$shere%2$s to go to workflows.', 'email-subscribers' ), '<a href="' . esc_url( $workflow_url ) . '" class="text-indigo-600" target="_blank">', '</a>' );
 			?>

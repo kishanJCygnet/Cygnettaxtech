@@ -1694,12 +1694,15 @@ body.email-subscribers_page_es_campaigns .column-status .dashicons[title="Finish
 }
 
 .broadcast_main_content,
-.campaign_main_content {
+.campaign_main_content,
+.form_main_content
+ {
 	width: 70% ;
 }
 
 .broadcast_side_content, 
-.campaign_side_content {
+.campaign_side_content,
+.form_side_content {
 		width: 30% ;
 }
 
@@ -2353,6 +2356,21 @@ button#close-campaign-preview-popup {
     visibility: hidden;
 }
 
+.ig-es-ajax-loader{
+	visibility: hidden;
+	background-color: rgb(255,255,255,0.7);
+	position: absolute;
+	z-index: +100;
+	width: 100%;
+	height:100%;
+}
+
+.ig-es-ajax-loader img{
+	position: relative;
+	top:15%;
+	left:35%;
+}
+
 .campaign-preview-option {
     margin: 0 0.2rem;
     padding: .1rem;
@@ -2599,3 +2617,35 @@ top: 50%;}
 
 /* .es-dashboard-stats-item svg.tooltip-arrow {display: none;} */
 /** Enagement Score CSS - END **/
+
+/** DND form build CSS - START **/
+#es-edit-form input#es-form-name {
+	outline: none;
+	cursor: pointer;
+}
+
+#es-edit-form input#es-form-name:not([readonly]) {
+	background: #fff;
+}
+
+.es-editor .gjs-one-bg .gjs-field .es-gjs-checkbox-group input[type="checkbox"] {
+	width: auto;
+}
+
+#ig-es-dnd-builder .gjs-field.gjs-field-checkbox-group {
+	border: none;
+}
+
+#es-edit-form-container #ig-es-dnd-builder .es-content #es-email-subscribers {padding: 15px;background-color:#fff}
+
+#es-edit-form-container #ig-es-dnd-builder .es-content .gjs-editor, #ig-es-dnd-builder .es-content .gjs-cv-canvas,
+#es-edit-form-container #ig-es-dnd-builder .es-content {
+	box-shadow: none;border-top-left-radius: unset;
+    border-bottom-left-radius: unset;
+}
+
+#es-edit-form-container  .gjs-block__media svg {
+	width: 35px;
+	height: 35px;
+}
+/** DND form build CSS - END **/

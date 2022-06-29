@@ -161,16 +161,16 @@
 
 			});
 
-			$("#campaign_form #view_campaign_content_button,#campaign_form #campaign_content_menu").click(function() {
+			$("#campaign_form #view_campaign_content_button,#campaign_form #campaign_content_menu,.es-first-step-tab, #view_form_content_button").click(function() {
 				var fieldset = $(this).closest('.es_fieldset');
-				fieldset.find('.es_campaign_first').fadeIn('normal');
-				fieldset.next().find('.es_campaign_second').hide();
+				fieldset.find('.es_campaign_first,.es-first-step').fadeIn('normal');
+				fieldset.next().find('.es_campaign_second,.es-second-step').hide();
 
-				fieldset.find('#view_campaign_summary_button, #view_campaign_preview_button').show();
-				fieldset.find('#view_campaign_content_button, #campaign_summary_actions_buttons_wrapper').hide();
+				fieldset.find('#view_campaign_summary_button, #view_campaign_preview_button,.es-first-step-buttons-wrapper').show();
+				fieldset.find('#view_campaign_content_button, #campaign_summary_actions_buttons_wrapper,.es-second-step-buttons-wrapper').hide();
 
-				$('#campaign_summary_menu').removeClass("active");
-				$('#campaign_content_menu').addClass("active");
+				$('#campaign_summary_menu,.es-second-step-tab').removeClass("active");
+				$('#campaign_content_menu,.es-first-step-tab').addClass("active");
 			});
 
 			let schedule_option = $('input:radio[name="campaign_data[scheduling_option]"]:checked').val()
@@ -994,17 +994,17 @@
 				$('.wp-editor-boradcast').trigger('change');
 			});
 
-			$("#campaign_form #view_campaign_summary_button, #campaign_form #campaign_summary_menu").click(function() {
+			$("#campaign_form #view_campaign_summary_button, #campaign_form #campaign_summary_menu, .es-second-step-tab, #view_form_summary_button").click(function() {
 			
 				let fieldset = $(this).closest('.es_fieldset');
-				fieldset.next().find('div.es_campaign_second').fadeIn('normal');
-				fieldset.find('.es_campaign_first').hide();
+				fieldset.next().find('div.es_campaign_second,.es-second-step').fadeIn('normal');
+				fieldset.find('.es_campaign_first,.es-first-step').hide();
 			
-				fieldset.find('#view_campaign_content_button,#campaign_summary_actions_buttons_wrapper').show();
-				fieldset.find('#view_campaign_summary_button,#view_campaign_preview_button').hide();
+				fieldset.find('#view_campaign_content_button,#campaign_summary_actions_buttons_wrapper,.es-second-step-buttons-wrapper').show();
+				fieldset.find('#view_campaign_summary_button,#view_campaign_preview_button,.es-first-step-buttons-wrapper').hide();
 			
-				$('#campaign_content_menu').removeClass("active");
-				$('#campaign_summary_menu').addClass("active");
+				$('#campaign_content_menu,.es-first-step-tab').removeClass("active");
+				$('#campaign_summary_menu,.es-second-step-tab').addClass("active");
 				//$('.active').removeClass('active').next().addClass('active');
 			
 				// Trigger template content changed event to update email preview.
@@ -1061,6 +1061,11 @@
 					url: ajaxurl,
 					data: form_data,
 					dataType: 'json',
+					beforeSend:function(){
+						if(jQuery('#campaign_summary_menu').hasClass('active')){
+							jQuery('.ig-es-ajax-loader').css("visibility","visible");
+						}
+					},
 					success: function (response) {
 						if (response.success) {
 							if ( 'undefined' !== typeof response.data ) {
@@ -1083,6 +1088,9 @@
 					},
 					error: function (err) {
 						alert( ig_es_js_data.i18n_data.ajax_error_message );
+					},
+					complete:function(){
+						jQuery('.ig-es-ajax-loader').css("visibility","hidden");
 					}
 				});
 			});
@@ -2659,6 +2667,83 @@
 				ratingContent.indexOf("%") >= 0 ? "<small>%</small>" : ""
 			}</span>`;
 			});
+
+			/* DND form builder code start */
+			jQuery('#es-form-name,#es-toggle-form-name-edit').click(function(){
+				jQuery('#es-form-name').removeAttr('readonly','readonly').focus();
+				jQuery('#es-toggle-form-name-edit').hide();
+			});
+			
+			jQuery('#es-form-name').blur(function(){
+				jQuery('#es-toggle-form-name-edit').show();
+				jQuery(this).attr('readonly','readonly');
+			});
+
+			$('#es-edit-form-container').on('click','#form_settings_menu,#view_form_summary_button',function(e){
+
+				let form_html       = window.esVisualEditor.getHtml();
+				let form_css        = window.esVisualEditor.getCss();
+				let form_components = window.esVisualEditor.getComponents();
+
+				$('#ig-es-export-html-data-textarea').val(form_html);
+				$('#ig-es-export-css-data-textarea').val(form_css);
+				$('#form-dnd-editor-data').val(JSON.stringify(form_components));
+
+				let captcha = window.esVisualEditor.Canvas.getDocument().getElementsByClassName('es_captcha').length > 0 ? 'yes' : 'no';
+				$('input[name="form_data[settings][captcha]"]').val(captcha);
+
+				
+
+				let list_added = window.esVisualEditor.Canvas.getDocument().getElementsByClassName('es-list').length > 0;
+				if ( list_added ) {
+					$('.es-form-lists').addClass('hidden');
+				} else {
+					$('.es-form-lists').removeClass('hidden');
+				}
+				
+				ig_es_sync_dnd_editor_content('#form-dnd-editor-data');
+
+				let form_data = $(this).closest('form').serialize();
+				
+				// Add action to form data
+				form_data += form_data + '&action=ig_es_get_form_preview&preview_type=inline&security='  + ig_es_js_data.security;
+				jQuery.ajax({
+					method: 'POST',
+					url: ajaxurl,
+					data: form_data,
+					dataType: 'json',
+					success: function (response) {
+						if (response.success) {
+							if ( 'undefined' !== typeof response.data ) {
+								let response_data    = response.data;
+								let preview_html     = response_data.preview_html;
+
+								ig_es_load_iframe_preview('.form_preview_content', preview_html);
+							}
+						} else {
+							alert( ig_es_js_data.i18n_data.ajax_error_message );
+						}
+					},
+					error: function (err) {
+						alert( ig_es_js_data.i18n_data.ajax_error_message );
+					}
+				});
+			});
+
+			$('#es-edit-form-container form').on('submit',function(e){
+				
+				let list_required = ! $('.es-form-lists').hasClass('hidden');
+				if ( list_required ) {
+					let selected_lists_count = $('.es-form-lists input[name="form_data[settings][lists][]"]:checked').length;
+					if ( selected_lists_count === 0 ) {
+						alert( ig_es_form_editor_data.i18n.no_list_selected_message );
+						e.preventDefault();
+						return false;
+					}
+				}
+				
+			});
+			/* DND form builder code end */
 		});
 
 		function ig_es_uc_first(string){
@@ -2936,10 +3021,14 @@ function ig_es_sync_wp_editor_content() {
 		window.tinyMCE.triggerSave();
 	}
 
+	ig_es_sync_dnd_editor_content( '#campaign-dnd-editor-data' );
+}
+
+function ig_es_sync_dnd_editor_content( data_field_id ) {
 	// Save the editor content to textarea
 	if ( 'undefined' !== typeof window.esVisualEditor ) {
 		let dnd_editor_data = window.esVisualEditor.exportEditorContent();
-		jQuery('#campaign-dnd-editor-data').val(dnd_editor_data.data);
+		jQuery(data_field_id).val(dnd_editor_data.data);
 	}
 }
 

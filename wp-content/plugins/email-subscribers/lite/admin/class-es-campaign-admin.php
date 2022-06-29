@@ -150,6 +150,8 @@ if ( ! class_exists( 'ES_Campaign_Admin' ) ) {
 							$meta['list_conditions'] = IG_ES_Campaign_Rules::remove_empty_conditions( $meta['list_conditions'] );
 						}
 
+						$meta = apply_filters( 'ig_es_before_save_campaign_meta', $meta, $campaign_data );
+
 						$campaign_data['meta'] = maybe_serialize( $meta );
 
 						if ( 'schedule' === $campaign_action ) {
@@ -490,6 +492,9 @@ if ( ! class_exists( 'ES_Campaign_Admin' ) ) {
 					<fieldset class="es_fieldset">
 
 						<div class="mt-7 hidden mx-auto es_campaign_second max-w-7xl">
+							<span class="ig-es-ajax-loader">
+								<img src=".\images\spinner-2x.gif">
+							</span>
 							<?php
 							$inline_preview_data = $this->get_campaign_inline_preview_data( $campaign_data );
 							?>
@@ -699,6 +704,8 @@ if ( ! class_exists( 'ES_Campaign_Admin' ) ) {
 				$data['body'] = ES_Common::es_process_template_body( $data['body'], $data['base_template_id'], $campaign_id );
 
 				$guid = ES_Common::generate_guid( 6 );
+
+				$meta = apply_filters( 'ig_es_before_save_campaign_notification_meta', array( 'type' => 'newsletter' ), $campaign_meta );
 				$data = array(
 					'hash'        => $guid,
 					'campaign_id' => $campaign_id,
@@ -709,7 +716,7 @@ if ( ! class_exists( 'ES_Campaign_Admin' ) ) {
 					'finish_at'   => '',
 					'created_at'  => ig_get_current_date_time(),
 					'updated_at'  => ig_get_current_date_time(),
-					'meta'        => maybe_serialize( array( 'type' => 'newsletter' ) ),
+					'meta'        => maybe_serialize( $meta ),
 				);
 
 				$should_queue_emails = false;

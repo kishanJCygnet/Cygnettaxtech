@@ -42,7 +42,7 @@ class ES_Handle_Post_Notification {
 	 */
 	public function init() {
 
-		$post_types        = array( 'post' );
+		$post_types        = array( 'post', 'page' );
 		$custom_post_types = ES_Common::get_custom_post_types();
 		$post_types        = array_merge( $post_types, $custom_post_types );
 		foreach ( $post_types as $post_type  ) {

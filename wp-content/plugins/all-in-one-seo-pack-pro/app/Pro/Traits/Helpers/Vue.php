@@ -78,9 +78,6 @@ trait Vue {
 				'maxVideoPreview'             => null === $term->robots_max_videopreview ? -1 : (int) $term->robots_max_videopreview,
 				'maxImagePreview'             => $term->robots_max_imagepreview,
 				'modalOpen'                   => false,
-				'tabs'                        => ( ! empty( $term->tabs ) )
-					? json_decode( $term->tabs )
-					: json_decode( Models\Term::getDefaultTabsOptions() ),
 				'generalMobilePrev'           => false,
 				'socialMobilePreview'         => false,
 				'og_object_type'              => ! empty( $term->og_object_type ) ? $term->og_object_type : 'default',

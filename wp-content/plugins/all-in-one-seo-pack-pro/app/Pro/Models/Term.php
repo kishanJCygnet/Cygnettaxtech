@@ -199,8 +199,7 @@ class Term extends CommonModels\Model {
 		$theTerm->twitter_image_custom_fields = ! empty( $data['twitter_image_custom_fields'] ) ? sanitize_text_field( $data['twitter_image_custom_fields'] ) : null;
 		$theTerm->twitter_image_type          = ! empty( $data['twitter_image_type'] ) ? sanitize_text_field( $data['twitter_image_type'] ) : 'default';
 		// Miscellaneous
-		$theTerm->tabs                        = ! empty( $data['tabs'] ) ? wp_json_encode( $data['tabs'] ) : parent::getDefaultTabsOptions();
-		$theTerm->updated                     = gmdate( 'Y-m-d H:i:s' );
+		$theTerm->updated                     = gmdate( 'Y-m-d H:i:s' ); // phpcs:ignore Generic.Formatting.MultipleStatementAlignment.IncorrectWarning
 
 		// Before we determine the OG/Twitter image, we need to set the meta data cache manually because the changes haven't been saved yet.
 		aioseo()->meta->metaData->bustTermCache( $theTerm->term_id, $theTerm );
